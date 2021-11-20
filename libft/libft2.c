@@ -10,12 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-strlen
-memset
-bzero
-memcpy
-memmove
-
 size_t  ft_strlen(const char *s)
 {
     char    *temp;
