@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//  strlcpy, strlcat에서 ft_strlen쓰고있으니 확인요망
-
+//  strlcpy, strlcat use ft_strlen
 size_t  ft_strlcpy(char *dest, const char *src, size_t size)
 {
     char    *d;
