@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 15:52:16 by hyunhole          #+#    #+#             */
-/*   Updated: 2021/11/21 15:52:16 by hyunhole         ###   ########.fr       */
+/*   Updated: 2021/11/23 13:25:46 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,9 +87,21 @@ char    *ft_strtrim(char const *s1, char const *set)
     return (ret);
 }
 
+//	ft_strrchr ft_strlen used
 char    **ft_split(char const *s, char c)
 {
+	char	**ret;
+	int		ret_len;
+	int		i;
 
+	i = -1;
+	while (++i < ft_strlen(s))
+	{
+		if (s[i] == c)
+			ret_len++;
+	}
+
+	ft_strrchr(s, c);
 }
 
 ft_itoa
