@@ -87,30 +87,85 @@ char    *ft_strtrim(char const *s1, char const *set)
     return (ret);
 }
 
-//	ft_strrchr ft_strlen used
+//	ft_memset, ft_substr, ft_strlen used
 char    **ft_split(char const *s, char c)
 {
 	char	**ret;
 	int		ret_len;
 	int		i;
+    int     j;
+    int     *breakpoints;
 
+    ret_len = 1;
 	i = -1;
 	while (++i < ft_strlen(s))
 	{
 		if (s[i] == c)
 			ret_len++;
 	}
-	if (!(ret = (char **)malloc(sizeof(char *) * ret_len)))
+	if (!(ret = (char **)malloc(sizeof(char *) * (ret_len + 1))))
 		return ((void *)0);
-
-	ret[0] = ft_strrchr(s, c);
-
-	i = -1;
+    if (!(breakpoints = (int *)malloc(sizeof(int) * (ret_len + 1))))
+        return ((void *)0);
+    ft_memset(breakpoints, -2, sizeof(int));
+    breakpoints[0] = -1;
+    j = 1;
+    i = -1;
 	while (++i < ret_len)
 	{
-
+        if (s[i] == c)
+        {
+            breakpoints[j] = i;
+            j++;
+        }
 	}
+    i = -1;
+    j = 0;
+    while (breakpoints[++i] != -2)
+    {
+        if (breakpoints[i + 1] - 1 < breakpoints[i] + 1)
+            continue;
+        ret[j] = ft_substr(s, breakpoints[i] + 1, breakpoints[i + 1] - breakpoints[i] - 1);
+        j++;
+    }
+    ret[j] = (void *)0;
 	return (ret);
 }
 
-ft_itoa
+//  ft_isdigit used
+char    *ft_itoa(int n)
+{
+    char        *ret;
+    long long   abs;
+    int         digits;
+    char        pmsign;
+    long long   j;
+
+    pmsign = 1;
+    if (n < 0)
+    {
+        pmsign = -1;
+        abs = -n;
+    }
+    else
+        abs = n;
+    digits = 1;
+    j = abs;
+    while (j / 10 != 0)
+    {
+        j /= 10;
+        digits++;
+    }
+    ret = (char *)malloc(sizeof(char) * (digits + 1));
+    if (pmsign == -1)
+        digits++;
+    while (digits != 0)
+    {
+        ret[digits - 1] = abs;
+        abs / 10;
+        digits--;
+    }
+    if (pmsign == -1)
+        ret[0] = '-';
+    return (ret);
+}
