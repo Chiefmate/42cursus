@@ -11,8 +11,13 @@
 /* ************************************************************************** */
 
 #ifndef __LIBFT_H__
-#define __LIBFT_H__
+# define __LIBFT_H__
+# include <stdlib.h>
 
-#include <stdlib.h>
+typedef struct	s_list
+{
+	void			*content;
+	struct s_list	*next;
+}				t_list;
 
 #endif
