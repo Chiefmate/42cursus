@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 //  strlcpy, strlcat use ft_strlen
 size_t  ft_strlcpy(char *dest, const char *src, size_t size)
 {
@@ -40,7 +42,7 @@ size_t  ft_strlcat(char *dest, const char *src, size_t size)
         return (ft_strlen(src) + ft_strlen(dest));
     while (*d)
         d++;
-    while (src[idx] && idx + ft_strlen(dst) + 1 < size)
+    while (src[idx] && idx + ft_strlen(dest) + 1 < size)
     {
         d[idx] = src[idx];
         idx++;

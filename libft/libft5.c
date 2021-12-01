@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 void    *ft_memchr(const void *buf, int c, size_t count)
 {
     unsigned char   *ptr;
@@ -34,12 +36,16 @@ void    *ft_memchr(const void *buf, int c, size_t count)
 
 int ft_memcmp(const void *buf1, const void *buf2, size_t count)
 {
-    size_t  idx;
+    size_t          idx;
+    unsigned char   *p1;
+    unsigned char   *p2;
 
+    p1 = (unsigned char *)buf1;
+    p2 = (unsigned char *)buf2;
     idx = 0;
-    while (idx < count && buf1[idx] == buf2[idx])
+    while (idx < count && p1[idx] == p2[idx])
         idx++;
-    return (buf1[idx] - buf2[idx]);
+    return (p1[idx] - p2[idx]);
 }
 
 //  ft_memset used

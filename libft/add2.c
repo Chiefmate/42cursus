@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "basic.h"
+#include "libft.h"
 
 //	ft_strlen used
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
@@ -30,15 +30,13 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
 	char			*tempptr;
-	char			temp;
 	unsigned int	idx;
 	
 	idx = 0;
 	tempptr = s;
 	while (*tempptr)
 	{
-		temp = f(idx, tempptr);
-		*tempptr = temp;
+		f(idx, tempptr);
 		idx++;
 		tempptr++;
 	}

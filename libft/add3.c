@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "basic.h"
+#include "libft.h"
 
 //	ft_itoa, ft_putstr_fd used
 void	ft_putnbr_fd(int n, int fd)
