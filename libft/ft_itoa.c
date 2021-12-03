@@ -6,11 +6,29 @@
 /*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 16:00:26 by hyunhole          #+#    #+#             */
-/*   Updated: 2021/12/03 16:00:38 by hyunhole         ###   ########.fr       */
+/*   Updated: 2021/12/03 16:39:27 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static char	*make_ret(int digits, char pmsign, long long abs)
+{
+	char	*ret;
+
+	ret = (char *)malloc(sizeof(char) * (digits + 1));
+	if (pmsign == -1)
+		digits++;
+	while (digits != 0)
+	{
+		ret[digits - 1] = abs;
+		abs = abs / 10;
+		digits--;
+	}
+	if (pmsign == -1)
+		ret[0] = '-';
+	return (ret);
+}
 
 //  ft_isdigit used
 char	*ft_itoa(int n)
@@ -36,16 +54,6 @@ char	*ft_itoa(int n)
 		j /= 10;
 		digits++;
 	}
-	ret = (char *)malloc(sizeof(char) * (digits + 1));
-	if (pmsign == -1)
-		digits++;
-	while (digits != 0)
-	{
-		ret[digits - 1] = abs;
-		abs = abs / 10;
-		digits--;
-	}
-	if (pmsign == -1)
-		ret[0] = '-';
+	ret = make_ret(digits, pmsign, abs);
 	return (ret);
 }
