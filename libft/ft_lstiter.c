@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add3.c                                             :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/29 18:42:53 by hyunhole          #+#    #+#             */
-/*   Updated: 2021/11/29 18:42:53 by hyunhole         ###   ########.fr       */
+/*   Created: 2021/12/03 16:07:02 by hyunhole          #+#    #+#             */
+/*   Updated: 2021/12/03 16:07:08 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-//	ft_itoa, ft_putstr_fd used
-void	ft_putnbr_fd(int n, int fd)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	char	*str;
+	t_list	*cursor;
 
-	str = ft_itoa(n);
-	ft_putstr_fd(str, fd);
+	cursor = lst;
+	while (cursor)
+	{
+		f(cursor->content);
+		cursor = cursor->next;
+	}
 	return ;
 }

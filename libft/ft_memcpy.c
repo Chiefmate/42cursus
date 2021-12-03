@@ -1,56 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft2.c                                           :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/19 12:32:28 by hyunhole          #+#    #+#             */
-/*   Updated: 2021/12/03 12:13:30 by hyunhole         ###   ########.fr       */
+/*   Created: 2021/12/03 15:51:41 by hyunhole          #+#    #+#             */
+/*   Updated: 2021/12/03 15:51:57 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t  ft_strlen(const char *s)
-{
-	char	*temp;
-	size_t  len;
-
-	len = 0;
-	temp = (char *)s;
-	while (temp[len])
-	{
-		len++;
-	}
-	return (len);
-}
-
-void	*ft_memset(void *b, int c, size_t n)
-{
-	unsigned char   *s = b;
-	size_t		  k;
-
-	k = 0;
-	while (k < n)
-	{
-		s[k] = c;
-		k++;
-	}
-	return (b);
-}
-
-void	ft_bzero(void *s, size_t n)
-{
-	ft_memset(s, 0, n);
-	return ;
-}
-
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	unsigned char   *d;
-	unsigned char   *s;
-	size_t		  idx;
+	unsigned char	*d;
+	unsigned char	*s;
+	size_t			idx;
 
 	d = (unsigned char *) dst;
 	s = (unsigned char *) src;
@@ -73,9 +39,4 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 		}
 	}
 	return (dst);
-}
-
-void	*ft_memmove(void *dst, const void *src, size_t len)
-{
-	return (ft_memcpy(dst, src, len));
 }
