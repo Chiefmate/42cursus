@@ -6,9 +6,11 @@
 /*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 15:48:37 by hyunhole          #+#    #+#             */
-/*   Updated: 2021/12/03 16:39:08 by hyunhole         ###   ########.fr       */
+/*   Updated: 2021/12/03 16:48:43 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_isprint(int c)
 {

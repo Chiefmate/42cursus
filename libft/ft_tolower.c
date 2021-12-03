@@ -6,9 +6,11 @@
 /*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 15:53:58 by hyunhole          #+#    #+#             */
-/*   Updated: 2021/12/03 16:43:53 by hyunhole         ###   ########.fr       */
+/*   Updated: 2021/12/03 16:49:24 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_tolower(int c)
 {
