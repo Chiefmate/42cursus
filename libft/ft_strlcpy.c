@@ -6,27 +6,28 @@
 /*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 15:52:47 by hyunhole          #+#    #+#             */
-/*   Updated: 2021/12/03 16:42:46 by hyunhole         ###   ########.fr       */
+/*   Updated: 2021/12/04 20:18:59 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-//  strlcpy, strlcat use ft_strlen
+//  ft_strlen used
 size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
-	char	*d;
-	size_t	idx;
+	size_t	src_len;
 
-	d = dest;
-	idx = 0;
+	src_len = ft_strlen(src);
 	if (!size)
-		return (ft_strlen(src));
-	while (src[idx] && idx + 1 < size)
+		return (src_len);
+	size--;
+	while (*src && size)
 	{
-		d[idx] = src[idx];
-		idx++;
+		*dest = *src;
+		size--;
+		dest++;
+		src++;
 	}
-	d[idx] = '\0';
-	return (ft_strlen(src));
+	*dest = '\0';
+	return (src_len);
 }

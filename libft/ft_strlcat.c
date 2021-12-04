@@ -6,28 +6,32 @@
 /*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 15:53:17 by hyunhole          #+#    #+#             */
-/*   Updated: 2021/12/03 16:42:37 by hyunhole         ###   ########.fr       */
+/*   Updated: 2021/12/04 20:57:11 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+//	ft_memchr used
+static size_t	ft_strnlen(char *str, size_t n)
+{
+	char	*part;
+
+	part = ft_memchr(str, 0, n);
+	if (!part)
+		return (n);
+	else
+		return (part - str);
+}
+
+//	ft_strlen used
 size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
-	char	*d;
-	size_t	idx;
+	size_t	dest_len;
 
-	d = dest;
-	idx = 0;
-	if (!size)
-		return (ft_strlen(src) + ft_strlen(dest));
-	while (*d)
-		d++;
-	while (src[idx] && idx + ft_strlen(dest) + 1 < size)
-	{
-		d[idx] = src[idx];
-		idx++;
-	}
-	d[idx] = '\0';
-	return (ft_strlen(src) + ft_strlen(dest));
+	dest_len = ft_strnlen(dest, size);
+	if (dest_len == size)
+		return (dest_len + ft_strlen(src));
+	return (ft_strlen(dest) \
+			+ ft_strlcpy(dest + dest_len, src, size - dest_len));
 }

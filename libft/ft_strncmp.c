@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 15:55:12 by hyunhole          #+#    #+#             */
-/*   Updated: 2021/12/03 16:43:15 by hyunhole         ###   ########.fr       */
+/*   Updated: 2021/12/04 21:22:14 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,18 @@
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int		ret;
-	size_t	idx;
+	unsigned char	*p1;
+	unsigned char	*p2;
 
-	idx = 0;
-	while (idx < n && s1[idx] && s1[idx] != s2[idx])
-		idx++;
-	ret = s1[idx] - s2[idx];
-	return (ret);
+	p1 = (unsigned char *)s1;
+	p2 = (unsigned char *)s2;
+	while (n && *p1 && *p1 == *p2)
+	{
+		n--;
+		p1++;
+		p2++;
+	}
+	if (!n)
+		return (0);
+	return (*p1 - *p2);
 }
