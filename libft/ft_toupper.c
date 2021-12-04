@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 15:53:37 by hyunhole          #+#    #+#             */
-/*   Updated: 2021/12/03 16:44:04 by hyunhole         ###   ########.fr       */
+/*   Updated: 2021/12/04 15:34:23 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_toupper(int c)
 {
-	if ((unsigned)c - 'A' < 26)
-		return (c - 32);
+	if ((unsigned)c - 'a' < 26)
+		return (c & 95);
 	return (c);
 }

@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 15:56:36 by hyunhole          #+#    #+#             */
-/*   Updated: 2021/12/03 16:40:47 by hyunhole         ###   ########.fr       */
+/*   Updated: 2021/12/04 16:31:15 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@ void	*ft_memchr(const void *buf, int c, size_t count)
 	size_t			idx;
 
 	ptr = (unsigned char *)buf;
-	ret = (void *)0;
+	ret = NULL;
 	idx = 0;
 	while (*ptr && idx < count)
 	{
-		if (*ptr == c)
+		if (*ptr == (unsigned char)c)
 		{
 			ret = ptr;
 			break ;
 		}
-		count++;
+		idx++;
 		ptr++;
 	}
-	return (ret);
+	return ((void *)ret);
 }

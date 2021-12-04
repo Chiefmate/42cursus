@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 15:54:31 by hyunhole          #+#    #+#             */
-/*   Updated: 2021/12/03 16:49:05 by hyunhole         ###   ########.fr       */
+/*   Updated: 2021/12/04 16:36:19 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,16 @@
 char	*ft_strchr(const char *s, int c)
 {
 	char	*ret;
-	int		idx;
 
 	ret = (void *)0;
-	idx = 0;
-	while (s[idx])
+	while (*s)
 	{
-		if (s[idx] == c)
+		if (*s == (char)c)
 		{
-			ret = (char *)s + idx;
+			ret = (char *)s;
 			break ;
 		}
-		idx++;
+		s++;
 	}
 	return (ret);
 }
