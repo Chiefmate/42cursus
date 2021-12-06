@@ -6,52 +6,28 @@
 /*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 15:59:53 by hyunhole          #+#    #+#             */
-/*   Updated: 2021/12/03 16:42:04 by hyunhole         ###   ########.fr       */
+/*   Updated: 2021/12/07 02:53:13 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	get_retlen_bpoint(char const *s, char c, int **bpointptr)
+#include <stdio.h>
+
+static void	make_ret(char const *s, char c, char **ret, int *idxarr)
 {
 	int	i;
 	int	j;
-	int	ret_len;
 
-	ret_len = 1;
-	i = -1;
-	while (++i < ft_strlen(s))
-	{
-		if (s[i] == c)
-			ret_len++;
-	}
-	j = 1;
-	i = -1;
-	while (++i < ret_len)
-	{
-		if (s[i] == c)
-			(*bpointptr)[j++] = i;
-	}
-	return (ret_len);
-}
-
-static void	makeret(char const *s, char c, char ***retptr, int **bpointptr)
-{
-	int	i;
-	int	j;
-	int	ret_len;
-
-	ret_len = get_retlen_bpoint(s, c, bpointptr);
-	i = -1;
+	i = 0;
 	j = 0;
-	while ((*bpointptr)[++i] != -2)
+	while (idxarr[i++] != -2)
 	{
-		if ((*bpointptr)[i + 1] - 1 < (*bpointptr)[i] + 1)
+		if (idxarr[i + 1] - 1 < idxarr[i] + 1)
 			continue ;
-		(*retptr)[j++] = ft_substr(s, (*bpointptr)[i] + 1, \
-			(*bpointptr)[i + 1] - (*bpointptr)[i] - 1);
+		ret[j++] = ft_substr(s, idxarr[i] + 1, \
+			idxarr[i + 1] - idxarr[i] - 1);
 	}
-	(*retptr)[j] = (void *)0;
 	return ;
 }
 
@@ -61,7 +37,7 @@ char	**ft_split(char const *s, char c)
 	char	**ret;
 	int		ret_len;
 	int		i;
-	int		*bpoint;
+	int		*idxarr;
 
 	ret_len = 1;
 	i = -1;
@@ -73,11 +49,21 @@ char	**ft_split(char const *s, char c)
 	ret = (char **)malloc(sizeof(char *) * (ret_len + 1));
 	if (!ret)
 		return ((void *)0);
-	bpoint = (int *)malloc(sizeof(int) * (ret_len + 1));
-	if (!bpoint)
+	idxarr = (int *)malloc(sizeof(int) * (ret_len + 1));
+	if (!idxarr)
 		return ((void *)0);
-	ft_memset(bpoint, -2, sizeof(int));
-	bpoint[0] = -1;
-	makeret(s, c, &ret, &bpoint);
+	ft_memset(ret, 0, sizeof(char *) * (ret_len + 1));
+	ft_memset(idxarr, -2, sizeof(int) * (ret_len + 1));
+	idxarr[0] = -1;
+	make_ret(s, c, ret, idxarr);
 	return (ret);
+}
+
+int	main(void)
+{
+	char	**a;
+
+	a = ft_split("ab1cd2ef", '1');
+	printf("%s\n", a[0]);
+	return (0);
 }

@@ -6,34 +6,30 @@
 /*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 15:55:35 by hyunhole          #+#    #+#             */
-/*   Updated: 2021/12/03 16:43:27 by hyunhole         ###   ########.fr       */
+/*   Updated: 2021/12/07 01:03:22 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-//ft_strlen() 사용
+//	ft_strlen used
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	char	*ret;
-	size_t	idx;
-	size_t	temp;
+	size_t	i;
 
-	if (*little == '\0')
+	if (!(*little))
 		return ((char *)big);
-	ret = (void *)0;
-	idx = 0;
-	while (idx < len)
+	while (len && *big)
 	{
-		temp = 0;
-		while (big[temp] == little[temp])
-			temp++;
-		if (temp && little[temp] == '\0')
+		i = 0;
+		while (*(big + i) == *(little + i) && i < len)
 		{
-			ret = (char *)big + 1 - temp;
-			break ;
+			i++;
+			if (!(*(little + i)))
+				return ((char *) big);
 		}
-		idx++;
+		len--;
+		big++;
 	}
-	return (ret);
+	return (NULL);
 }

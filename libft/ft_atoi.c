@@ -6,13 +6,13 @@
 /*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 15:55:58 by hyunhole          #+#    #+#             */
-/*   Updated: 2021/12/03 16:37:47 by hyunhole         ###   ########.fr       */
+/*   Updated: 2021/12/07 01:05:19 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-//  ft_isdigit() 사용
+//  ft_isdigit() used
 int	ft_atoi(const char *s)
 {
 	int		 n;
@@ -24,7 +24,10 @@ int	ft_atoi(const char *s)
 	*s == '\r' || *s == '\t' || *s == '\v')
 		s++;
 	if (*s == '-')
+	{
 		neg_sign = 1;
+		s++;
+	}
 	else if (*s == '+')
 		s++;
 	while (ft_isdigit(*s))
