@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 15:58:56 by hyunhole          #+#    #+#             */
-/*   Updated: 2021/12/03 16:42:29 by hyunhole         ###   ########.fr       */
+/*   Updated: 2021/12/07 03:57:28 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,11 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	idx = -1;
 	while (++idx < s1_len)
 		ret[idx] = s1[idx];
-	while (idx++ < s1_len + s2_len)
+	while (idx < s1_len + s2_len)
+	{
 		ret[idx] = s2[idx - s1_len];
+		idx++;
+	}
 	ret[idx] = '\0';
 	return (ret);
 }
