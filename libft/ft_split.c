@@ -19,9 +19,9 @@ static void	make_ret(char const *s, char **ret, int *idxarr)
 
 	i = 0;
 	j = 0;
-	while (idxarr[i] != 0)
+	while (idxarr[i] != ft_strlen(s))
 	{
-		if (idxarr[i + 1] - 1 < idxarr[i] + 1)
+		if (idxarr[i] + 1 > idxarr[i + 1] - 1)
 		{
 			i++;
 			continue ;
