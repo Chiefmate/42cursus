@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 16:05:15 by hyunhole          #+#    #+#             */
-/*   Updated: 2021/12/03 16:40:38 by hyunhole         ###   ########.fr       */
+/*   Updated: 2021/12/09 00:15:15 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,12 @@
 int	ft_lstsize(t_list *lst)
 {
 	int		ret;
-	t_list	*cursor;
 
-	cursor = lst;
 	ret = 0;
-	while (cursor->next)
+	while (lst)
 	{
 		ret++;
-		cursor = cursor->next;
+		lst = lst->next;
 	}
 	return (ret);
 }

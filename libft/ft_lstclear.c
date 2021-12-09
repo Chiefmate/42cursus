@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 16:06:46 by hyunhole          #+#    #+#             */
-/*   Updated: 2021/12/03 16:39:52 by hyunhole         ###   ########.fr       */
+/*   Updated: 2021/12/09 00:12:22 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,15 @@
 
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	t_list	*cursor;
 	t_list	*temp;
 
-	temp = *lst;
-	cursor = *lst;
-	while (cursor)
+	while (*lst)
 	{
-		temp = cursor;
-		del(cursor->content);
-		cursor = cursor->next;
-		free(temp);
+		temp = (*lst)->next;
+		del((*lst)->content);
+		free(*lst);
+		*lst = temp;
 	}
+	*lst = NULL;
 	return ;
 }

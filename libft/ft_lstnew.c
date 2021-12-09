@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 16:04:13 by hyunhole          #+#    #+#             */
-/*   Updated: 2021/12/03 16:40:32 by hyunhole         ###   ########.fr       */
+/*   Updated: 2021/12/09 00:03:43 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ t_list	*ft_lstnew(void *content)
 
 	ret = (t_list *)malloc(sizeof(t_list));
 	if (!ret)
-		return ((void *)0);
+		return (NULL);
 	ret->content = content;
-	ret->next = (void *)0;
+	ret->next = NULL;
 	return (ret);
 }
