@@ -40,9 +40,10 @@ static void	make_idxarr(char const *s, char c, int *idxarr)
 
 	i = 0;
 	j = 1;
+	idxarr[0] = -1;
 	while (s[i])
 	{
-		if (*s == c)
+		if (s[i] == c)
 		{
 			idxarr[j] = i;
 			j++;
@@ -76,7 +77,6 @@ char	**ft_split(char const *s, char c)
 		return ((void *)0);
 	ft_memset(ret, 0, sizeof(char *) * (ret_len + 3));
 	ft_memset(idxarr, 0, sizeof(int) * (ret_len + 3));
-	idxarr[0] = -1;
 	make_idxarr(s, c, idxarr);
 	make_ret(s, ret, idxarr);
 	free(idxarr);
