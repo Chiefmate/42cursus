@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 15:59:53 by hyunhole          #+#    #+#             */
-/*   Updated: 2021/12/09 00:26:17 by hyunhole         ###   ########.fr       */
+/*   Updated: 2021/12/10 11:46:33 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@ static void	make_ret(char const *s, char **ret, int *idxarr)
 			i++;
 			continue ;
 		}
-		ret[j++] = ft_substr(s, idxarr[i] + 1, \
-			idxarr[i + 1] - idxarr[i]);
+		ret[j] = ft_substr(s, idxarr[i] + 1, \
+			idxarr[i + 1] - idxarr[i] - 1);
+		j++;
 		i++;
 	}
 	return ;

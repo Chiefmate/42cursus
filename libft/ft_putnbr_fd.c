@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 16:03:23 by hyunhole          #+#    #+#             */
-/*   Updated: 2021/12/03 16:41:39 by hyunhole         ###   ########.fr       */
+/*   Updated: 2021/12/10 12:07:45 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,6 @@ void	ft_putnbr_fd(int n, int fd)
 
 	str = ft_itoa(n);
 	ft_putstr_fd(str, fd);
+	free(str);
 	return ;
 }
