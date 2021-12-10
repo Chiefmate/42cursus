@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 15:59:53 by hyunhole          #+#    #+#             */
-/*   Updated: 2021/12/10 11:46:33 by hyunhole         ###   ########.fr       */
+/*   Updated: 2021/12/10 21:34:29 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	make_ret(char const *s, char **ret, int *idxarr)
 	j = 0;
 	while (idxarr[i] != ft_strlen(s))
 	{
-		if (idxarr[i] + 1 > idxarr[i + 1] - 1)
+		if ((idxarr[i] + 1) > (idxarr[i + 1] - 1))
 		{
 			i++;
 			continue ;
@@ -70,14 +70,14 @@ char	**ft_split(char const *s, char c)
 		if (s[i] == c)
 			ret_len++;
 	}
-	ret = (char **)malloc(sizeof(char *) * (ret_len + 3));
+	ret = (char **)malloc(sizeof(char *) * (ret_len + 1));
 	if (!ret)
 		return ((void *)0);
-	idxarr = (int *)malloc(sizeof(int) * (ret_len + 3));
+	idxarr = (int *)malloc(sizeof(int) * (ret_len + 2));
 	if (!idxarr)
 		return ((void *)0);
-	ft_memset(ret, 0, sizeof(char *) * (ret_len + 3));
-	ft_memset(idxarr, 0, sizeof(int) * (ret_len + 3));
+	ft_memset(ret, 0, sizeof(char *) * (ret_len + 1));
+	ft_memset(idxarr, 0, sizeof(int) * (ret_len + 2));
 	make_idxarr(s, c, idxarr);
 	make_ret(s, ret, idxarr);
 	free(idxarr);

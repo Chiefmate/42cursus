@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 16:02:29 by hyunhole          #+#    #+#             */
-/*   Updated: 2021/12/03 16:43:00 by hyunhole         ###   ########.fr       */
+/*   Updated: 2021/12/10 18:26:13 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
+	if (!s)
+		return ;
 	while (*s)
 	{
 		write(fd, s, 1);
