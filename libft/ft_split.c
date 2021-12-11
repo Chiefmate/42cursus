@@ -6,13 +6,23 @@
 /*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 15:59:53 by hyunhole          #+#    #+#             */
-/*   Updated: 2021/12/11 12:05:18 by hyunhole         ###   ########.fr       */
+/*   Updated: 2021/12/11 12:50:00 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	make_ret(char const *s, char **ret, int *idxarr)
+static void	free_ret(char **ret, int j)
+{
+	int	k;
+
+	k = -1;
+	while (++k < j)
+		free(ret[j]);
+	return ;
+}
+
+static int	make_ret(char const *s, char **ret, int *idxarr)
 {
 	int	i;
 	int	j;
@@ -28,10 +38,17 @@ static void	make_ret(char const *s, char **ret, int *idxarr)
 		}
 		ret[j] = ft_substr(s, idxarr[i] + 1, \
 			idxarr[i + 1] - idxarr[i] - 1);
+		if (!ret[j])
+		{
+			free_ret(ret, j);
+			free(idxarr);
+			return (1);
+		}
 		j++;
 		i++;
 	}
-	return ;
+	free(idxarr);
+	return (0);
 }
 
 static void	make_idxarr(char const *s, char c, int *idxarr)
@@ -84,17 +101,25 @@ char	**ft_split(char const *s, char c)
 	unsigned int	ret_len;
 	int				*idxarr;
 
+	if (!s)
+		return (0);
 	ret_len = count_substr(s, c);
 	ret = (char **)malloc(sizeof(char *) * (ret_len + 1));
 	if (!ret)
-		return ((void *)0);
+		return (0);
 	idxarr = (int *)malloc(sizeof(int) * (ft_strlen(s) + 1));
 	if (!idxarr)
-		return ((void *)0);
+	{
+		free(ret);
+		return (0);
+	}
 	ft_memset(ret, 0, sizeof(char *) * (ret_len + 1));
 	ft_memset(idxarr, 0, sizeof(int) * (ft_strlen(s) + 1));
 	make_idxarr(s, c, idxarr);
-	make_ret(s, ret, idxarr);
-	free(idxarr);
+	if (make_ret(s, ret, idxarr) == 1)
+	{
+		free(ret);
+		return (0);
+	}
 	return (ret);
 }
