@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 16:07:17 by hyunhole          #+#    #+#             */
-/*   Updated: 2021/12/03 16:40:25 by hyunhole         ###   ########.fr       */
+/*   Updated: 2021/12/11 12:17:17 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,27 @@
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*ret;
-	t_list	*cursor_org;
+	t_list	*reader;
 	t_list	*temp;
 
-	ret = ft_lstnew(f(lst->content));
-	if (!lst || !f || !ret)
-		return ((void *)0);
-	cursor_org = lst->next;
-	ret = ft_lstnew(f(cursor_org->content));
+	if (!lst || !f || !del)
+		return (0);
+
+	reader = lst;
+	ret = ft_lstnew(f(reader->content));
 	if (!ret)
-		return ((void *)0);
-	while (cursor_org && ret)
+		return (0);
+	reader = reader->next;
+	while (reader)
 	{
-		temp = ft_lstnew(f(cursor_org->content));
+		temp = ft_lstnew(f(reader->content));
 		if (!temp)
 		{
 			ft_lstclear(&ret, del);
 			return ((void *)0);
 		}
 		ft_lstadd_back(&ret, temp);
-		cursor_org = cursor_org->next;
+		reader = reader->next;
 	}
 	return (ret);
 }
