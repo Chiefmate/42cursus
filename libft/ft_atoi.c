@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 15:55:58 by hyunhole          #+#    #+#             */
-/*   Updated: 2021/12/10 21:33:15 by hyunhole         ###   ########.fr       */
+/*   Updated: 2021/12/15 12:29:22 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ static long long	make_n(const char *s, char is_neg)
 //  ft_isdigit() used, limits.h included for LONG_MAX, LONG_MIN
 int	ft_atoi(const char *s)
 {
-	long long	n;
 	char		is_neg;
 
 	is_neg = 0;
