@@ -6,13 +6,13 @@
 #    By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/15 16:28:20 by hyunhole          #+#    #+#              #
-#    Updated: 2021/12/15 16:28:46 by hyunhole         ###   ########.fr        #
+#    Updated: 2021/12/15 17:33:15 by hyunhole         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=libft.a
 CC=gcc
-CFLAG=-Wall -Wextra -Werror
+CFLAGS=-Wall -Wextra -Werror
 RM=rm -f
 AR=ar
 ARFLAGS=crs
