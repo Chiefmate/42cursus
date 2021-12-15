@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/12/15 16:28:20 by hyunhole          #+#    #+#              #
+#    Updated: 2021/12/15 16:28:46 by hyunhole         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME=libft.a
 CC=gcc
 CFLAG=-Wall -Wextra -Werror
@@ -18,11 +30,13 @@ SRCS_BONUS=ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
 OBJS=$(SRCS:.c=.o)
 OBJS_BONUS=$(SRCS_BONUS:.c=.o)
 
-ifdef IS_BONUS
-	$(OBJS)+=$(OBJS_BONUS)
-endif
-
 all : $(NAME)
+
+bonus :
+	@make OBJS="$(SRCS:.c=.o) $(SRCS_BONUS:.c=.o)" all
+
+$(NAME) : $(OBJS)
+	$(AR) $(ARFLAGS) $@ $^
 
 %.o : %.c
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -34,11 +48,5 @@ fclean : clean
 	$(RM) $(NAME)
 
 re : fclean all
-
-$(NAME) : $(OBJS)
-	$(AR) $(ARFLAGS) $@ $^
-
-bonus : $(OBJS) $(OBJS_BONUS)
-	@make IS_BONUS=1 all
 
 .PHONY : all bonus clean fclean re
