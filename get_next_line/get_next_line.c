@@ -45,12 +45,26 @@ void	ft_strjoin_sub(char **ret, char *buf, ssize_t r_size)
 	char	*temp;
 	ssize_t	i;
 
-	temp = (char *)malloc(sizeof(char) * (ft_strlen(*ret) + r_size);
+	temp = (char *)malloc(sizeof(char) * (ft_strlen(*ret) + r_size));
 	ft_strlcpy(temp, *ret, ft_strlen(*ret));
-	ft_strlcpy(temp + ft_strlen(*src), buf, ft_strlen(*ret) + r_size);
+	ft_strlcpy(temp + ft_strlen(*ret), buf, ft_strlen(*ret) + r_size);
 	free(*ret);
 	*ret = temp;
 	return ;
+}
+
+ssize_t	get_offset(char *buf, ssize_t r_size)
+{
+	ssize_t	i;
+
+	i = 0;
+	while (i < r_size)
+	{
+		if (buf[i] == '\n')
+			return (i);
+		i++;
+	}
+	return (r_size);
 }
 
 char	*get_next_line(int fd)
@@ -61,31 +75,25 @@ char	*get_next_line(int fd)
 	ssize_t		offset;
 	char		*ret;
 
-	ret = 0;
+	ret = ft_strdup("");
 	offset = 0;
+	r_size = ft_strlen(backup[fd]);
+	ft_strlcpy(buf, backup[fd], r_size);
 
-	r_size = read(fd, buf, BUFFER_SIZE);
-	if (r_size == -1)
-		return (0);
-	ft_strjoin_sub(&ret, buf, r_size);
-	free(backup[fd]);
-	backup[fd] = ft_substr(buf, offset, BUFFER_SIZE - r_size);
-	
-	while (!is_buf_end(buf))
+	while (!is_buf_end(buf, r_size))
 	{
-		offset = BUFFER_SIZE - r_size - 1;
-
-
+		offset = get_offset(buf, r_size);
+		ft_strjoin_sub(&ret, buf, r_size);
+		free(backup[fd]);
+		backup[fd] = ft_substr(buf, offset, BUFFER_SIZE - r_size);
+		
+		
 		r_size = read(fd, buf, BUFFER_SIZE);
 		if (r_size == -1)
 		{
 			free(ret);	
 			return (0);
 		}
-		ft_strjoin_sub(&ret, buf, r_size);
-		free(backup[fd]);
-		backup[fd] = ft_substr(buf, offset, BUFFER_SIZE - r_size);
-		
 	}
 
 
