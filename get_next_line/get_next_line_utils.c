@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 18:53:30 by hyunhole          #+#    #+#             */
-/*   Updated: 2021/12/16 18:39:51 by hyunhole         ###   ########.fr       */
+/*   Updated: 2021/12/21 15:51:49 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,26 @@
 char	*join_ret_buf(char *ret, char *buf, ssize_t offset)
 {
 	char	*temp;
+	ssize_t	ret_len;
 
-	temp = (char *)malloc(sizeof(char) * (ft_strlen(ret) + offset + 2));
-	ft_strlcpy(temp, ret, ft_strlen(ret) + 1);
-	ft_strlcpy(temp + ft_strlen(ret), buf, offset + 2);
+	if (!ret)
+		ret = ft_strdup("");
+	ret_len = 0;
+	while (ret[ret_len])
+		ret_len++;
+	temp = (char *)malloc(sizeof(char) * (ret_len + offset + 2));
+	ft_memcpy(temp, ret, ret_len);
+	ft_memcpy(temp + ret_len, buf, offset + 1);
+	temp[ret_len + offset + 1] = '\0';
 	free(ret);
 	return (temp);
 }
 
-size_t	ft_strlen(const char *s)
+/*
+ * ft_datalen: ft_datalen modified
+ * if *s is not \0 until BUFFER_SIZE, then returns BUFFER_SIZE
+ */
+size_t	ft_datalen(const char *s)
 {
 	const char	*temp;
 	size_t		len;
@@ -36,7 +47,7 @@ size_t	ft_strlen(const char *s)
 		return (0);
 	len = 0;
 	temp = s;
-	while (*temp)
+	while (*temp && len < BUFFER_SIZE)
 	{
 		temp++;
 		len++;
@@ -44,49 +55,61 @@ size_t	ft_strlen(const char *s)
 	return (len);
 }
 
-size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	size_t	src_len;
+	unsigned char	*d;
+	unsigned char	*s;
+	size_t			idx;
 
-	src_len = ft_strlen(src);
-	if (!size || !src)
-		return (src_len);
-	size--;
-	while (*src && size)
+	d = (unsigned char *) dst;
+	s = (unsigned char *) src;
+	idx = 0;
+	if (d < s)
 	{
-		*dest = *src;
-		size--;
-		dest++;
-		src++;
+		while (idx < n)
+		{
+			d[idx] = s[idx];
+			idx++;
+		}
 	}
-	*dest = '\0';
-	return (src_len);
+	else if (d > s)
+	{
+		idx = n;
+		while (idx > 0)
+		{
+			idx--;
+			d[idx] = s[idx];
+		}
+	}
+	return (dst);
 }
 
-char	*get_backup(char *buf, ssize_t offset, ssize_t r_size)
+void	*ft_memset(void *b, int c, size_t n)
 {
-	char	*ret;
-	ssize_t	len;
+	unsigned char	*s;
+	size_t			k;
 
-	if (offset == r_size - 1)
-		return (ft_strdup(""));
-	len = r_size - offset - 1;
-	ret = (char *)malloc(sizeof(char) * (len + 1));
-	ft_strlcpy(ret, buf + offset + 1, len + 1);
-	return (ret);
+	s = (unsigned char *)b;
+	k = 0;
+	while (k < n)
+	{
+		s[k] = c;
+		k++;
+	}
+	return (b);
 }
 
-//  ft_strlen used
+//  ft_datalen used
 char	*ft_strdup(const char *s)
 {
 	char	*ret;
 	size_t	idx;
 
-	ret = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
+	ret = (char *)malloc(sizeof(char) * (ft_datalen(s) + 1));
 	if (ret == (void *)0)
 		return (ret);
 	idx = 0;
-	while (idx < ft_strlen(s))
+	while (idx < ft_datalen(s))
 	{
 		ret[idx] = s[idx];
 		idx++;
