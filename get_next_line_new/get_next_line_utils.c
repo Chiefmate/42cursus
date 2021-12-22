@@ -5,45 +5,26 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunhole <hyunhole@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/22 16:12:25 by hyunhole          #+#    #+#             */
-/*   Updated: 2021/12/22 17:03:07 by hyunhole         ###   ########.fr       */
+/*   Created: 2021/12/22 17:40:48 by hyunhole          #+#    #+#             */
+/*   Updated: 2021/12/22 18:03:59 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+char	*trim_keep(char *backup, ssize_t r_size)
 
-char	*join_ret_buf(char *ret, char *buf, ssize_t offset)
-{
-	size_t	ret_len;
-	char	*temp;
-	
-	if (!ret)
-		ret = ft_strdup("");
-	ret_len = 0;
-	while (ret[ret_len])
-		ret_len++;
-	temp = (char *)malloc(sizeof(char) * (ret_len + offset + 2));
-	ft_memcpy(temp, ret, ret_len);
-	ft_memcpy(temp + ret_len, buf, offset + 1);
-	temp[ret_len + offset + 1] = '\0';
-	free(ret);
-	return (temp);
-}
 
 /*
- * MAX = BUFFER_SIZE
+ * if n == 0, functions like strlen
  */
-size_t	ft_datalen(const char *s)
+size_t	ft_strnlen(const char *s, size_t n)
 {
-	char	*temp;
 	size_t	len;
 
 	len = 0;
-	temp = (char *)s;
-	while (temp[len] && len < BUFFER_SIZE)
-	{
+	while (s[len] && len < n && n)
 		len++;
-	}
+	while (s[len] && !n)
+		len++;
 	return (len);
 }
 
