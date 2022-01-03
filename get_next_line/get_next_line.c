@@ -47,7 +47,7 @@ int	is_lb(char *buf, ssize_t r_size)
  * read_buf reads backup or buf, and returns
  * r_size, which equals to the size of the read size
  */
-ssize_t	read_buf(int fd, char *buf, static char *backup)
+ssize_t	read_buf(int fd, char *buf, char **backup)
 {
 	ssize_t	r_size;
 
@@ -55,7 +55,6 @@ ssize_t	read_buf(int fd, char *buf, static char *backup)
 		ft_strlcpy(buf, backup[fd], BUFFER_SIZE);
 	else if (ft_strlen(backup[fd]))
 		ft_strlcpy(buf
-	
 	else
 	{
 		r_size = read(fd, buf, BUFFER_SIZE);
@@ -67,7 +66,7 @@ char	*get_next_line(int fd)
 {
 	char		*buf;
 	ssize_t		r_size;
-	static char	*backup[OPEN_MAX];
+	static char	**backup[OPEN_MAX];
 	ssize_t		offset;
 	char		*ret;
 
