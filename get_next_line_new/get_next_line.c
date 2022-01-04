@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunhole <hyunhole@student.42seoul.>       +#+  +:+       +#+        */
+/*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 17:40:41 by hyunhole          #+#    #+#             */
-/*   Updated: 2021/12/22 18:05:36 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/01/04 17:34:40 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ char	*get_keep(char *buf, char *keep)
 
 	r_size = ft_strnlen(buf, 0);
 
-	ft_memcpy(buf, keep, 
+	ft_memcpy(buf, keep, r_size * sizeof(char));
+
+	
 }
 
 /*
