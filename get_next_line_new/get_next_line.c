@@ -6,12 +6,11 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 17:40:41 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/01/04 17:34:40 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/01/16 14:20:24 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
 
 char	*get_keep(char *buf, char *keep)
 {

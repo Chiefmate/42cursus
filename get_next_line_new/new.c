@@ -14,7 +14,7 @@
 
 int		check_backup(char *s);
 int		read_file(int fd, char *buf);
-int		is_end_of_func(char *buf, int r_size);		// use strchr
+int		is_end_of_func(char *buf, int r_size);		// use memchr
 char	*save_backup(char *buf, int r_size);		// replacable with substr() and free()
 char	*make_ret(char *ret, char *buf);
 
@@ -26,6 +26,7 @@ char	*get_next_line(int fd)
 	char		*ret;
 
 	ret = NULL;
+	ft_memset(buf, 0, BUFFER_SIZE);
 	r_size = check_backup(backup[fd]);
 	if (!r_size)
 		r_size = read_file(fd, buf);
@@ -41,4 +42,9 @@ char	*get_next_line(int fd)
 		r_size = read_file(fd, buf);
 	}
 	return (ret);
+}
+
+int	is_end_of_func(char *buf, int r_size)
+{
+	return (ft_memchr(buf, '\n', r_size) || ft_memchr(buf, 0, r_size));
 }
