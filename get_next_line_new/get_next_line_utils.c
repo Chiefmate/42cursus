@@ -3,29 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunhole <hyunhole@student.42seoul.>       +#+  +:+       +#+        */
+/*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 17:40:48 by hyunhole          #+#    #+#             */
-/*   Updated: 2021/12/22 18:03:59 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/01/16 15:02:25 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*trim_keep(char *backup, ssize_t r_size)
+#include "get_next_line.h"
 
-
-/*
- * if n == 0, functions like strlen
- */
-size_t	ft_strnlen(const char *s, size_t n)
+void	*ft_memchr(const void *buf, int c, size_t count)
 {
-	size_t	len;
+	unsigned char	*ret;
 
-	len = 0;
-	while (s[len] && len < n && n)
-		len++;
-	while (s[len] && !n)
-		len++;
-	return (len);
+	ret = (unsigned char *)buf;
+	while (count && *ret != (unsigned char)c)
+	{
+		count--;
+		ret++;
+	}
+	if (!count)
+		return (0);
+	return ((void *)ret);
+}
+
+//	ft_memchr used
+size_t	ft_strnlen(char *str, size_t n)
+{
+	char	*part;
+
+	part = ft_memchr(str, 0, n);
+	if (!part)
+		return (n);
+	else
+		return (part - str);
 }
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
