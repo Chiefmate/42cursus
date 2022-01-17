@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 17:40:41 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/01/16 15:52:30 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/01/17 16:37:01 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,12 @@ size_t	ft_strlen(const char *s)
 	return (len);
 }
 
-void	make_keep(char keep[], char *buf, ssize_t c_size)
+void	make_keep(char keep1[], char *offset, ssize_t c_size)
 {
-	ft_memset(keep, 0, BUFFER_SIZE);
-	ft_memcpy(keep, buf, c_size);
+	ft_memset(keep1, 0, BUFFER_SIZE);
+	if (c_size <= 0)
+		return ;
+	ft_memcpy(keep1, offset + 1, c_size - 1);
 	return ;
 }
 
@@ -62,7 +64,7 @@ char	*get_next_line(int fd)
 	if (!buf)
 		return (0);
 	ft_memset(buf, 0, BUFFER_SIZE);
-	if (!(keep[fd]))
+	if (!(keep[fd][0]))
 	{
 		r_size = read(fd, buf, BUFFER_SIZE);
 	}
@@ -74,11 +76,12 @@ char	*get_next_line(int fd)
 	while (r_size >= 0)
 	{
 		offset = ft_memchr(buf, '\n', r_size);
+		if (!offset)
+			offset = buf + r_size;
 		if (offset || r_size < BUFFER_SIZE)
 		{
-			make_ret(ret, buf, r_size);
-			if (offset)
-				make_keep(keep[fd], buf, r_size - (offset - buf));
+			ret = make_ret(ret, buf, offset - buf);
+			make_keep(keep[fd], offset, r_size - (offset - buf));
 			free(buf);
 			buf = NULL;
 			return (ret);
