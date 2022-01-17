@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 17:40:41 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/01/17 16:37:01 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/01/17 17:34:14 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,10 @@ char	*get_next_line(int fd)
 		ft_memcpy(buf, keep[fd], BUFFER_SIZE);
 		r_size = ft_strnlen(buf, BUFFER_SIZE);
 	}
-	while (r_size >= 0)
+	while (r_size > 0)
 	{
 		offset = ft_memchr(buf, '\n', r_size);
-		if (!offset)
-			offset = buf + r_size;
-		if (offset || r_size < BUFFER_SIZE)
+		if (offset)
 		{
 			ret = make_ret(ret, buf, offset - buf);
 			make_keep(keep[fd], offset, r_size - (offset - buf));
@@ -86,15 +84,11 @@ char	*get_next_line(int fd)
 			buf = NULL;
 			return (ret);
 		}
-		make_ret(ret, buf, r_size);
+		ret = make_ret(ret, buf, r_size);
 		r_size = read(fd, buf, BUFFER_SIZE);
-	}
-	if (ret)
-	{
-		free(ret);
-		ret = NULL;
 	}
 	free(buf);
 	buf = NULL;
-	return (NULL);
+	ft_memset(keep[fd], 0, BUFFER_SIZE);
+	return (ret);
 }
