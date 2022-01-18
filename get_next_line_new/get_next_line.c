@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 17:40:41 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/01/18 10:40:15 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/01/18 10:51:00 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,11 @@ char	*get_next_line(int fd)
 	{
 		r_size = read(fd, buf, BUFFER_SIZE);
 		if (r_size < 0)
+		{
+			free(buf);
+			buf = NULL;
 			return (0);
+		}
 	}
 	else
 	{
@@ -80,7 +84,7 @@ char	*get_next_line(int fd)
 		offset = ft_memchr(buf, '\n', r_size);
 		if (offset)
 		{
-			ret = make_ret(ret, buf, offset - buf);
+			ret = make_ret(ret, buf, offset - buf + 1);
 			make_keep(keep[fd], offset, r_size - (offset - buf));
 			free(buf);
 			buf = NULL;
@@ -89,7 +93,16 @@ char	*get_next_line(int fd)
 		ret = make_ret(ret, buf, r_size);
 		r_size = read(fd, buf, BUFFER_SIZE);
 		if (r_size < 0)
+		{
+			free(buf);
+			buf = NULL;
+			if (ret)
+			{
+				free(ret);
+				ret = NULL;
+			}
 			return (0);
+		}
 	}
 	free(buf);
 	buf = NULL;
