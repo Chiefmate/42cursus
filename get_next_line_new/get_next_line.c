@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 17:40:41 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/01/17 17:34:14 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/01/18 10:40:15 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ char	*get_next_line(int fd)
 	if (!(keep[fd][0]))
 	{
 		r_size = read(fd, buf, BUFFER_SIZE);
+		if (r_size < 0)
+			return (0);
 	}
 	else
 	{
@@ -86,6 +88,8 @@ char	*get_next_line(int fd)
 		}
 		ret = make_ret(ret, buf, r_size);
 		r_size = read(fd, buf, BUFFER_SIZE);
+		if (r_size < 0)
+			return (0);
 	}
 	free(buf);
 	buf = NULL;
