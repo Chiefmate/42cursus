@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 17:40:41 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/01/18 10:51:00 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/01/18 10:54:24 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ char	*get_next_line(int fd)
 	char		*ret;
 	char		*offset;
 
+	if (fd > OPEN_MAX || fd < 0)
+		return (0);
 	ret = NULL;
 	offset = 0;
 	buf = (char *)malloc(sizeof(char) * BUFFER_SIZE);
