@@ -50,6 +50,27 @@ char	*make_ret(char *a, char *b, ssize_t c_size)
 	return (ret);
 }
 
+int	fill_buf(int fd, char *buf, char **keep)
+{
+	ssize_t	r_size;
+
+	if (!(keep[fd][0]))
+	{
+		r_size = read(fd, buf, BUFFER_SIZE);
+		if (r_size < 0)
+		{
+			free(buf);
+			buf = NULL;
+		}
+	}
+	else
+	{
+		ft_memcpy(buf, keep[fd], BUFFER_SIZE);
+		r_size = ft_strnlen(buf, BUFFER_SIZE);
+	}
+	return (r_size);
+}
+
 char	*get_next_line(int fd)
 {
 	char		*buf;
@@ -66,21 +87,7 @@ char	*get_next_line(int fd)
 	if (!buf)
 		return (0);
 	ft_memset(buf, 0, BUFFER_SIZE);
-	if (!(keep[fd][0]))
-	{
-		r_size = read(fd, buf, BUFFER_SIZE);
-		if (r_size < 0)
-		{
-			free(buf);
-			buf = NULL;
-			return (0);
-		}
-	}
-	else
-	{
-		ft_memcpy(buf, keep[fd], BUFFER_SIZE);
-		r_size = ft_strnlen(buf, BUFFER_SIZE);
-	}
+	r_size = fill_buf(fd, buf, keep);
 	while (r_size > 0)
 	{
 		offset = ft_memchr(buf, '\n', r_size);
