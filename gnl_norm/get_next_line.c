@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 17:40:41 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/01/16 15:52:30 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/01/24 14:28:58 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,12 @@ size_t	ft_strlen(const char *s)
 	return (len);
 }
 
-void	make_keep(char keep[], char *buf, ssize_t c_size)
+void	make_keep(char keep1[], char *offset, ssize_t c_size)
 {
-	ft_memset(keep, 0, BUFFER_SIZE);
-	ft_memcpy(keep, buf, c_size);
+	ft_memset(keep1, 0, BUFFER_SIZE);
+	if (c_size <= 0)
+		return ;
+	ft_memcpy(keep1, offset + 1, c_size - 1);
 	return ;
 }
 
@@ -56,42 +58,56 @@ char	*get_next_line(int fd)
 	char		*ret;
 	char		*offset;
 
+	if (fd > OPEN_MAX || fd < 0)
+		return (0);
 	ret = NULL;
 	offset = 0;
 	buf = (char *)malloc(sizeof(char) * BUFFER_SIZE);
 	if (!buf)
 		return (0);
 	ft_memset(buf, 0, BUFFER_SIZE);
-	if (!(keep[fd]))
+	if (!(keep[fd][0]))
 	{
 		r_size = read(fd, buf, BUFFER_SIZE);
+		if (r_size < 0)
+		{
+			free(buf);
+			buf = NULL;
+			return (0);
+		}
 	}
 	else
 	{
 		ft_memcpy(buf, keep[fd], BUFFER_SIZE);
 		r_size = ft_strnlen(buf, BUFFER_SIZE);
 	}
-	while (r_size >= 0)
+	while (r_size > 0)
 	{
 		offset = ft_memchr(buf, '\n', r_size);
-		if (offset || r_size < BUFFER_SIZE)
+		if (offset)
 		{
-			make_ret(ret, buf, r_size);
-			if (offset)
-				make_keep(keep[fd], buf, r_size - (offset - buf));
+			ret = make_ret(ret, buf, offset - buf + 1);
+			make_keep(keep[fd], offset, r_size - (offset - buf));
 			free(buf);
 			buf = NULL;
 			return (ret);
 		}
-		make_ret(ret, buf, r_size);
+		ret = make_ret(ret, buf, r_size);
 		r_size = read(fd, buf, BUFFER_SIZE);
-	}
-	if (ret)
-	{
-		free(ret);
-		ret = NULL;
+		if (r_size < 0)
+		{
+			free(buf);
+			buf = NULL;
+			if (ret)
+			{
+				free(ret);
+				ret = NULL;
+			}
+			return (0);
+		}
 	}
 	free(buf);
 	buf = NULL;
-	return (NULL);
+	ft_memset(keep[fd], 0, BUFFER_SIZE);
+	return (ret);
 }
