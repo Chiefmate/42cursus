@@ -12,6 +12,9 @@
 
 #include "get_next_line.h"
 
+/*
+ *	concatenate a and b, which is of length of c_size
+ */
 char	*make_ret(char *a, char *b, ssize_t c_size)
 {
 	char	*ret;
@@ -82,15 +85,11 @@ char	*solve(int fd, char *ret, char *buf, char *keep_fd)
 		if (!buf[0])
 			break ;
 		r_size = read(fd, buf, BUFFER_SIZE);
-		if (r_size < 0)
-		{
-			if (ret)
-			{
-				free(ret);
-				ret = NULL;
-			}
-			break ;
-		}
+	}
+	if (r_size < 0 && ret)
+	{
+		free(ret);
+		ret = NULL;
 	}
 	return (ret);
 }
