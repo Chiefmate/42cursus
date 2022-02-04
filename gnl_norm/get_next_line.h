@@ -29,9 +29,10 @@ void	*ft_memcpy(void *dst, const void *src, size_t n);
 void	*ft_memset(void *b, int c, size_t n);
 char	*ft_strdup(const char *s);
 
-size_t	ft_strlen(const char *s);
-void	make_keep(char keep[], char *buf, ssize_t c_size);
 char	*make_ret(char *a, char *b, ssize_t c_size);
+int		init_buf(int fd, char *buf, char *keep_fd);
+char	*check_ret(char *ret, char *buf, char *keep_fd, ssize_t r_size);
+char	*solve(int fd, char *ret, char *buf, char *keep_fd);
 char	*get_next_line(int fd);
 
 #endif
