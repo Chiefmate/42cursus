@@ -12,27 +12,6 @@
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *s)
-{
-	size_t	len;
-
-	len = 0;
-	while (s[len])
-	{
-		len++;
-	}
-	return (len);
-}
-
-void	make_keep(char keep1[], char *offset, ssize_t c_size)
-{
-	ft_memset(keep1, 0, BUFFER_SIZE);
-	if (c_size <= 0)
-		return ;
-	ft_memcpy(keep1, offset + 1, c_size - 1);
-	return ;
-}
-
 char	*make_ret(char *a, char *b, ssize_t c_size)
 {
 	char	*ret;
@@ -40,7 +19,9 @@ char	*make_ret(char *a, char *b, ssize_t c_size)
 
 	if (!a)
 		a = ft_strdup("");
-	len_a = ft_strlen(a);
+	len_a = 0;
+	while (a[len_a])
+		len_a++;
 	ret = (char *)malloc(sizeof(char) * (len_a + c_size + 1));
 	ft_memcpy(ret, a, len_a);
 	ft_memcpy(ret + len_a, b, c_size);
@@ -50,69 +31,84 @@ char	*make_ret(char *a, char *b, ssize_t c_size)
 	return (ret);
 }
 
-int	fill_buf(int fd, char *buf, char **keep)
+/* 
+ *	initialize buffer
+ */
+int	init_buf(int fd, char *buf, char *keep_fd)
 {
 	ssize_t	r_size;
 
-	if (!(keep[fd][0]))
+	if (!keep_fd[0])
 	{
 		r_size = read(fd, buf, BUFFER_SIZE);
-		if (r_size < 0)
-		{
-			free(buf);
-			buf = NULL;
-		}
 	}
 	else
 	{
-		ft_memcpy(buf, keep[fd], BUFFER_SIZE);
+		ft_memcpy(buf, keep_fd, BUFFER_SIZE);
 		r_size = ft_strnlen(buf, BUFFER_SIZE);
 	}
 	return (r_size);
+}
+
+/*
+ * exit if possible
+ */
+char	*check_ret(char *ret, char *buf, char *keep_fd, ssize_t r_size)
+{
+	char	*offset;
+
+	offset = ft_memchr(buf, '\n', r_size);
+	if (offset)
+	{
+		ret = make_ret(ret, buf, offset - buf + 1);
+		ft_memset(keep_fd, 0, BUFFER_SIZE);
+		if (r_size - (offset - buf) > 0)
+			ft_memcpy(keep_fd, offset + 1, r_size - (offset - buf) - 1);
+		ft_memset(buf, 0, BUFFER_SIZE);
+		return (ret);
+	}
+	ret = make_ret(ret, buf, r_size);
+	return (ret);
+}
+
+char	*solve(int fd, char *ret, char *buf, char *keep_fd)
+{
+	ssize_t	r_size;
+
+	r_size = init_buf(fd, buf, keep_fd);
+	while (r_size > 0)
+	{
+		ret = check_ret(ret, buf, keep_fd, r_size);
+		if (!buf[0])
+			break ;
+		r_size = read(fd, buf, BUFFER_SIZE);
+		if (r_size < 0)
+		{
+			if (ret)
+			{
+				free(ret);
+				ret = NULL;
+			}
+			break ;
+		}
+	}
+	return (ret);
 }
 
 char	*get_next_line(int fd)
 {
 	char		*buf;
 	static char	keep[OPEN_MAX][BUFFER_SIZE];
-	ssize_t		r_size;
 	char		*ret;
-	char		*offset;
 
 	if (fd > OPEN_MAX || fd < 0)
 		return (0);
 	ret = NULL;
-	offset = 0;
 	buf = (char *)malloc(sizeof(char) * BUFFER_SIZE);
 	if (!buf)
 		return (0);
 	ft_memset(buf, 0, BUFFER_SIZE);
-	r_size = fill_buf(fd, buf, keep);
-	while (r_size > 0)
-	{
-		offset = ft_memchr(buf, '\n', r_size);
-		if (offset)
-		{
-			ret = make_ret(ret, buf, offset - buf + 1);
-			make_keep(keep[fd], offset, r_size - (offset - buf));
-			free(buf);
-			buf = NULL;
-			return (ret);
-		}
-		ret = make_ret(ret, buf, r_size);
-		r_size = read(fd, buf, BUFFER_SIZE);
-		if (r_size < 0)
-		{
-			free(buf);
-			buf = NULL;
-			if (ret)
-			{
-				free(ret);
-				ret = NULL;
-			}
-			return (0);
-		}
-	}
+	ret = solve(fd, ret, buf, keep[fd]);
 	free(buf);
 	buf = NULL;
 	ft_memset(keep[fd], 0, BUFFER_SIZE);
