@@ -62,7 +62,7 @@ char	*check_ret(char *ret, char *buf, char *keep_fd, ssize_t r_size)
 	{
 		ret = make_ret(ret, buf, offset - buf + 1);
 		ft_memset(keep_fd, 0, BUFFER_SIZE);
-		if (r_size - (offset - buf) > 0)
+		if (r_size - (offset - buf) >= 1)
 			ft_memcpy(keep_fd, offset + 1, r_size - (offset - buf) - 1);
 		ft_memset(buf, 0, BUFFER_SIZE);
 		return (ret);
@@ -111,6 +111,5 @@ char	*get_next_line(int fd)
 	ret = solve(fd, ret, buf, keep[fd]);
 	free(buf);
 	buf = NULL;
-	ft_memset(keep[fd], 0, BUFFER_SIZE);
 	return (ret);
 }
