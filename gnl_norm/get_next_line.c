@@ -47,8 +47,9 @@ int	init_buf(int fd, char *buf, char *keep_fd)
 	}
 	else
 	{
-		ft_memcpy(buf, keep_fd, BUFFER_SIZE);
-		r_size = ft_strnlen(buf, BUFFER_SIZE);
+		r_size = ft_strnlen(keep_fd, BUFFER_SIZE);
+		ft_memcpy(buf, keep_fd, r_size);
+		ft_memset(keep_fd, 0, r_size);
 	}
 	return (r_size);
 }
@@ -86,6 +87,8 @@ char	*solve(int fd, char *ret, char *buf, char *keep_fd)
 			break ;
 		r_size = read(fd, buf, BUFFER_SIZE);
 	}
+	if (!r_size)
+		ft_memset(keep_fd, 0, BUFFER_SIZE);
 	if (r_size < 0 && ret)
 	{
 		free(ret);

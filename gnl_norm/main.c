@@ -19,15 +19,14 @@ int main(void)
 {
 	int	fd;
 
-	fd = open("in1", O_RDONLY);
+	fd = open("files/41_with_nl", O_RDONLY);
 	if (fd < 0)
 		return (0);
-	printf("%s\n", get_next_line(0));
-	printf("%s\n", get_next_line(0));
-	printf("%s\n", get_next_line(0));
-	printf("%s\n", get_next_line(0));
-	printf("%s\n", get_next_line(0));
-
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
 	close(fd);
 	return (0);
 }
