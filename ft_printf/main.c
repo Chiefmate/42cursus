@@ -58,6 +58,10 @@ int main(void)
 	union Box		b1;
 	int				one = 1;
 	int				ten = 10;
+	int				zero = 0;
+	int				mten = -10;
+	char			*str = "testing";
+	char			arr[5] = {'a', 'b', 'c', 'd', 'e'};
 
 	week = Tuesday;
 
@@ -83,6 +87,24 @@ int main(void)
 	printf("% 3d % 3d..\n", one, ten);
 	printf("%-3d %-3d..\n", one, ten);
 	printf("%+d %+d..\n", one, ten);
+
+	/* testing + flag with zero */
+	printf("% d %+d\n", zero, zero);
+
+	/* testing precision with minus */
+	printf("%.4d %.4d\n", ten, mten);
+
+	/* testing precision in strings and arrays */
+	printf("%s %.5s\n", str, str);
+	printf("%3s %.3s\n", arr, arr);
+
+	/* testing argument counts */
+	/* printf("%d %d", ten); -> compile unavailable 
+	 * warning: format ‘%d’ expects a matching ‘int’ argument [-Wformat=]
+	 */
+	/* printf ("%d %d\n", one, ten, ten); -> compile unavailable
+	 * warning: too many arguments for format [-Wformat-extra-args]
+	 */
 
 
 	return (0);
