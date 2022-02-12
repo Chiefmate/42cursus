@@ -106,6 +106,8 @@ int main(void)
 	 * warning: too many arguments for format [-Wformat-extra-args]
 	 */
 
+	/* invalid conversion */
+	printf("%q", ten);
 
 	return (0);
 }
