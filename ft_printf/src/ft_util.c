@@ -12,13 +12,75 @@
 
 #include "ft_printf.h"
 
-int	ft_putchar_fd(int fd, char c, t_info info)
+void	*ft_memset(void *b, int c, size_t n)
+{
+	unsigned char	*s;
+	size_t			k;
+
+	s = (unsigned char *)b;
+	k = 0;
+	while (k < n)
+	{
+		s[k] = c;
+		k++;
+	}
+	return (b);
+}
+
+int	ft_putchar_fd(int fd, char c)
 {
 	write(fd, &c, 1);
 	return (1);
 }
 
-int	ft_putnbr_fd(int fd, char c, t_info info)
+int	ft_putnbr_fd(int fd, int num, t_info info)
 {
+	long long	temp;
+	char		prt[30];
+	int			idx;
 
+	idx = 0;
+	ft_memset(prt, 0, 30);
+	temp = num;
+	if (num < 0)
+		temp = -num;
+	if (!num)
+		return (ft_putchar_fd(fd, '0'));
+	while (temp)
+	{
+		prt[idx++] = temp % 10 + '0';
+		temp /= 10;
+	}
+	if (num < 0)
+		prt[idx++] = '-';
+	temp = idx;
+	while (--idx >= 0)
+		write(fd, &prt[idx], 1);
+	return (temp);
+}
+
+int	ft_puthex_fd(int fd, int num, t_info info)
+{
+	long long	temp;
+	char		prt[30];
+	int			idx;
+
+	idx = 0;
+	ft_memset(prt, 0, 30);
+	temp = num;
+	if (num < 0)
+		temp = -num;
+	if (!num)
+		return (ft_putchar_fd(fd, '0'));
+	while (temp)
+	{
+		prt[idx++] = temp % 16 + '0';
+		temp /= 10;
+	}
+	if (num < 0)
+		prt[idx++] = '-';
+	temp = idx;
+	while (--idx >= 0)
+		write(fd, &prt[idx], 1);
+	return (temp);
 }

@@ -14,6 +14,7 @@
 # define FT_PRINTF_H
 # include <stdarg.h>
 # include <stdlib.h>
+# include <unistd.h>
 
 typedef enum	e_flag
 {
@@ -32,5 +33,13 @@ typedef struct	s_info
 	int		precision;
 	char	fspec;
 }				t_info;
+
+int		ft_printf(const char *fmt, ...);
+int		ft_vdprintf(int fd, const char *fmt, va_list ap);
+
+void	*ft_memset(void *b, int c, size_t n);
+int		ft_putchar_fd(int fd, char c);
+int		ft_putnbr_fd(int fd, int num, t_info info);
+int		ft_puthex_fd(int fd, int num, t_info info);
 
 #endif

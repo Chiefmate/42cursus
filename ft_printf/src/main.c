@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/11 14:01:33 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/02/11 14:01:33 by hyunhole         ###   ########.fr       */
+/*   Created: 2022/02/14 16:39:56 by hyunhole          #+#    #+#             */
+/*   Updated: 2022/02/14 16:39:56 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_printf(const char *fmt, ...)
+int	main(void)
 {
-	int		ret;
-	va_list	ap;
-
-	va_start(ap, fmt);
-	ret = ft_vdprintf(1, fmt, ap);
-	va_end(ap);
-	return (ret);
+	ft_printf("");
+	return (0);
 }
