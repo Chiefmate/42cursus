@@ -12,4 +12,13 @@
 
 #include "ft_printf.h"
 
-void ft_putnbr_fd
+int	ft_putchar_fd(int fd, char c, t_info info)
+{
+	write(fd, &c, 1);
+	return (1);
+}
+
+int	ft_putnbr_fd(int fd, char c, t_info info)
+{
+
+}

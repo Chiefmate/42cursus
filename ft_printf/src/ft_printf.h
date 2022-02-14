@@ -15,4 +15,22 @@
 # include <stdarg.h>
 # include <stdlib.h>
 
+typedef enum	e_flag
+{
+	F_SHARP = 0, 
+	F_SPACE, 
+	F_PLUS, 
+	F_MINUS, 
+	F_ZERO, 
+	F_MAX
+}				t_flag;
+
+typedef struct	s_info
+{
+	char	flag[F_MAX];
+	int		width;
+	int		precision;
+	char	fspec;
+}				t_info;
+
 #endif
