@@ -39,7 +39,8 @@ int		ft_vdprintf(int fd, const char *fmt, va_list ap);
 
 void	*ft_memset(void *b, int c, size_t n);
 int		ft_putchar_fd(int fd, char c);
+int		ft_putstr_fd(int fd, char *s, t_info info);
 int		ft_putnbr_fd(int fd, int num, t_info info);
-int		ft_puthex_fd(int fd, int num, t_info info);
+int		ft_puthex_fd(int fd, long long num, t_info info);
 
 #endif
