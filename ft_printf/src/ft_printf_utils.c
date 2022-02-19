@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 18:52:48 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/02/19 18:52:48 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/02/19 20:55:40 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	ft_putstr_fd(int fd, char *s)
 	int	ret;
 	int	i;
 
+	ret = 0;
 	i = 0;
 	while (s[i])
 	{
