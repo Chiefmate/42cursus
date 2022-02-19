@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../include/ft_printf.h"
 
 int ft_printf(const char *fmt, ...)
 {
@@ -19,6 +19,5 @@ int ft_printf(const char *fmt, ...)
 
 	va_start(ap, fmt);
 	ret = ft_vdprintf(1, fmt, ap);
-	va_end(ap);
 	return (ret);
 }

@@ -10,22 +10,42 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include <stdio.h>
+#include "../include/ft_printf.h"
 
 int ft_vdprintf(int fd, const char *fmt, va_list ap)
 {
-	t_info	a;
 	int		ret;
+	size_t	i;
 
-	ret = 0;
-	ret += ft_putchar_fd(fd, 'k');
-	ret += ft_putstr_fd(fd, "I'm king!\n", a);
-	ret += ft_puthex_fd(fd, (long long)&a, a);
-	ret += ft_putnbr_fd(fd, 12345, a);
-	ret += ft_putnbr_fd(fd, -123, a);
-	ret += ft_putnbr_fd(fd, 0, a);
-	ret += ft_puthex_fd(fd, 255, a);
-	printf("\nret: %d\n", ret);
+	i = 0;
+	while (fmt[i])
+	{
+		if (fmt[i] == '%')
+		{
+			if (fmt[++i] == '%')
+				ret += ft_putchar_fd(fd, fmt[i]);
+			else if (fmt[i] == 'c')
+				ret += ft_putchar_fd(fd, (char)va_arg(ap, int));
+			else if (fmt[i] == 's')
+				ret += ft_putstr_fd(fd, va_arg(ap, char *));
+			else if (fmt[i] == 'p')
+			{
+				ret += ft_putstr_fd(fd, "0x");
+				ret += ft_puthex_fd(fd, va_arg(ap, long long), 'x');
+			}
+			else if (fmt[i] == 'd' || fmt[i] == 'i')
+				ret += ft_putnbr_fd(fd, va_arg(ap, int));
+			else if (fmt[i] == 'u')
+				ret += ft_putnbr_fd(fd, va_arg(ap, unsigned int));
+			else if (fmt[i] == 'x')
+				ret += ft_puthex_fd(fd, va_arg(ap, long long), 'x');
+			else if (fmt[i] == 'X')
+				ret += ft_puthex_fd(fd, va_arg(ap, long long), 'X');
+			i++;
+		}
+		else
+			ret += ft_putchar_fd(fd, fmt[i++]);
+	}
+	va_end(ap);
 	return (ret);
 }
