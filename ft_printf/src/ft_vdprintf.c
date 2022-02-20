@@ -26,7 +26,7 @@ static int	ft_process_longlong(int fd, unsigned long long value, char c)
 	else if (c == 'p')
 	{
 		ret += ft_putstr_fd(fd, "0x");
-		ret += ft_puthex_fd(fd, (long long)value, 'x');
+		ret += ft_puthexsml_fd(fd, (long long)value);
 	}
 	return (ret);
 }
