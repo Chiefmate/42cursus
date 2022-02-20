@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 16:14:04 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/02/20 16:49:02 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/02/20 20:30:09 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ int	ft_vdprintf(int fd, const char *fmt, va_list ap)
 			else if (*fmt == 's')
 				ret += ft_putstr_fd(fd, va_arg(ap, char *));
 			else if (*fmt == 'x' || *fmt == 'X' || *fmt == 'p')
-				ret += ft_process_longlong(fd, (unsigned long long)va_arg(ap, long long), *fmt);
+				ret += ft_process_longlong(fd, \
+						(unsigned long long)va_arg(ap, long long), *fmt);
 		}
 		else
 			ret += ft_putchar_fd(fd, *(fmt++));
