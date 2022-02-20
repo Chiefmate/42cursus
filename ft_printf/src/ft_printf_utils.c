@@ -73,7 +73,7 @@ int	ft_putnbr_fd(int fd, int num)
 	return (temp);
 }
 
-int	ft_puthex_fd(int fd, long long num, char c)
+int	ft_puthexsml_fd(int fd, long long num)
 {
 	long long	temp;
 	char		prt[30];
@@ -90,11 +90,7 @@ int	ft_puthex_fd(int fd, long long num, char c)
 		return (ft_putchar_fd(fd, '0'));
 	while (temp)
 	{
-		if (c == 'X')
-			prt[idx] = big[temp % 16];
-		else
-			prt[idx] = sml[temp % 16];
-		idx++;
+		prt[idx++] = sml[temp % 16];
 		temp /= 16;
 	}
 	if (num < 0)
