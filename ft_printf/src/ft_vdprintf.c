@@ -6,23 +6,18 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 16:14:04 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/02/19 20:55:00 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/02/20 16:49:02 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-int ft_vdprintf(int fd, const char *fmt, va_list ap)
+int	ft_vdprintf(int fd, const char *fmt, va_list ap)
 {
 	int		ret;
 
-<<<<<<< HEAD
-	while (*fmt)
-=======
 	ret = 0;
-	i = 0;
-	while (fmt[i])
->>>>>>> 044384c78ed72faee7d8f09645558feed16254fa
+	while (*fmt)
 	{
 		if (*fmt == '%')
 		{
