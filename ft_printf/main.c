@@ -23,5 +23,7 @@ int main(void)
 	ft_printf("%s%%\n", "testing %s");
 	ft_printf("%x...\n%X...\n", 2147000, 2147000);
 	ft_printf("%p\n", &n);
+	ft_printf("nullptr: %p\n", 0);
+	ft_printf("nullstr: %s\n", 0);
 	return (0);
 }
