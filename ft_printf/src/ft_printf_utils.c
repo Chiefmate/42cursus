@@ -39,6 +39,8 @@ int	ft_putstr_fd(int fd, char *s)
 	int	i;
 
 	ret = 0;
+	if (!s)
+		return (ft_putstr_fd(fd, "(null)"));
 	i = 0;
 	while (s[i])
 	{
