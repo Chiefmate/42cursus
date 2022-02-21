@@ -63,6 +63,7 @@ int	ft_vdprintf(int fd, const char *fmt, va_list ap)
 			else if (*fmt == 'x' || *fmt == 'X' || *fmt == 'p')
 				ret += ft_process_longlong(fd, \
 						(unsigned long long)va_arg(ap, long long), *fmt);
+			fmt++;
 		}
 		else
 			ret += ft_putchar_fd(fd, *(fmt++));

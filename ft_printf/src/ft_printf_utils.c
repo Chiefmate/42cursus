@@ -82,10 +82,8 @@ int	ft_puthexsml_fd(int fd, long long num)
 	char		prt[30];
 	int			idx;
 	char		*sml;
-	char		*big;
 
 	sml = "0123456789abcdef";
-	big = "0123456789ABCDEF";
 	idx = 0;
 	ft_memset(prt, 0, 30);
 	temp = num;
