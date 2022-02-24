@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 18:52:48 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/02/19 20:55:40 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/02/25 01:03:09 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,12 @@ int	ft_putnbr_fd(int fd, int num)
 
 	idx = 0;
 	ft_memset(prt, 0, 22);
+	temp = num;
 	if (num < 0)
 	{
 		temp = (long long)num;
 		temp = -temp;
 	}
-	else
-		temp = num;
 	if (!num)
 		return (ft_putchar_fd(fd, '0'));
 	while (temp)
