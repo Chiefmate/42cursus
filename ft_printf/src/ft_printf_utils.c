@@ -59,7 +59,7 @@ int	ft_putnbr_fd(int fd, int num)
 	idx = 0;
 	ft_memset(prt, 0, 22);
 	if (num < 0)
-		temp = -num;
+		temp = (long long)-num;
 	else
 		temp = num;
 	if (!num)
