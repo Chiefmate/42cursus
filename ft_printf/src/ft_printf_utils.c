@@ -53,14 +53,15 @@ int	ft_putstr_fd(int fd, char *s)
 int	ft_putnbr_fd(int fd, int num)
 {
 	long long	temp;
-	char		prt[30];
+	char		prt[22];
 	int			idx;
 
 	idx = 0;
-	ft_memset(prt, 0, 30);
-	temp = num;
+	ft_memset(prt, 0, 22);
 	if (num < 0)
 		temp = -num;
+	else
+		temp = num;
 	if (!num)
 		return (ft_putchar_fd(fd, '0'));
 	while (temp)
@@ -76,23 +77,24 @@ int	ft_putnbr_fd(int fd, int num)
 	return (temp);
 }
 
-int	ft_puthexsml_fd(int fd, long long num)
+int	ft_putunbr_fd(int fd, unsigned int num)
 {
 	long long	temp;
-	char		prt[30];
+	char		prt[22];
 	int			idx;
-	char		*sml;
 
-	sml = "0123456789abcdef";
 	idx = 0;
-	ft_memset(prt, 0, 30);
-	temp = num;
+	ft_memset(prt, 0, 22);
+	if (num < 0)
+		temp = -num;
+	else
+		temp = num;
 	if (!num)
 		return (ft_putchar_fd(fd, '0'));
 	while (temp)
 	{
-		prt[idx++] = sml[temp % 16];
-		temp /= 16;
+		prt[idx++] = temp % 10 + '0';
+		temp /= 10;
 	}
 	if (num < 0)
 		prt[idx++] = '-';

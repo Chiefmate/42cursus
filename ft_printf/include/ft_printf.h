@@ -16,13 +16,14 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-int		ft_printf(const char *fmt, ...);
-int		ft_vdprintf(int fd, const char *fmt, va_list ap);
-void	*ft_memset(void *b, int c, size_t n);
-int		ft_putchar_fd(int fd, char c);
-int		ft_putstr_fd(int fd, char *s);
-int		ft_putnbr_fd(int fd, int num);
-int		ft_puthexsml_fd(int fd, long long num);
-int		ft_puthexbig_fd(int fd, long long num);
+int					ft_printf(const char *fmt, ...);
+int					ft_vdprintf(int fd, const char *fmt, va_list ap);
+void				*ft_memset(void *b, int c, size_t n);
+int					ft_putchar_fd(int fd, char c);
+int					ft_putstr_fd(int fd, char *s);
+int					ft_putnbr_fd(int fd, int num);
+int					ft_putunbr_fd(int fd, unsigned int num);
+unsigned long long	ft_puthexsml_fd(int fd, unsigned long long num);
+unsigned long long	ft_puthexbig_fd(int fd, unsigned long long num);
 
 #endif
