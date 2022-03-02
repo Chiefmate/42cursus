@@ -15,7 +15,7 @@
 unsigned long long	ft_puthexsml_fd(int fd, unsigned long long num)
 {
 	unsigned long long	temp;
-	char				prt[22];
+	char				prt[23];
 	int					idx;
 	char				*sml;
 
@@ -41,7 +41,7 @@ unsigned long long	ft_puthexsml_fd(int fd, unsigned long long num)
 unsigned long long	ft_puthexbig_fd(int fd, unsigned long long num)
 {
 	unsigned long long	temp;
-	char				prt[22];
+	char				prt[23];
 	int					idx;
 	char				*big;
 

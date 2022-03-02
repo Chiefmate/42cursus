@@ -17,9 +17,7 @@ static int	ft_process_longlong(int fd, unsigned long long value, char c)
 	int	ret;
 
 	ret = 0;
-	if (c == 'c')
-		ret += ft_putchar_fd(fd, (char)value);
-	else if (c == 'x')
+	if (c == 'x')
 		ret += ft_puthexsml_fd(fd, value);
 	else if (c == 'X')
 		ret += ft_puthexbig_fd(fd, value);
