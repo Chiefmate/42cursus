@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 14:02:01 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/02/11 14:02:01 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/03/04 15:30:37 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int					ft_putchar_fd(int fd, char c);
 int					ft_putstr_fd(int fd, char *s);
 int					ft_putnbr_fd(int fd, int num);
 int					ft_putunbr_fd(int fd, unsigned int num);
-unsigned long long	ft_puthexsml_fd(int fd, unsigned long long num);
-unsigned long long	ft_puthexbig_fd(int fd, unsigned long long num);
+unsigned int	    ft_puthexsml_fd(int fd, unsigned int num);
+unsigned int    	ft_puthexbig_fd(int fd, unsigned int num);
+unsigned long long	ft_putadd_fd(int fd, unsigned long long num);
 
 #endif

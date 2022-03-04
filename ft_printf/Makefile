@@ -6,13 +6,13 @@
 #    By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/19 18:48:51 by hyunhole          #+#    #+#              #
-#    Updated: 2022/02/19 18:48:51 by hyunhole         ###   ########.fr        #
+#    Updated: 2022/03/04 14:54:43 by hyunhole         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=libftprintf.a
 CC=gcc
-CFLAGS=-Wall -Wextra -Werror
+CFLAGS=-Wall -Wextra -Werror -g
 RM=rm -f
 AR=ar
 ARFLAGS=crs
