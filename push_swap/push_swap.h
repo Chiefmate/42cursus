@@ -31,10 +31,16 @@ int     pop(t_stack *s, int *data_out);
 t_stack *create_stack(void);
 void    destroy_stack(t_stack *s);
 
+int     pop_from_bot(t_stack *s, int *data_out);
 int     swap(t_stack *s);
 int     push(t_stack *dst, t_stack *src);
 int     rotate(t_stack *s);
 int     rev_rotate(t_stack *s);
-int     pop_from_bot(t_stack *s, int *data_out);
 void    print_stack(t_stack *a, t_stack *b);
 
+void dqsort(t_stack *a, t_stack *b, int n);
+void dqsort_rev(t_stack *a, t_stack *b, int n);
+void    small_sort(t_stack *a, t_stack *b, int n);
+void    small_sort_rev(t_stack *a, t_stack *b, int n);
+int find_smallest_data(t_stack *a, int n);
+int find_biggest_data(t_stack *a, int n);

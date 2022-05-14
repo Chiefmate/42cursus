@@ -34,7 +34,7 @@ int     pop_from_bot(t_stack *s, int *data_out)
     {
         pop(s, &num);
         *data_out = num;
-        return (0);        
+        return (1);        
     }
     pre_temp = NULL;
     temp = s->head;
