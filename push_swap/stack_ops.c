@@ -90,6 +90,7 @@ int     pop(t_stack *s, int *data_out)
     }
     temp = s->head;
     s->head = temp->next;
+    *data_out = temp->data;
     temp->data = 0;
     temp->next = NULL;
     free(temp);
