@@ -34,7 +34,7 @@ void dqsort(t_stack *a, t_stack *b, int n)
     lp = a->head;
     rp = a->head;
     i = 0;
-    while (i++ < n - 1)
+    while (++i < n)
         rp = rp->next;
     if (lp->data > rp->data)
     {
@@ -42,14 +42,13 @@ void dqsort(t_stack *a, t_stack *b, int n)
         lp = rp;
         rp = curr;
     }
-
     curr = a->head;
 
     cnt[0] = 0;
     cnt[1] = 0;
     cnt[2] = 0;
-    i = 0;
-    while (i++ < n)
+    i = -1;
+    while (++i < n)
     {
         if (curr->data < lp->data)
         {
@@ -69,22 +68,22 @@ void dqsort(t_stack *a, t_stack *b, int n)
         }
     }
 
-    i = 0;
-    while (i++ < cnt[2])
+    i = -1;
+    while (++i < cnt[2])
         rev_rotate(b);
     dqsort_rev(b, a, cnt[2]);
-    i = 0;
-    while (i++ < cnt[2])
+    i = -1;
+    while (++i < cnt[2])
         push(a, b);
     
-    i = 0;
-    while (i++ < cnt[1])
+    i = -1;
+    while (++i < cnt[1])
         rev_rotate(a);
     dqsort(a, b, cnt[1]);
     
     dqsort_rev(b, a, cnt[0]);
-    i = 0;
-    while (i++ < cnt[0])
+    i = -1;
+    while (++i < cnt[0])
         push(a, b);
     
     print_stack(a, b);
@@ -183,8 +182,8 @@ void    small_sort(t_stack *a, t_stack *b, int n)
     int     key;
     int     cnt;
 
-    i = 0;
-    while (i < n)
+    i = -1;
+    while (++i < n)
     {
         cnt = 0;
         key = find_smallest_data(a, n - i);
@@ -199,7 +198,6 @@ void    small_sort(t_stack *a, t_stack *b, int n)
             rev_rotate(a);
         printf("Current\n");
         print_stack(a, b);
-        i++;
     }
     i = 0;
     while (++i <= n)
