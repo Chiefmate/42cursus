@@ -25,22 +25,28 @@ typedef struct s_stack {
     t_node  *head;
 }   t_stack;
 
+void    print_stack(t_stack *a, t_stack *b);
+
 int     push_top(t_stack *s, int data);
 int     push_bottom(t_stack *s, int data);
 int     pop(t_stack *s, int *data_out);
 t_stack *create_stack(void);
 void    destroy_stack(t_stack *s);
-
 int     pop_from_bot(t_stack *s, int *data_out);
+
 int     swap(t_stack *s);
 int     push(t_stack *dst, t_stack *src);
 int     rotate(t_stack *s);
 int     rev_rotate(t_stack *s);
-void    print_stack(t_stack *a, t_stack *b);
 
-void dqsort(t_stack *a, t_stack *b, int n);
-void dqsort_rev(t_stack *a, t_stack *b, int n);
-void    small_sort(t_stack *a, t_stack *b, int n);
-void    small_sort_rev(t_stack *a, t_stack *b, int n);
-int find_smallest_data(t_stack *a, int n);
-int find_biggest_data(t_stack *a, int n);
+void	sa(t_stack *a);
+void    sb(t_stack *b);
+void    ss(t_stack *a, t_stack *b);
+void    pa(t_stack *a, t_stack *b);
+void    pb(t_stack *a, t_stack *b);
+void	ra(t_stack *a);
+void	rb(t_stack *b);
+void	rr(t_stack *a, t_stack *b);
+void	rra(t_stack *a);
+void	rrb(t_stack *b);
+void	rrr(t_stack *a, t_stack *b);

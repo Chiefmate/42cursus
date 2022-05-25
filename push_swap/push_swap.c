@@ -29,10 +29,9 @@ int main(int argc, char *argv[])
     push_top(a, 9);
     print_stack(a, b);
 
-    if (a->count <= 3)
-        sml_sort(a, b, a->count);
-    else
-        dqsort(a, b, a->count);
+    pa(a);
+    print_stack(a, b);
+    pb(b);
     print_stack(a, b);
 
     destroy_stack(a);
