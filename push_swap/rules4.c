@@ -23,6 +23,6 @@ void	rrr(t_stack *a, t_stack *b)
 {
 	rev_rotate(a);
 	rev_rotate(b);
-	write(1, "rrr\n", 3);
+	write(1, "rrr\n", 4);
 	return ;
 }
