@@ -26,6 +26,17 @@ typedef struct s_stack {
     t_node  *head;
 }   t_stack;
 
+typedef struct s_trnode {
+    struct s_trnode *left;
+    struct s_trnode *right;
+    int             val;
+    int             height;
+}  t_trnode;
+
+typedef struct s_tree {
+    t_trnode    *top;
+}  t_tree;
+
 void    print_stack(t_stack *a, t_stack *b);
 
 int     push_top(t_stack *s, int data);
