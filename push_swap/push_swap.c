@@ -11,17 +11,29 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <time.h>
 
 int main(int argc, char *argv[])
 {
     t_stack *a;
     t_stack *b;
     int     tempint;
-
+    int     arr[50];
+/**
     a = create_stack();
     b = create_stack();
+**/
+    srand(time(0));
+    for (int i = 0; i < 50; i++)
+        arr[i] = rand() % 100 + 1;
+    for (int i = 0; i < 50; i++)
+        printf("%d ", arr[i]);
+    printf("\nnextline: ");
+    intarr_sort(arr, 0, 49);
+    for (int i = 0; i < 50; i++)
+        printf("%d ", arr[i]);
 
-
+/****
     push_top(a, 1);
     push_top(a, 5);
     push_top(a, 4);
@@ -53,9 +65,10 @@ int main(int argc, char *argv[])
     print_stack(a, b);
     rrr(a, b);
     print_stack(a, b);
-
-
+***/
+/**
     destroy_stack(a);
     destroy_stack(b);
+**/
     return (0);
 }

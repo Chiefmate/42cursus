@@ -41,17 +41,31 @@ t_trnode    *rebalance(t_trnode *root)
     return (root);
 }
 
+int get_balance_factor(t_trnode *root)
+{
+    if (!root)
+        return (0);
+    if (!(root->left) && !(root->right))
+        return (0);
+    else if (!(root->left))
+        return (-(root->right->height));
+    else if (!(root->right))
+        return (root->left->height);
+    else
+        return (root->left->height - root->right->height);
+}
+
 /*
  *  중복 시 삽입 X
  */
-t_trnode    *insert(t_trnode *root, int val)
+t_trnode    *avl_insert(t_trnode *root, int val)
 {
     if (!root)
         return (new_node(val));
     if (val > root->val)
-        root->right = insert(root->right, val);
+        root->right = avl_insert(root->right, val);
     else if (val < root->val)
-        root->left = insert(root->left, val);
+        root->left = avl_insert(root->left, val);
     else
         return (root);
     root->height = 1 + max(root->left->height, root->right->height);
@@ -62,14 +76,14 @@ t_trnode    *insert(t_trnode *root, int val)
 /*
  *  삭제
  */
-t_trnode    *delete(t_trnode *root, int val)
+t_trnode    *avl_delete(t_trnode *root, int val)
 {
     if (!root)
         return (0);
     if (val > root->val)
-        root->right = delete(root->right, val);
+        root->right = avl_delete(root->right, val);
     else if (val < root->val)
-        root->left = delete(root->left, val);
+        root->left = avl_delete(root->left, val);
     else
         return (root);
     root->height = 1 + max(root->left->height, root->right->height);
