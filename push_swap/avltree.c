@@ -14,6 +14,23 @@
 
 #include "push_swap.h"
 
+int	max(int a, int b)
+{
+	return ((a > b) ? a : b);
+}
+
+t_trnode	*new_node(int val)
+{
+	t_trnode	*ret;
+
+	ret = (t_trnode *)malloc(sizeof(t_trnode));
+	ret->val = val;
+	ret->height = 1;
+	ret->left = NULL;
+	ret->right = NULL;
+	return (ret);
+}
+
 t_trnode	*right_rotate(t_trnode *root)
 {
 	t_trnode	*lt;
@@ -23,6 +40,8 @@ t_trnode	*right_rotate(t_trnode *root)
 	lrt = lt->right;
 	lt->right = root;
 	root->left = lrt;
+	root->height = 1 + max(root->left->height, root->right->height);
+	lt->height = 1 + max(lt->left->height, lt->right->height);
 	return (lt);
 }
 
@@ -35,27 +54,7 @@ t_trnode	*left_rotate(t_trnode *root)
 	rlt = root->left;
 	rt->left = root;
 	root->right = rlt;
+	root->height = 1 + max(root->left->height, root->right->height);
+	rt->height = 1 + max(rt->left->height, rt->right->height);
 	return (rt);
-}
-
-t_trnode	*rebalance(t_trnode *root)
-{
-	int	bf;
-
-	bf = get_balance_factor(root);
-	if (bf )
-}
-
-int	get_balance_factor(t_trnode *root)
-{
-	if (!root)
-		return (0);
-	if (!(root->left) && !(root->right))
-		return (0);
-	else if (!(root->right))
-		return (root->left->height);
-	else if (!(root->left))
-		return (-(root->right->height));
-	else
-		return (root->left->height - root->left->height);
 }
