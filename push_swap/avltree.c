@@ -38,7 +38,24 @@ t_trnode	*left_rotate(t_trnode *root)
 	return (rt);
 }
 
-t_trnode	*left_balance(t_trnode *root)
+t_trnode	*rebalance(t_trnode *root)
 {
-	if ()
+	int	bf;
+
+	bf = get_balance_factor(root);
+	if (bf )
+}
+
+int	get_balance_factor(t_trnode *root)
+{
+	if (!root)
+		return (0);
+	if (!(root->left) && !(root->right))
+		return (0);
+	else if (!(root->right))
+		return (root->left->height);
+	else if (!(root->left))
+		return (-(root->right->height));
+	else
+		return (root->left->height - root->left->height);
 }
