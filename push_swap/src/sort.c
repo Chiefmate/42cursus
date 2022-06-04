@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 20:40:26 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/06/04 15:37:34 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/06/04 17:26:50 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	sml_sort_a(t_stack *a, int r)
 	data[0] = a->head->data;
 	data[1] = a->head->next->data;
 	data[2] = a->head->next->next->data;
-	if (data[0] < data[1] && data[1] < data[2])
+	if (data[0] < data[1] && data[1] < data[2])	// 123
 		return ;
 	else if (data[0] < data[2] && data[2] < data[1])
 		smlsort_case132(a);
@@ -121,7 +121,7 @@ void	sml_sort_btoa(t_stack *a, t_stack *b, int r)
 
 	if (r == 2)
 	{
-		if (b->head->data > b->head->next->data)
+		if (b->head->data < b->head->next->data)
 			sb(b);
 		pa(a, b);
 		pa(a, b);
@@ -130,7 +130,7 @@ void	sml_sort_btoa(t_stack *a, t_stack *b, int r)
 	data[0] = b->head->data;
 	data[1] = b->head->next->data;
 	data[2] = b->head->next->next->data;
-	if (data[2] < data[1] && data[1] < data[0]) {}
+	if (data[2] < data[1] && data[1] < data[0]) {}	// 321
 	else if (data[0] < data[2] && data[2] < data[1])
 		smlsort_b_case132(b);
 	else if (data[1] < data[0] && data[0] < data[2])

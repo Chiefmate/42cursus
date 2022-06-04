@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 12:10:06 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/06/04 15:01:29 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/06/04 17:15:07 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,40 +41,33 @@ void    select_pivots(t_stack *a, int r, int pivot[])
 
 void	intarr_sort(int arr[], int begin, int end)
 {
-	int	pivotidx;
+   int	i;
+   int	j;
+   int	pivot;
+   int	temp;
 
-	if (begin < end)
-	{
-		pivotidx = partition(arr, begin, end);
-		intarr_sort(arr, begin, pivotidx);
-		intarr_sort(arr, pivotidx + 1, end);
-	}
-	return ;
-}
-
-int	partition(int arr[], int begin, int end)
-{
-	int	pivotidx;
-	int	storeidx;
-	int	i;
-	int	temp;
-
-	pivotidx = end;
-	storeidx = begin - 1;
-	i = begin;
-	while (i < end)
-	{
-		if (arr[i] < arr[pivotidx])
-		{
-			temp = arr[i];
-			arr[i] = arr[storeidx];
-			arr[storeidx] = temp;
-			storeidx++;
-		}
-		i++;
-	}
-	temp = arr[storeidx + 1];
-	arr[storeidx + 1] = arr[pivotidx];
-	arr[pivotidx] = temp;
-	return (storeidx + 1);
+   if (begin < end)
+   {
+      pivot = begin;
+      i = begin;
+      j = end;
+      while (i < j)
+	  {
+         while (arr[i] <= arr[pivot] && i < end)
+            i++;
+         while (arr[j] > arr[pivot])
+            j--;
+         if (i < j)
+		 {
+            temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+         }
+      }
+      temp = arr[pivot];
+      arr[pivot] = arr[j];
+      arr[j] = temp;
+      intarr_sort(arr, begin, j-1);
+      intarr_sort(arr, j+1, end);
+   }
 }

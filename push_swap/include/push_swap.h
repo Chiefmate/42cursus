@@ -82,4 +82,3 @@ void	b_to_a(t_stack *a, t_stack *b, int r);
 
 void    select_pivots(t_stack *a, int r, int pivot[]);
 void	intarr_sort(int arr[], int begin, int end);
-int	    partition(int arr[], int begin, int end);
