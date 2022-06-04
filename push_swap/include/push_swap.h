@@ -87,5 +87,6 @@ int     parse_input(t_stack *a, int argc, char *argv[], int *cnt);
 int     is_valid_input(int argc, char *argv[]);
 
 int	    ft_atoi_sp(const char *s, int *ret);
+void	ft_destroy_split(char **splitarr)
 
 void    ft_error(void);

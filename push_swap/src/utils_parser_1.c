@@ -64,3 +64,14 @@ int	ft_atoi_sp(const char *s, int *ret)
 	*ret = (int)temp;	
 	return (1);
 }
+
+void	ft_destroy_split(char **splitarr)
+{
+	int	i;
+
+	i = -1;
+	while (splitarr[++i])
+		free(splitarr[i]);
+	free(splitarr);
+	return ;
+}

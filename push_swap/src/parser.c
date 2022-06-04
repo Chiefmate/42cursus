@@ -49,6 +49,7 @@ int parse_input(t_stack *a, int argc, char *argv[], int *cnt)
             }
         }
     }
+    ft_destroy_split(splitarr);
     return (1);
 }
 
