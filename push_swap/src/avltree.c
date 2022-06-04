@@ -6,13 +6,13 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 13:01:41 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/05/26 13:01:41 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/06/04 12:09:32 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /* AVL Tree to pick left pivot and right pivot */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 int	max(int a, int b)
 {

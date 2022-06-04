@@ -2,7 +2,7 @@
  *  SHOULD BE DELETED WHEN SUBMITTING
  */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 /*  stack print function
  */

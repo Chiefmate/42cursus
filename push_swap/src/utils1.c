@@ -6,7 +6,8 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 19:51:01 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/05/25 19:51:01 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/06/04 12:03:29 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../include/push_swap.h"

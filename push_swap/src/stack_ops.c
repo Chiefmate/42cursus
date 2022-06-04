@@ -14,7 +14,7 @@
  *  Internal Functions for stacks
  */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 /*
  *  push data on the top of the stack

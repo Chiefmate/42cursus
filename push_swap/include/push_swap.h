@@ -39,12 +39,11 @@ typedef struct s_tree {
 
 void    print_stack(t_stack *a, t_stack *b);
 
-/* internal stack operations */
-t_stack *create_stack(void);
-void    destroy_stack(t_stack *s);
 int     push_top(t_stack *s, int data);
 int     push_bottom(t_stack *s, int data);
 int     pop(t_stack *s, int *data_out);
+t_stack *create_stack(void);
+void    destroy_stack(t_stack *s);
 int     pop_from_bot(t_stack *s, int *data_out);
 
 int     swap(t_stack *s);
@@ -52,7 +51,6 @@ int     push(t_stack *dst, t_stack *src);
 int     rotate(t_stack *s);
 int     rev_rotate(t_stack *s);
 
-/* rules */
 void	sa(t_stack *a);
 void    sb(t_stack *b);
 void    ss(t_stack *a, t_stack *b);

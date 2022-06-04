@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   avltree2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 15:35:38 by marvin            #+#    #+#             */
-/*   Updated: 2022/05/26 15:35:38 by marvin           ###   ########.fr       */
+/*   Updated: 2022/06/04 12:03:40 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /* AVL Tree to pick left pivot and right pivot */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 t_trnode    *rebalance(t_trnode *root)
 {

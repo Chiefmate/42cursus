@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rules.c                                            :+:      :+:    :+:   */
+/*   rules1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 19:05:52 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/05/11 19:05:52 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/06/04 12:03:04 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
  *  Internal Instructions for stack rules
  */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 /*
  *  pop the element from the bottom and assign the popped value to *data_out

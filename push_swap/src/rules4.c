@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rules2.c                                           :+:      :+:    :+:   */
+/*   rules4.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/25 19:47:00 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/05/25 19:47:00 by hyunhole         ###   ########.fr       */
+/*   Created: 2022/05/25 19:53:13 by hyunhole          #+#    #+#             */
+/*   Updated: 2022/06/04 12:03:19 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,40 +17,12 @@
  *	rrr
  */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
-void	sa(t_stack *a)
+void	rrr(t_stack *a, t_stack *b)
 {
-	swap(a);
-	write(1, "sa\n", 3);
-	return ;
-}
-
-void	sb(t_stack *b)
-{
-	swap(b);
-	write(1, "sb\n", 3);
-	return ;
-}
-
-void	ss(t_stack *a, t_stack *b)
-{
-	swap(a);
-	swap(b);
-	write(1, "ss\n", 3);
-	return ;
-}
-
-void	pa(t_stack *a, t_stack *b)
-{
-	push(a, b);
-	write(1, "pa\n", 3);
-	return ;
-}
-
-void	pb(t_stack *a, t_stack *b)
-{
-	push(b, a);
-	write(1, "pb\n", 3);
+	rev_rotate(a);
+	rev_rotate(b);
+	write(1, "rrr\n", 4);
 	return ;
 }
