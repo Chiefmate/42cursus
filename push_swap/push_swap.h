@@ -65,3 +65,5 @@ void	rrr(t_stack *a, t_stack *b);
 
 void	intarr_sort(int arr[], int begin, int end);
 int	    partition(int arr[], int begin, int end);
+
+// testing
