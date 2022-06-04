@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 20:40:26 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/06/04 13:35:02 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/06/04 14:57:42 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,19 @@ void	sml_sort_a(t_stack *a, int r)
 	data[0] = a->head->data;
 	data[1] = a->head->next->data;
 	data[2] = a->head->next->next->data;
-	if (data[0] > data[1])
-	{
-		if (data[1] > data[2])
-		{
-			sa(a);
-			rra(a);
-		}
-		else if (data[0] < data[2])
-		{
-			
-		}
-	}
+	if (data[0] < data[1] && data[1] < data[2])
+		return ;
+	else if (data[0] < data[2] && data[2] < data[1])
+		smlsort_case132(a);
+	else if (data[1] < data[0] && data[0] < data[2])
+		smlsort_case213(a);
+	else if (data[2] < data[0] && data[0] < data[1])
+		smlsort_case231(a);
+	else if (data[1] < data[2] && data[2] < data[0])
+		smlsort_case312(a);
+	else
+		smlsort_case321(a);
+	return ;
 }
 
 /*
@@ -110,6 +111,37 @@ void	backrotate_ra_rb(t_stack *a, t_stack *b, int num[])
 	return ;
 }
 
+/*	sort r elements in stack b,
+ *	and push to stack a in order
+ */
+void	sml_sort_btoa(t_stack *a, t_stack *b, int r)
+{
+	int	data[3];
+
+	if (r == 2)
+	{
+		if (b->head->data > b->head->next->data)
+			sb(b);
+		return ;
+	}
+	data[0] = b->head->data;
+	data[1] = b->head->next->data;
+	data[2] = b->head->next->next->data;
+	if (data[2] < data[1] && data[1] < data[0])
+		return ;
+	else if (data[0] < data[2] && data[2] < data[1])
+		smlsort_b_case132(b);
+	else if (data[1] < data[0] && data[0] < data[2])
+		smlsort_b_case213(b);
+	else if (data[2] < data[0] && data[0] < data[1])
+		smlsort_b_case231(b);
+	else if (data[1] < data[2] && data[2] < data[0])
+		smlsort_b_case312(b);
+	else
+		smlsort_b_case123(b);
+	return ;
+}
+
 /*
  *	arr num: num_ra, num_rb, num_pa
  */
@@ -150,12 +182,4 @@ void	b_to_a(t_stack *a, t_stack *b, int r)
 	backrotate_ra_rb(a, b, num);
 	a_to_b(a, b, num[0]);
 	b_to_a(a, b, num[1]);
-}
-
-/*	sort r elements in stack b,
- *	and push to stack a in order
- */
-void	sml_sort_btoa(t_stack *a, t_stack *b, int r)
-{
-
 }
