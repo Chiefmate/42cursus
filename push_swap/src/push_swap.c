@@ -13,25 +13,29 @@
 #include "../include/push_swap.h"
 #include <time.h>
 
-int main(void)
+int main(int argc, char *argv[])
 {
     t_stack *a;
     t_stack *b;
+    int     cnt;
 
     a = create_stack();
     b = create_stack();
-    push_top(a, -3);
-    push_top(a, 7);
-    push_top(a, -9);
-    push_top(a, 56);
-    push_top(a, -998);
-    push_top(a, 119);
-    push_top(a, 1000);
+    cnt = 0;
+    if (parse_input(a, argc, argv, &cnt))
+    {
+        destroy_stack(a);
+        destroy_stack(b);
+        ft_error();
+    }
     print_stack(a, b);
 
-    a_to_b(a, b, 7);
+    a_to_b(a, b, cnt);
+
     print_stack(a, b);
+
     destroy_stack(a);
     destroy_stack(b);
+
     return (0);
 }
