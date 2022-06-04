@@ -6,11 +6,12 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 20:40:26 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/06/04 14:57:42 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/06/04 15:37:34 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
+#include "../libft/libft.h"
 
 /*
  *
@@ -122,13 +123,14 @@ void	sml_sort_btoa(t_stack *a, t_stack *b, int r)
 	{
 		if (b->head->data > b->head->next->data)
 			sb(b);
+		pa(a, b);
+		pa(a, b);
 		return ;
 	}
 	data[0] = b->head->data;
 	data[1] = b->head->next->data;
 	data[2] = b->head->next->next->data;
-	if (data[2] < data[1] && data[1] < data[0])
-		return ;
+	if (data[2] < data[1] && data[1] < data[0]) {}
 	else if (data[0] < data[2] && data[2] < data[1])
 		smlsort_b_case132(b);
 	else if (data[1] < data[0] && data[0] < data[2])
@@ -139,6 +141,9 @@ void	sml_sort_btoa(t_stack *a, t_stack *b, int r)
 		smlsort_b_case312(b);
 	else
 		smlsort_b_case123(b);
+	pa(a, b);
+	pa(a, b);
+	pa(a, b);
 	return ;
 }
 

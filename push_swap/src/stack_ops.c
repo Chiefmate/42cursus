@@ -80,7 +80,7 @@ int     push_bottom(t_stack *s, int data)
  *  return  1   if successful
  *          0   if empty
  */
-int     pop(t_stack *s, int *data_out)
+int     ft_pop(t_stack *s, int *data_out)
 {
     t_node  *temp;
 
@@ -120,7 +120,7 @@ void    destroy_stack(t_stack *s)
 
     while (s->count > 0)
     {
-        pop(s, &val);
+        ft_pop(s, &val);
     }
     free(s);
     return ;

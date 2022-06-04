@@ -10,14 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 #include <time.h>
 
-int main(int argc, char *argv[])
+int main(void)
 {
-    t_stack *a;
-    t_stack *b;
-    int     tempint;
+    // t_stack *a;
+    // t_stack *b;
     int     arr[50];
 
     srand(time(0));

@@ -41,13 +41,13 @@ void    print_stack(t_stack *a, t_stack *b);
 
 int     push_top(t_stack *s, int data);
 int     push_bottom(t_stack *s, int data);
-int     pop(t_stack *s, int *data_out);
+int     ft_pop(t_stack *s, int *data_out);
 t_stack *create_stack(void);
 void    destroy_stack(t_stack *s);
 int     pop_from_bot(t_stack *s, int *data_out);
 
-int     swap(t_stack *s);
-int     push(t_stack *dst, t_stack *src);
+int     ft_swap(t_stack *s);
+int     ft_push(t_stack *dst, t_stack *src);
 int     rotate(t_stack *s);
 int     rev_rotate(t_stack *s);
 

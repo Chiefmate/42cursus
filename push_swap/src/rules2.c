@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 19:47:00 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/06/04 12:03:13 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/06/04 15:58:35 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,36 +21,36 @@
 
 void	sa(t_stack *a)
 {
-	swap(a);
+	ft_swap(a);
 	write(1, "sa\n", 3);
 	return ;
 }
 
 void	sb(t_stack *b)
 {
-	swap(b);
+	ft_swap(b);
 	write(1, "sb\n", 3);
 	return ;
 }
 
 void	ss(t_stack *a, t_stack *b)
 {
-	swap(a);
-	swap(b);
+	ft_swap(a);
+	ft_swap(b);
 	write(1, "ss\n", 3);
 	return ;
 }
 
 void	pa(t_stack *a, t_stack *b)
 {
-	push(a, b);
+	ft_push(a, b);
 	write(1, "pa\n", 3);
 	return ;
 }
 
 void	pb(t_stack *a, t_stack *b)
 {
-	push(b, a);
+	ft_push(b, a);
 	write(1, "pb\n", 3);
 	return ;
 }

@@ -6,7 +6,7 @@
 #    By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/04 11:48:54 by hyunhole          #+#    #+#              #
-#    Updated: 2022/06/04 15:01:44 by hyunhole         ###   ########.fr        #
+#    Updated: 2022/06/04 16:06:33 by hyunhole         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,38 +19,46 @@ RM		=	rm -f
 
 INCS_DIR	=	./include/
 SRCS_DIR	=	./src/
+LIB_DIR 	=	./libft/
 
-LIB_DIR		=	./libft/
-LIB_NAME	=	libft.a
-
-SRC		=	push_swap.c \
+SRCS		=	push_swap.c \
 			utils_sort_1.c \
-			rules1.c rules2.c rules3.c rules4.c \
-			sort.c sort_smlutil.c sort_smltuil2.c \
+			stack_ops.c rules1.c rules2.c rules3.c rules4.c \
+			sort.c sort_smlutil.c sort_smlutil2.c \
 			error.c \
-			check_stack.c \
 			fortest.c
 
-SRCS	= $(addprefix $(SRCS_DIR), $(OBJS))
-LIBS	= $(addprefix $(LIB_DIR), $(LIB_NAME))
-OBJS	= $(SRC:.c=.o)
+SRCS_WPATH	= $(addprefix $(SRCS_DIR), $(SRCS))
 
-all : $(LIB_NAME) $(NAME)
+OBJS = $(SRCS:.c=.o)
+OBJS_WPATH = $(SRCS_WPATH:.c=.o)
 
-$(LIB_NAME) :
-	make -C $(LIB_DIR)
+CC = gcc
 
-$(NAME) : $(SRCS) $(LIBS)
-	$(CC) $(CFLAGS) $^ -o $@
+CFLAGS = -Wall -Wextra -Werror
 
-clean :
-	make clean -C $(LIB_DIR)
-	$(RM) $(SRCS)
+all: subsystem $(NAME)
 
-fclean : clean
-	make fclean -C $(LIB_DIR)
-	$(RM) $(NAME)
+subsystem:
+	make -C $(LIB_DIR) all
 
-re : clean all
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) $^ $(LIB_DIR)libft.a -o $(NAME)
 
-.PHONY : all clean fclean re
+$(OBJS):
+	$(CC) $(CFLAGS) -c $(SRCS_WPATH)
+
+clean:
+	make -C $(LIB_DIR) clean
+	rm -f $(OBJS)
+
+fclean: clean
+	make -C $(LIB_DIR) fclean
+	rm -f $(NAME)
+
+re: fclean all
+
+call: all clean
+	make -C $(LIB_DIR) fclean
+
+# .PHONY : all clean fclean re
