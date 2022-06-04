@@ -23,9 +23,13 @@ int main(void)
     push_top(a, -3);
     push_top(a, 7);
     push_top(a, -9);
+    push_top(a, 56);
+    push_top(a, -998);
+    push_top(a, 119);
+    push_top(a, 1000);
     print_stack(a, b);
 
-    a_to_b(a, b, 6);
+    a_to_b(a, b, 7);
     print_stack(a, b);
     destroy_stack(a);
     destroy_stack(b);
