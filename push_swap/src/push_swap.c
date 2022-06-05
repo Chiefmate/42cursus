@@ -20,17 +20,14 @@ int main(int argc, char *argv[])
     int     cnt;
 
     a = create_stack();
-    b = create_stack();
     cnt = 0;
-    if (parse_input(a, argc, argv, &cnt))
-    {
-        destroy_stack(a);
-        destroy_stack(b);
-        ft_error();
-    }
+    parse_input(a, argc, argv);
+
+    b = create_stack();
+
     print_stack(a, b);
 
-    a_to_b(a, b, cnt);
+    a_to_b(a, b, a->count);
 
     print_stack(a, b);
 

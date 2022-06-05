@@ -17,60 +17,37 @@
  *  returns 0   if error
  *          1   if successful
  */
-int parse_input(t_stack *a, int argc, char *argv[], int *cnt)
+int parse_input(t_stack *a, int argc, char *argv[])
 {
     int     i;
     int     j;
     int     temp;
     char    **splitarr;
 
-    if (!is_valid_input(argc, argv))
-        return (0);
-    i = -1;
+    i = 0;
     while (++i < argc)
     {
-        if (!ft_strchr(argv[i], ' '))
+        splitarr = ft_split(argv[i], ' ');
+        if (!splitarr)
+            put_error_with_clear(a, splitarr);
+        j = -1;
+        while (splitarr[++j])
         {
-            if (!ft_atoi_sp(argv[i], &temp))
-                ft_error();
+            temp = atoi_with_check(split[j], a, splitarr);
             push_top(a, temp);
-            cnt++;
         }
-        else
-        {
-            splitarr = ft_split(argv[i], ' ');            
-            j = -1;
-            while (splitarr[++j])
-            {
-                if (!ft_atoi_sp(splitarr[j], &temp))
-                    ft_error();
-                push_top(a, temp);
-                cnt++;
-            }
-        }
+        ft_destroy_split(splitarr);
     }
-    ft_destroy_split(splitarr);
     return (1);
 }
 
-/*
- *  allowed characters: '+', '-', number, space
- */
-int is_valid_input(int argc, char *argv[])
+static void	ft_destroy_split(char **splitarr)
 {
-    int i;
-    int j;
-    
-    i = -1;
-    while (++i < argc)
-    {
-        j = -1;
-        while (++j < (int)ft_strlen(argv[i]))
-        {
-            if (!ft_isdigit(argv[i][j]) && argv[i][j] != '+' \
-            &&  argv[i][j] != '+' && argv[i][j] != ' ')
-                return (0);
-        }    
-    }
-    return (1);
+	int	i;
+
+	i = -1;
+	while (splitarr[++i])
+		free(splitarr[i]);
+	free(splitarr);
+	return ;
 }

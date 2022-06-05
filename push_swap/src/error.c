@@ -12,6 +12,14 @@
 
 #include "../include/push_swap.h"
 
+void    ft_error_with_clear(t_stack *a, char **splitarr)
+{
+    destroy_stack(a);
+    write(2, "Error\n", 6);
+    ft_destroy_split(splitarr);
+    exit(1);
+}
+
 void    ft_error(void)
 {
     write(2, "Error\n", 6);

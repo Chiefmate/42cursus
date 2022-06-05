@@ -84,9 +84,8 @@ void    select_pivots(t_stack *a, int r, int pivot[]);
 void	intarr_sort(int arr[], int begin, int end);
 
 int     parse_input(t_stack *a, int argc, char *argv[], int *cnt);
-int     is_valid_input(int argc, char *argv[]);
 
-int	    ft_atoi_sp(const char *s, int *ret);
-void	ft_destroy_split(char **splitarr)
+long long	atoi_with_check(char *s, t_stack *a, char **splitarr);
 
+void    ft_error_with_clear(t_stack *a, char **splitarr);
 void    ft_error(void);

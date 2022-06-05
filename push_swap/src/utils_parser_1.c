@@ -12,66 +12,38 @@
 
 #include <limits.h>
 #include "../libft/libft.h"
+#include "../include/push_swap.h"
 
-#define	OVERFLOW	-2147483649
-
-static int	ft_isspace(int n)
+long long	atoi_with_check(char *s, t_stack *a, char **splitarr)
 {
-	if (n == ' ' || n == '\f' || n == '\n' || \
-	n == '\r' || n == '\t' || n == '\v')
-		return (1);
-	return (0);
-}
-
-static long long	make_n(const char *s, char is_neg)
-{
+	char		flag;
 	long long	n;
+	t_node		*curr;
 
+	flag = 0;
 	n = 0;
-	while (ft_isdigit(*s))
-	{
-		n = 10 * n + (*s++ - '0');
-		if (n >= 100000000000000000 && !is_neg && (*s > LONG_MAX % 10))
-			return (OVERFLOW);
-		else if (n >= 100000000000000000 && is_neg \
-				&& (*s > ((-1) * (LONG_MIN % 10))))
-			return (OVERFLOW);
-	}
-	if (is_neg)
-		return (-n);
-	return (n);
-}
-
-//  ft_isdigit() used, limits.h included for LONG_MAX, LONG_MIN
-int	ft_atoi_sp(const char *s, int *ret)
-{
-	char		is_neg;
-	long long	temp;
-
-	is_neg = 0;
-	while (ft_isspace(*s))
-		s++;
 	if (*s == '-')
 	{
-		is_neg = 1;
+		flag = 1;
 		s++;
 	}
-	else if (*s == '+')
-		s++;
-	temp = make_n(s, is_neg);
-	if (temp == OVERFLOW)
-		return (0);
-	*ret = (int)temp;	
-	return (1);
-}
-
-void	ft_destroy_split(char **splitarr)
-{
-	int	i;
-
-	i = -1;
-	while (splitarr[++i])
-		free(splitarr[i]);
-	free(splitarr);
-	return ;
+	if (ft_strlen(s) > 10 || ft_strlen == 0)
+		ft_error_with_clear(a, splitarr);
+	while (ft_isdigit(*s))
+	{
+		n *= 10;
+		n += *s++ - '0';
+	}
+	if (flag == 1)
+		n *= -1;
+	if (*s != '\0' || n < INT_MIN || n > INT_MAX)
+		ft_error_with_clear(a, splitarr);
+	curr = a->head;
+	while (curr)
+	{
+		if (curr->data == n)
+			ft_error_with_clear(a, splitarr);
+		curr = curr->next;
+	}
+	return (n);
 }
