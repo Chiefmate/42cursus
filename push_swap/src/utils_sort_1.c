@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 12:10:06 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/06/05 17:08:22 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/06/05 17:36:05 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ int    select_pivots(t_stack *a, int r, int pivot[])
 
 	write(1, "assign pivots\n", 14);
 
-	pivot[0] = arr[r / 3 - 1];
-	pivot[1] = arr[(r / 3) * 2 - 1];
+	pivot[0] = arr[r / 3];
+	pivot[1] = arr[(r / 3) * 2];
 
 	write(1, "assigned pivots\n", 17);
 	

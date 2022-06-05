@@ -30,7 +30,11 @@ int main(int argc, char *argv[])
 
     write(1, "sort start\n", 11);
     print_stack(a, b);
-    a_to_b(a, b, a->count);
+
+    if (a->count <= 3)
+        sml_sort_a(a, a->count);
+    else
+        a_to_b(a, b, a->count);
     print_stack(a, b);
 
     write(1, "destroy stacks\n", 14);
