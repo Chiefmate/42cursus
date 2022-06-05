@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 12:10:06 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/06/04 17:15:07 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/06/05 15:03:49 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,14 @@ int   is_sorted(t_stack *a, int r)
 	if (!a)
 		return (1);
 	curr = a->head;
-	i = 0;
-	while (i < r)
-	{
+	if (curr)
 		temp = curr->data;
+	i = 1;
+	while (i < r && curr)
+	{
 		if (temp > curr->data)
 			return (0);
+		temp = curr->data;
 		curr = curr->next;
 	}
 	return (1);
@@ -101,12 +103,14 @@ int   is_sorted_rev(t_stack *b, int r)
 	if (!b)
 		return (1);
 	curr = b->head;
-	i = 0;
-	while (i < r)
-	{
+	if (curr)
 		temp = curr->data;
+	i = 1;
+	while (i < r && curr)
+	{
 		if (temp < curr->data)
 			return (0);
+		temp = curr->data;
 		curr = curr->next;
 	}
 	return (1);

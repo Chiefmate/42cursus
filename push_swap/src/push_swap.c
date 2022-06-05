@@ -25,15 +25,9 @@ int main(int argc, char *argv[])
 
     b = create_stack();
 
-    print_stack(a, b);
-
-    printf("\ncnt: %d\n", a->count);
     a_to_b(a, b, a->count);
-
-    print_stack(a, b);
 
     destroy_stack(a);
     destroy_stack(b);
-
     return (0);
 }
