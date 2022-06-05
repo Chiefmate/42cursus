@@ -58,7 +58,7 @@ int     push_bottom(t_stack *s, int data)
         return (0);
     new_node->data = data;
     new_node->next = NULL;
-    if (!s->count)
+    if (s->head == NULL || !s->count)
     {
         s->head = new_node;
     }
@@ -84,10 +84,10 @@ int     ft_pop(t_stack *s, int *data_out)
 {
     t_node  *temp;
 
+    if (s->head == NULL)
+        s->count = 0;
     if (!s->count)
-    {
         return (0);
-    }
     temp = s->head;
     s->head = temp->next;
     *data_out = temp->data;

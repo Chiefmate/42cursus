@@ -6,14 +6,14 @@
 #    By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/04 11:48:54 by hyunhole          #+#    #+#              #
-#    Updated: 2022/06/04 18:54:11 by hyunhole         ###   ########.fr        #
+#    Updated: 2022/06/05 16:24:40 by hyunhole         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	push_swap
 
 CC		=	cc
-CFLAGS	=	-Wall -Wextra -Werror
+CFLAGS	=	-Wall -Wextra -Werror -g
 AR		=	ar rcs
 RM		=	rm -f
 
@@ -23,8 +23,7 @@ LIB_DIR 	=	./libft/
 
 SRCS		=	push_swap.c \
 			utils_sort_1.c utils_sort_sml1.c utils_sort_sml2.c \
-			utils_parser_1.c \
-			stack_ops.c rules1.c rules2.c rules3.c rules4.c \
+			stack_ops_1.c stack_ops_2.c rules1.c rules2.c rules3.c \
 			sort.c \
 			parser.c \
 			error.c \

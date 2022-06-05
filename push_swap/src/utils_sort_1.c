@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_sort_1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 12:10:06 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/06/05 15:03:49 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/06/05 17:08:22 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,15 @@
 /*  select left pivot and right pivot in stack a within r elements 
  *  assign selected pivots in array pivot: pivot[0] = lp, pivot[1] = rp
  */
-void    select_pivots(t_stack *a, int r, int pivot[])
+int    select_pivots(t_stack *a, int r, int pivot[])
 {
 	t_node	*temp;
-	int		arr[r];
+	int		*arr;
 	int		idx;
 
+	arr = (int *)malloc(sizeof(int) * r);
+	if (!arr)
+		return (1);
 	idx = 0;
 	temp = a->head;
 	while (temp)
@@ -30,9 +33,16 @@ void    select_pivots(t_stack *a, int r, int pivot[])
 		idx++;
 	}
 	intarr_sort(arr, 0, idx - 1);
-	pivot[0] = arr[r / 3];
-	pivot[1] = arr[2 * r / 3];
-	return ;
+
+	write(1, "assign pivots\n", 14);
+
+	pivot[0] = arr[r / 3 - 1];
+	pivot[1] = arr[(r / 3) * 2 - 1];
+
+	write(1, "assigned pivots\n", 17);
+	
+	free(arr);
+	return (0);
 }
 
 /*	quicksort, in int array

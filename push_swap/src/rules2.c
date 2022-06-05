@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/25 19:47:00 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/06/04 15:58:35 by hyunhole         ###   ########.fr       */
+/*   Created: 2022/06/05 16:02:36 by hyunhole          #+#    #+#             */
+/*   Updated: 2022/06/05 16:02:37 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,38 +19,38 @@
 
 #include "../include/push_swap.h"
 
-void	sa(t_stack *a)
+void	ra(t_stack *a)
 {
-	ft_swap(a);
-	write(1, "sa\n", 3);
+	rotate(a);
+	write(1, "ra\n", 3);
 	return ;
 }
 
-void	sb(t_stack *b)
+void	rb(t_stack *b)
 {
-	ft_swap(b);
-	write(1, "sb\n", 3);
+	rotate(b);
+	write(1, "rb\n", 3);
 	return ;
 }
 
-void	ss(t_stack *a, t_stack *b)
+void	rr(t_stack *a, t_stack *b)
 {
-	ft_swap(a);
-	ft_swap(b);
-	write(1, "ss\n", 3);
+	rotate(a);
+	rotate(b);
+	write(1, "rr\n", 3);
 	return ;
 }
 
-void	pa(t_stack *a, t_stack *b)
+void	rra(t_stack *a)
 {
-	ft_push(a, b);
-	write(1, "pa\n", 3);
+	rev_rotate(a);
+	write(1, "rra\n", 4);
 	return ;
 }
 
-void	pb(t_stack *a, t_stack *b)
+void	rrb(t_stack *b)
 {
-	ft_push(b, a);
-	write(1, "pb\n", 3);
+	rev_rotate(b);
+	write(1, "rrb\n", 4);
 	return ;
 }
