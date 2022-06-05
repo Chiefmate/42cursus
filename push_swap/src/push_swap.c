@@ -17,10 +17,8 @@ int main(int argc, char *argv[])
 {
     t_stack *a;
     t_stack *b;
-    int     cnt;
 
     a = create_stack();
-    cnt = 0;
     parse_input(a, argc, argv);
 
     b = create_stack();

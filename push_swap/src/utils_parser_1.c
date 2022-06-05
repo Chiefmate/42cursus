@@ -27,7 +27,7 @@ long long	atoi_with_check(char *s, t_stack *a, char **splitarr)
 		flag = 1;
 		s++;
 	}
-	if (ft_strlen(s) > 10 || ft_strlen == 0)
+	if (ft_strlen(s) > 10 || ft_strlen(s) == 0)
 		ft_error_with_clear(a, splitarr);
 	while (ft_isdigit(*s))
 	{
@@ -46,4 +46,15 @@ long long	atoi_with_check(char *s, t_stack *a, char **splitarr)
 		curr = curr->next;
 	}
 	return (n);
+}
+
+void	ft_destroy_split(char **splitarr)
+{
+	int	i;
+
+	i = -1;
+	while (splitarr[++i])
+		free(splitarr[i]);
+	free(splitarr);
+	return ;
 }

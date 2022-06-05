@@ -29,25 +29,14 @@ int parse_input(t_stack *a, int argc, char *argv[])
     {
         splitarr = ft_split(argv[i], ' ');
         if (!splitarr)
-            put_error_with_clear(a, splitarr);
+            ft_error_with_clear(a, splitarr);
         j = -1;
         while (splitarr[++j])
         {
-            temp = atoi_with_check(split[j], a, splitarr);
+            temp = atoi_with_check(splitarr[j], a, splitarr);
             push_top(a, temp);
         }
         ft_destroy_split(splitarr);
     }
     return (1);
-}
-
-static void	ft_destroy_split(char **splitarr)
-{
-	int	i;
-
-	i = -1;
-	while (splitarr[++i])
-		free(splitarr[i]);
-	free(splitarr);
-	return ;
 }
