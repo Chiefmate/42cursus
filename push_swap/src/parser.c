@@ -34,7 +34,7 @@ int parse_input(t_stack *a, int argc, char *argv[])
         while (splitarr[++j])
         {
             temp = atoi_with_check(splitarr[j], a, splitarr);
-            push_top(a, temp);
+            push_bottom(a, temp);
         }
         ft_destroy_split(splitarr);
     }
