@@ -71,3 +71,43 @@ void	intarr_sort(int arr[], int begin, int end)
       intarr_sort(arr, j+1, end);
    }
 }
+
+int   is_sorted(t_stack *a, int r)
+{
+	int		temp;
+	int		i;
+	t_node	*curr;
+
+	if (!a)
+		return (1);
+	curr = a->head;
+	i = 0;
+	while (i < r)
+	{
+		temp = curr->data;
+		if (temp > curr->data)
+			return (0);
+		curr = curr->next;
+	}
+	return (1);
+}
+
+int   is_sorted_rev(t_stack *b, int r)
+{
+	int		temp;
+	int		i;
+	t_node	*curr;
+
+	if (!b)
+		return (1);
+	curr = b->head;
+	i = 0;
+	while (i < r)
+	{
+		temp = curr->data;
+		if (temp < curr->data)
+			return (0);
+		curr = curr->next;
+	}
+	return (1);
+}

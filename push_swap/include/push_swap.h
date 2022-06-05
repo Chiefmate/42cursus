@@ -82,6 +82,8 @@ void	b_to_a(t_stack *a, t_stack *b, int r);
 
 void    select_pivots(t_stack *a, int r, int pivot[]);
 void	intarr_sort(int arr[], int begin, int end);
+int     is_sorted(t_stack *a, int r);
+int     is_sorted_rev(t_stack *b, int r);
 
 int     parse_input(t_stack *a, int argc, char *argv[]);
 

@@ -56,6 +56,8 @@ void	a_to_b(t_stack *a, t_stack *b, int r)
 
 	if (r <= 1)
 		return ;
+	if (is_sorted(a, r))
+		return ;
 	if (r <= 3)
 		return (sml_sort_a(a, r));
 	select_pivots(a, r, pivot);
@@ -158,6 +160,8 @@ void	b_to_a(t_stack *a, t_stack *b, int r)
 	int		num[3];
 
 	if (r <= 1)
+		return ;
+	if (is_sorted_rev(a, r))
 		return ;
 	if (r <= 3)
 		return (sml_sort_btoa(a, b, r));

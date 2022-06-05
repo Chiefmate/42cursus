@@ -27,6 +27,7 @@ int main(int argc, char *argv[])
 
     print_stack(a, b);
 
+    printf("\ncnt: %d\n", a->count);
     a_to_b(a, b, a->count);
 
     print_stack(a, b);
