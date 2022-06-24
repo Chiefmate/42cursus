@@ -20,13 +20,13 @@ void	sml_sort_a(t_stack *a, int r)
 {
 	int	data[3];
 
-	write(1, "smlsort start\n", 14);
+	// write(1, "smlsort start\n", 14);
 	if (r == 2)
 	{
 		if (a->head->data > a->head->next->data)
 			sa(a);
 		return ;
-		write(1, "smlsort 2\n", 10);
+		// write(1, "smlsort 2\n", 10);
 	}
 	data[0] = a->head->data;
 	data[1] = a->head->next->data;
@@ -43,7 +43,7 @@ void	sml_sort_a(t_stack *a, int r)
 		smlsort_case312(a);
 	else
 		smlsort_case321(a);
-	write(1, "smlsort end\n", 12);
+	// write(1, "smlsort end\n", 12);
 	return ;
 }
 
@@ -72,11 +72,11 @@ void	a_to_b(t_stack *a, t_stack *b, int r)
 	i = -1;
 	while (++i < r)
 	{
-		write(1, "loop assign temp\n", 17);
+		// write(1, "loop assign temp\n", 17);
 		if (a->head == NULL)
 			ft_error_stacks(a, b);
 		temp = a->head->data;
-		write(1, "loop assigned temp\n", 19);
+		// write(1, "loop assigned temp\n", 19);
 		if (temp >= pivot[1])
 		{
 			ra(a);
@@ -92,7 +92,7 @@ void	a_to_b(t_stack *a, t_stack *b, int r)
 				num[1]++;
 			}
 		}
-		write(1, "loop cycle end\n", 15);
+		// write(1, "loop cycle end\n", 15);
 	}
 	backrotate_ra_rb(a, b, num);
 	a_to_b(a, b, num[0]);
@@ -105,7 +105,7 @@ void	backrotate_ra_rb(t_stack *a, t_stack *b, int num[])
 	int	i;
 	int	j;
 
-	write(1, "bk rotate s\n", 12);
+	// write(1, "bk rotate s\n", 12);
 	i = 0;
 	j = 0;
 	while (i < num[0] && j < num[1])
@@ -124,7 +124,7 @@ void	backrotate_ra_rb(t_stack *a, t_stack *b, int num[])
 		rrb(b);
 		j++;
 	}
-	write(1, "bk rotate e\n", 12);
+	// write(1, "bk rotate e\n", 12);
 	return ;
 }
 
@@ -135,14 +135,14 @@ void	sml_sort_btoa(t_stack *a, t_stack *b, int r)
 {
 	int	data[3];
 
-	write(1, "smlsortb start\n", 15);
+	// write(1, "smlsortb start\n", 15);
 	if (r == 2)
 	{
 		if (b->head->data < b->head->next->data)
 			sb(b);
 		pa(a, b);
 		pa(a, b);
-		write(1, "smlsortb 2\n", 11);
+		// write(1, "smlsortb 2\n", 11);
 		return ;
 	}
 	data[0] = b->head->data;
@@ -164,7 +164,7 @@ void	sml_sort_btoa(t_stack *a, t_stack *b, int r)
 		smlsort_b_case312(a, b);
 	else
 		smlsort_b_case123(a, b);
-	write(1, "smlsortb end\n", 13);
+	// write(1, "smlsortb end\n", 13);
 	return ;
 }
 
@@ -196,11 +196,11 @@ void	b_to_a(t_stack *a, t_stack *b, int r)
 	i = -1;
 	while (++i < r)
 	{
-		write(1, "loopb assign temp\n", 18);
+		// write(1, "loopb assign temp\n", 18);
 		if (b->head == NULL)
 			ft_error_stacks(a, b);
 		temp = b->head->data;
-		write(1, "loopb assigned temp\n", 20);
+		// write(1, "loopb assigned temp\n", 20);
 		if (temp < pivot[0])
 		{
 			rb(b);
@@ -216,7 +216,7 @@ void	b_to_a(t_stack *a, t_stack *b, int r)
 				num[0]++;
 			}
 		}
-		write(1, "loopb cycle end\n", 16);
+		// write(1, "loopb cycle end\n", 16);
 	}
 	a_to_b(a, b, num[2] - num[0]);
 	backrotate_ra_rb(a, b, num);

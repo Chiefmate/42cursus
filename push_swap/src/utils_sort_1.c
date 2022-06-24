@@ -34,12 +34,12 @@ int    select_pivots(t_stack *a, int r, int pivot[])
 	}
 	intarr_sort(arr, 0, idx - 1);
 
-	write(1, "assign pivots\n", 14);
+	// write(1, "assign pivots\n", 14);
 
 	pivot[0] = arr[r / 3];
 	pivot[1] = arr[(r / 3) * 2];
 
-	write(1, "assigned pivots\n", 17);
+	// write(1, "assigned pivots\n", 17);
 	
 	free(arr);
 	return (0);

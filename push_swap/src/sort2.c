@@ -19,13 +19,13 @@ void	new_sml_sort_a(t_stack *a, t_stack *b, int r)
 {
 	int	data[3];
 
-	write(1, "smlsort start\n", 14);
+	// write(1, "smlsort start\n", 14);
 	if (r == 2)
 	{
 		if (a->head->data > a->head->next->data)
 			sa(a);
 		return ;
-		write(1, "smlsort 2\n", 10);
+		// write(1, "smlsort 2\n", 10);
 	}
 	data[0] = a->head->data;
 	data[1] = a->head->next->data;
@@ -42,6 +42,6 @@ void	new_sml_sort_a(t_stack *a, t_stack *b, int r)
 		new_smlsort_case312(a, b);
 	else
 		new_smlsort_case321(a, b);
-	write(1, "smlsort end\n", 12);
+	// write(1, "smlsort end\n", 12);
 	return ;
 }
