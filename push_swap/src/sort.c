@@ -13,39 +13,6 @@
 #include "../include/push_swap.h"
 #include "../libft/libft.h"
 
-/*
- *	r == 2 or 3 when start
- */
-void	sml_sort_a(t_stack *a, int r)
-{
-	int	data[3];
-
-	write(1, "smlsort start\n", 14);
-	if (r == 2)
-	{
-		if (a->head->data > a->head->next->data)
-			sa(a);
-		return ;
-		write(1, "smlsort 2\n", 10);
-	}
-	data[0] = a->head->data;
-	data[1] = a->head->next->data;
-	data[2] = a->head->next->next->data;
-	if (data[0] < data[1] && data[1] < data[2])	// 123
-		return ;
-	else if (data[0] < data[2] && data[2] < data[1])
-		smlsort_case132(a);
-	else if (data[1] < data[0] && data[0] < data[2])
-		smlsort_case213(a);
-	else if (data[2] < data[0] && data[0] < data[1])
-		smlsort_case231(a);
-	else if (data[1] < data[2] && data[2] < data[0])
-		smlsort_case312(a);
-	else
-		smlsort_case321(a);
-	write(1, "smlsort end\n", 12);
-	return ;
-}
 
 /*
  *	arr num: num_ra, num_rb, num_pb
@@ -57,10 +24,10 @@ void	a_to_b(t_stack *a, t_stack *b, int r)
 	int		i;
 	int		num[3];
 
-	if (r <= 1)
-		return ;
-	if (is_sorted(a, r))
-		return ;
+	#if DEBUG
+	write(1, "a_to_b starts\n", 14);
+	#endif
+
 	if (r <= 3)
 	{
 		new_sml_sort_a(a, b, r);
@@ -72,11 +39,18 @@ void	a_to_b(t_stack *a, t_stack *b, int r)
 	i = -1;
 	while (++i < r)
 	{
+		#if DEBUG
 		write(1, "loop assign temp\n", 17);
+		#endif
+
 		if (a->head == NULL)
 			ft_error_stacks(a, b);
 		temp = a->head->data;
+
+		#if DEBUG
 		write(1, "loop assigned temp\n", 19);
+		#endif
+
 		if (temp >= pivot[1])
 		{
 			ra(a);
@@ -92,80 +66,14 @@ void	a_to_b(t_stack *a, t_stack *b, int r)
 				num[1]++;
 			}
 		}
+		#if DEBUG
 		write(1, "loop cycle end\n", 15);
+		#endif
 	}
 	backrotate_ra_rb(a, b, num);
 	a_to_b(a, b, num[0]);
 	b_to_a(a, b, num[1]);
 	b_to_a(a, b, num[2] - num[1]);
-}
-
-void	backrotate_ra_rb(t_stack *a, t_stack *b, int num[])
-{
-	int	i;
-	int	j;
-
-	write(1, "bk rotate s\n", 12);
-	i = 0;
-	j = 0;
-	while (i < num[0] && j < num[1])
-	{
-		rrr(a, b);
-		i++;
-		j++;
-	}
-	while (i < num[0])
-	{
-		rra(a);
-		i++;
-	}
-	while (j < num[1])
-	{
-		rrb(b);
-		j++;
-	}
-	write(1, "bk rotate e\n", 12);
-	return ;
-}
-
-/*	sort r elements in stack b,
- *	and push to stack a in order
- */
-void	sml_sort_btoa(t_stack *a, t_stack *b, int r)
-{
-	int	data[3];
-
-	write(1, "smlsortb start\n", 15);
-	if (r == 2)
-	{
-		if (b->head->data < b->head->next->data)
-			sb(b);
-		pa(a, b);
-		pa(a, b);
-		write(1, "smlsortb 2\n", 11);
-		return ;
-	}
-	data[0] = b->head->data;
-	data[1] = b->head->next->data;
-	data[2] = b->head->next->next->data;
-	if (data[2] < data[1] && data[1] < data[0])
-	{
-		pa(a, b);
-		pa(a, b);
-		pa(a, b);
-	}
-	else if (data[0] < data[2] && data[2] < data[1])
-		smlsort_b_case132(a, b);
-	else if (data[1] < data[0] && data[0] < data[2])
-		smlsort_b_case213(a, b);
-	else if (data[2] < data[0] && data[0] < data[1])
-		smlsort_b_case231(a, b);
-	else if (data[1] < data[2] && data[2] < data[0])
-		smlsort_b_case312(a, b);
-	else
-		smlsort_b_case123(a, b);
-	write(1, "smlsortb end\n", 13);
-	return ;
 }
 
 /*
@@ -178,13 +86,6 @@ void	b_to_a(t_stack *a, t_stack *b, int r)
 	int		i;
 	int		num[3];
 
-	if (r <= 1)
-	{
-		pa(a, b);
-		return ;
-	}
-	if (is_sorted_rev(b, r))
-		return ;
 	if (r <= 3)
 	{
 		sml_sort_btoa(a, b, r);
@@ -196,11 +97,18 @@ void	b_to_a(t_stack *a, t_stack *b, int r)
 	i = -1;
 	while (++i < r)
 	{
+		#if DEBUG
 		write(1, "loopb assign temp\n", 18);
+		#endif
+
 		if (b->head == NULL)
 			ft_error_stacks(a, b);
 		temp = b->head->data;
+
+		#if DEBUG
 		write(1, "loopb assigned temp\n", 20);
+		#endif
+
 		if (temp < pivot[0])
 		{
 			rb(b);
@@ -216,7 +124,10 @@ void	b_to_a(t_stack *a, t_stack *b, int r)
 				num[0]++;
 			}
 		}
+
+		#if DEBUG
 		write(1, "loopb cycle end\n", 16);
+		#endif
 	}
 	a_to_b(a, b, num[2] - num[0]);
 	backrotate_ra_rb(a, b, num);

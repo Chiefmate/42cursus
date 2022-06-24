@@ -16,6 +16,9 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+// #define DEBUG 1
+#define DEBUG 0
+
 typedef struct s_node {
     int             data;
     struct s_node   *next;
@@ -66,7 +69,9 @@ void	rrb(t_stack *b);
 void	rrr(t_stack *a, t_stack *b);
 
 /* sort.c */
-void	sml_sort_a(t_stack *a, int r);
+void	sml_sort_a(t_stack *a, t_stack *b, int r);
+void	sml_sort_a_fourfive(t_stack *a, t_stack *b, int r);
+void	sml_sort_five_additional(t_stack *a, t_stack *b);
 void	a_to_b(t_stack *a, t_stack *b, int r);
 void	backrotate_ra_rb(t_stack *a, t_stack *b, int num[]);
 void	sml_sort_btoa(t_stack *a, t_stack *b, int r);

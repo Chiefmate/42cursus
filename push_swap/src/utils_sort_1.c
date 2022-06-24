@@ -21,12 +21,16 @@ int    select_pivots(t_stack *a, int r, int pivot[])
 	int		*arr;
 	int		idx;
 
+	#if DEBUG
+	write(1, "sel piv starts\n", 14);
+	#endif 
+
 	arr = (int *)malloc(sizeof(int) * r);
 	if (!arr)
 		return (1);
 	idx = 0;
 	temp = a->head;
-	while (temp)
+	while (temp && idx < r)
 	{
 		arr[idx] = temp->data;
 		temp = temp->next;
@@ -34,12 +38,16 @@ int    select_pivots(t_stack *a, int r, int pivot[])
 	}
 	intarr_sort(arr, 0, idx - 1);
 
+	#if DEBUG
 	write(1, "assign pivots\n", 14);
+	#endif 
 
 	pivot[0] = arr[r / 3];
 	pivot[1] = arr[(r / 3) * 2];
 
+	#if DEBUG
 	write(1, "assigned pivots\n", 17);
+	#endif
 	
 	free(arr);
 	return (0);
@@ -51,35 +59,39 @@ int    select_pivots(t_stack *a, int r, int pivot[])
 
 void	intarr_sort(int arr[], int begin, int end)
 {
-   int	i;
-   int	j;
-   int	pivot;
-   int	temp;
+	int	i;
+	int	j;
+	int	pivot;
+	int	temp;
 
-   if (begin < end)
-   {
-      pivot = begin;
-      i = begin;
-      j = end;
-      while (i < j)
-	  {
-         while (arr[i] <= arr[pivot] && i < end)
-            i++;
-         while (arr[j] > arr[pivot])
-            j--;
-         if (i < j)
-		 {
-            temp = arr[i];
-            arr[i] = arr[j];
-            arr[j] = temp;
-         }
-      }
-      temp = arr[pivot];
-      arr[pivot] = arr[j];
-      arr[j] = temp;
-      intarr_sort(arr, begin, j-1);
-      intarr_sort(arr, j+1, end);
-   }
+	#if DEBUG
+	write(1, "intarrsort start\n", 17);
+	#endif
+
+	if (begin < end)
+	{
+		pivot = begin;
+		i = begin;
+		j = end;
+		while (i < j)
+		{
+			while (arr[i] <= arr[pivot] && i < end)
+			i++;
+			while (arr[j] > arr[pivot])
+			j--;
+			if (i < j)
+			{
+			temp = arr[i];
+			arr[i] = arr[j];
+			arr[j] = temp;
+			}
+		}
+		temp = arr[pivot];
+		arr[pivot] = arr[j];
+		arr[j] = temp;
+		intarr_sort(arr, begin, j-1);
+		intarr_sort(arr, j+1, end);
+	}
 }
 
 int   is_sorted(t_stack *a, int r)
