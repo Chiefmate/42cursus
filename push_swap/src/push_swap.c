@@ -51,6 +51,7 @@ int main(int argc, char *argv[])
 #if DEBUG
     print_stack(a, b);
 
+<<<<<<< HEAD
     write(1, "destroy stacks\n", 15);
 #endif
 
@@ -61,5 +62,11 @@ int main(int argc, char *argv[])
     write(1, "done\n", 5);
 #endif
 
+=======
+    // write(1, "destroy stacks\n", 15);
+    destroy_stack(a);
+    destroy_stack(b);
+    // write(1, "done\n", 5);
+>>>>>>> 52cd54141b2dd4862879644c8b58099f352417ac
     return (0);
 }
