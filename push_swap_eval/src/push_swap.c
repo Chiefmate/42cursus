@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 18:59:36 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/06/25 15:01:37 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/06/25 17:51:35 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ int	main(int argc, char *argv[])
 		a_to_b(a, b, a->count);
 	destroy_stack(a);
 	destroy_stack(b);
+	write(1, "1", 1);
 	return (0);
 }
