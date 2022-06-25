@@ -68,10 +68,13 @@ void	rra(t_stack *a);
 void	rrb(t_stack *b);
 void	rrr(t_stack *a, t_stack *b);
 
-/* sort.c */
+/* sort small scale */
 void	sml_sort_a(t_stack *a, t_stack *b, int r);
+void	sml_sort_a_three(t_stack *a, t_stack *b);
 void	sml_sort_a_fourfive(t_stack *a, t_stack *b, int r);
 void	sml_sort_five_additional(t_stack *a, t_stack *b);
+
+/* sort big scale */
 void	a_to_b(t_stack *a, t_stack *b, int r);
 void	backrotate_ra_rb(t_stack *a, t_stack *b, int num[]);
 void	sml_sort_btoa(t_stack *a, t_stack *b, int r);
@@ -90,6 +93,7 @@ void    smlsort_case213(t_stack *a);
 void    smlsort_case231(t_stack *a);
 void    smlsort_case312(t_stack *a);
 void    smlsort_case321(t_stack *a);
+void	pa_three_times(t_stack *a, t_stack *b);
 void    smlsort_b_case312(t_stack *a, t_stack *b);
 void    smlsort_b_case231(t_stack *a, t_stack *b);
 void    smlsort_b_case213(t_stack *a, t_stack *b);
@@ -100,3 +104,10 @@ void    new_smlsort_case213(t_stack *a);
 void    new_smlsort_case231(t_stack *a, t_stack *b);
 void    new_smlsort_case312(t_stack *a, t_stack *b);
 void    new_smlsort_case321(t_stack *a, t_stack *b);
+void	sml_sort_four_case1(t_stack *a, t_stack *b);
+void	sml_sort_four_case2(t_stack *a, t_stack *b);
+void	sml_sort_four_case3(t_stack *a, t_stack *b);
+void	sml_sort_five_case1(t_stack *a, t_stack *b);
+void	sml_sort_five_case2(t_stack *a, t_stack *b);
+void	sml_sort_five_case3(t_stack *a, t_stack *b);
+void	sml_sort_five_case4(t_stack *a, t_stack *b);

@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 20:40:26 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/06/05 18:03:41 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/06/25 14:59:46 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 #include "../libft/libft.h"
-
 
 /*
  *	arr num: num_ra, num_rb, num_pb
@@ -31,12 +30,24 @@ void	a_to_b(t_stack *a, t_stack *b, int r)
 	}
 	if (select_pivots(a, r, pivot))
 		ft_error_stacks(a, b);
+	num[0] = r;
+	move_parts_atob(a, b, pivot, num);
+	backrotate_ra_rb(a, b, num);
+	a_to_b(a, b, num[0]);
+	b_to_a(a, b, num[1]);
+	b_to_a(a, b, num[2] - num[1]);
+}
+
+static void	move_parts_atob(t_stack *a, t_stack *b, int pivot[], int num[])
+{
+	int	r;
+	int	i;
+
+	r = num[0];
 	ft_memset(num, 0, sizeof(int) * 3);
 	i = -1;
 	while (++i < r)
 	{
-		if (a->head == NULL)
-			ft_error_stacks(a, b);
 		temp = a->head->data;
 		if (temp >= pivot[1])
 		{
@@ -54,10 +65,6 @@ void	a_to_b(t_stack *a, t_stack *b, int r)
 			}
 		}
 	}
-	backrotate_ra_rb(a, b, num);
-	a_to_b(a, b, num[0]);
-	b_to_a(a, b, num[1]);
-	b_to_a(a, b, num[2] - num[1]);
 }
 
 /*
@@ -77,12 +84,24 @@ void	b_to_a(t_stack *a, t_stack *b, int r)
 	}
 	if (select_pivots(b, r, pivot))
 		ft_error_stacks(a, b);
+	num[0] = r;
+	move_parts_btoa(a, b, pivot, num);
+	a_to_b(a, b, num[2] - num[0]);
+	backrotate_ra_rb(a, b, num);
+	a_to_b(a, b, num[0]);
+	b_to_a(a, b, num[1]);
+}
+
+static void	move_parts_btoa(t_stack *a, t_stack *b, int pivot[], int num[])
+{
+	int	r;
+	int	i;
+
+	r = num[0];
 	ft_memset(num, 0, sizeof(int) * 3);
 	i = -1;
 	while (++i < r)
 	{
-		if (b->head == NULL)
-			ft_error_stacks(a, b);
 		temp = b->head->data;
 		if (temp < pivot[0])
 		{
@@ -100,8 +119,4 @@ void	b_to_a(t_stack *a, t_stack *b, int r)
 			}
 		}
 	}
-	a_to_b(a, b, num[2] - num[0]);
-	backrotate_ra_rb(a, b, num);
-	a_to_b(a, b, num[0]);
-	b_to_a(a, b, num[1]);
 }

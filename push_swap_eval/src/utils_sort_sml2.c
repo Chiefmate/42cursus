@@ -10,50 +10,48 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../include/push_swap.h"
 
-
-void    smlsort_b_case312(t_stack *a, t_stack *b)
+void	smlsort_b_case312(t_stack *a, t_stack *b)
 {
-    pa(a, b);
-    sb(b);
-    pa(a, b);
-    pa(a, b);
+	pa(a, b);
+	sb(b);
+	pa(a, b);
+	pa(a, b);
 }
 
-void    smlsort_b_case231(t_stack *a, t_stack *b)
+void	smlsort_b_case231(t_stack *a, t_stack *b)
 {
-    sb(b);
-    pa(a, b);
-    pa(a, b);
-    pa(a, b);
+	sb(b);
+	pa(a, b);
+	pa(a, b);
+	pa(a, b);
 }
 
-void    smlsort_b_case213(t_stack *a, t_stack *b)
+void	smlsort_b_case213(t_stack *a, t_stack *b)
 {
-    pa(a, b);
-    sb(b);
-    pa(a, b);
-    sa(a);
-    pa(a, b);
+	pa(a, b);
+	sb(b);
+	pa(a, b);
+	sa(a);
+	pa(a, b);
 }
 
-void    smlsort_b_case132(t_stack *a, t_stack *b)
+void	smlsort_b_case132(t_stack *a, t_stack *b)
 {
-    sb(b);
-    pa(a, b);
-    sb(b);
-    pa(a, b);
-    pa(a, b);
+	sb(b);
+	pa(a, b);
+	sb(b);
+	pa(a, b);
+	pa(a, b);
 }
 
-void    smlsort_b_case123(t_stack *a, t_stack *b)
+void	smlsort_b_case123(t_stack *a, t_stack *b)
 {
-    pa(a, b);
-    sb(b);
-    pa(a, b);
-    sa(a);
-    pa(a, b);
-    sa(a);
+	pa(a, b);
+	sb(b);
+	pa(a, b);
+	sa(a);
+	pa(a, b);
+	sa(a);
 }

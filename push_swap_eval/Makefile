@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+         #
+#    By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/04 11:48:54 by hyunhole          #+#    #+#              #
-#    Updated: 2022/06/05 17:58:13 by hyunhole         ###   ########.fr        #
+#    Updated: 2022/06/25 14:44:07 by hyunhole         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,9 @@ LIB_DIR 	=	./libft/
 
 SRCS		=	push_swap.c \
 			utils_sort_1.c utils_sort_sml1.c utils_sort_sml2.c  utils_sort_sml3.c \
-			stack_ops_1.c stack_ops_2.c rules1.c rules2.c rules3.c \
-			sort.c sort2.c \
+			utils_sort_sml4.c utils_sort_sml5.c \
+			stack_ops_1.c stack_ops_2.c stack_ops_3.c rules1.c rules2.c rules3.c \
+			sort.c sort2.c sort3.c \
 			parser.c \
 			error.c
 

@@ -12,30 +12,29 @@
 
 #include "../include/push_swap.h"
 
-
-void    smlsort_case132(t_stack *a)
+void	smlsort_case132(t_stack *a)
 {
-    sa(a);
-    ra(a);
+	sa(a);
+	ra(a);
 }
 
-void    smlsort_case213(t_stack *a)
+void	smlsort_case213(t_stack *a)
 {
-    sa(a);
+	sa(a);
 }
 
-void    smlsort_case231(t_stack *a)
+void	smlsort_case231(t_stack *a)
 {
-    rra(a);
+	rra(a);
 }
 
-void    smlsort_case312(t_stack *a)
+void	smlsort_case312(t_stack *a)
 {
-    ra(a);
+	ra(a);
 }
 
-void    smlsort_case321(t_stack *a)
+void	smlsort_case321(t_stack *a)
 {
-    sa(a);
-    rra(a);
+	sa(a);
+	rra(a);
 }

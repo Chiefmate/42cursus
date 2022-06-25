@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 12:10:06 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/06/05 17:36:05 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/06/25 14:18:59 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*  select left pivot and right pivot in stack a within r elements 
  *  assign selected pivots in array pivot: pivot[0] = lp, pivot[1] = rp
  */
-int    select_pivots(t_stack *a, int r, int pivot[])
+int	select_pivots(t_stack *a, int r, int pivot[])
 {
 	t_node	*temp;
 	int		*arr;
@@ -58,25 +58,31 @@ void	intarr_sort(int arr[], int begin, int end)
 		while (i < j)
 		{
 			while (arr[i] <= arr[pivot] && i < end)
-			i++;
+				i++;
 			while (arr[j] > arr[pivot])
-			j--;
+				j--;
 			if (i < j)
-			{
-			temp = arr[i];
-			arr[i] = arr[j];
-			arr[j] = temp;
-			}
+				swap_int(arr + i, arr + j);
 		}
 		temp = arr[pivot];
 		arr[pivot] = arr[j];
 		arr[j] = temp;
-		intarr_sort(arr, begin, j-1);
-		intarr_sort(arr, j+1, end);
+		intarr_sort(arr, begin, j - 1);
+		intarr_sort(arr, j + 1, end);
 	}
 }
 
-int   is_sorted(t_stack *a, int r)
+static void	swap_int(int *a, int *b)
+{
+	int	temp;
+
+	temp = *a;
+	*a = *b;
+	*b = temp;
+	return ;
+}
+
+int	is_sorted(t_stack *a, int r)
 {
 	int		temp;
 	int		i;
@@ -98,7 +104,7 @@ int   is_sorted(t_stack *a, int r)
 	return (1);
 }
 
-int   is_sorted_rev(t_stack *b, int r)
+int	is_sorted_rev(t_stack *b, int r)
 {
 	int		temp;
 	int		i;
