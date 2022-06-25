@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 20:40:26 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/06/25 15:09:53 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/06/25 15:30:06 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,16 +55,14 @@ static void	move_parts_atob(t_stack *a, t_stack *b, int pivot[], int num[])
 		{
 			ra(a);
 			num[0]++;
+			continue ;
 		}
-		else
+		pb(a, b);
+		num[2]++;
+		if (temp >= pivot[0])
 		{
-			pb(a, b);
-			num[2]++;
-			if (temp >= pivot[0])
-			{
-				rb(b);
-				num[1]++;
-			}
+			rb(b);
+			num[1]++;
 		}
 	}
 }
@@ -108,16 +106,14 @@ static void	move_parts_btoa(t_stack *a, t_stack *b, int pivot[], int num[])
 		{
 			rb(b);
 			num[1]++;
+			continue ;
 		}
-		else
+		pa(a, b);
+		num[2]++;
+		if (temp < pivot[1])
 		{
-			pa(a, b);
-			num[2]++;
-			if (temp < pivot[1])
-			{
-				ra(a);
-				num[0]++;
-			}
+			ra(a);
+			num[0]++;
 		}
 	}
 }
