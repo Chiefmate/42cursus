@@ -6,12 +6,15 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 20:40:26 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/06/25 14:59:46 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/06/25 15:09:53 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 #include "../libft/libft.h"
+
+static void	move_parts_atob(t_stack *a, t_stack *b, int pivot[], int num[]);
+static void	move_parts_btoa(t_stack *a, t_stack *b, int pivot[], int num[]);
 
 /*
  *	arr num: num_ra, num_rb, num_pb
@@ -19,8 +22,6 @@
 void	a_to_b(t_stack *a, t_stack *b, int r)
 {
 	int		pivot[2];
-	int		temp;
-	int		i;
 	int		num[3];
 
 	if (r <= 3)
@@ -42,6 +43,7 @@ static void	move_parts_atob(t_stack *a, t_stack *b, int pivot[], int num[])
 {
 	int	r;
 	int	i;
+	int	temp;
 
 	r = num[0];
 	ft_memset(num, 0, sizeof(int) * 3);
@@ -73,8 +75,6 @@ static void	move_parts_atob(t_stack *a, t_stack *b, int pivot[], int num[])
 void	b_to_a(t_stack *a, t_stack *b, int r)
 {
 	int		pivot[2];
-	int		temp;
-	int		i;
 	int		num[3];
 
 	if (r <= 3)
@@ -96,6 +96,7 @@ static void	move_parts_btoa(t_stack *a, t_stack *b, int pivot[], int num[])
 {
 	int	r;
 	int	i;
+	int	temp;
 
 	r = num[0];
 	ft_memset(num, 0, sizeof(int) * 3);

@@ -70,7 +70,7 @@ void	rrr(t_stack *a, t_stack *b);
 
 /* sort small scale */
 void	sml_sort_a(t_stack *a, t_stack *b, int r);
-void	sml_sort_a_three(t_stack *a, t_stack *b);
+void	sml_sort_a_three(t_stack *a);
 void	sml_sort_a_fourfive(t_stack *a, t_stack *b, int r);
 void	sml_sort_five_additional(t_stack *a, t_stack *b);
 

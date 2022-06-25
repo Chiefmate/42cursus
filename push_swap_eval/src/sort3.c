@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 14:43:32 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/06/25 14:51:24 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/06/25 15:13:35 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
  */
 void	sml_sort_a(t_stack *a, t_stack *b, int r)
 {
-	int	data[3];
-
 	if (r <= 1 || is_sorted(a, r))
 		return ;
 	if (r == 2)
@@ -34,11 +32,11 @@ void	sml_sort_a(t_stack *a, t_stack *b, int r)
 		return ;
 	}
 	else
-		sml_sort_a_three(a, b);
+		sml_sort_a_three(a);
 	return ;
 }
 
-void	sml_sort_a_three(t_stack *a, t_stack *b)
+void	sml_sort_a_three(t_stack *a)
 {
 	int	data[3];
 
@@ -67,7 +65,7 @@ void	sml_sort_a_fourfive(t_stack *a, t_stack *b, int r)
 	if (r == 5)
 		pb(a, b);
 	pb(a, b);
-	sml_sort_a_three(a, b);
+	sml_sort_a_three(a);
 	data[0] = a->head->data;
 	data[1] = a->head->next->data;
 	data[2] = a->head->next->next->data;

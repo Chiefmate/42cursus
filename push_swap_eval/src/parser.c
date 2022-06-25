@@ -6,13 +6,15 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 17:41:16 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/06/25 15:06:33 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/06/25 15:10:37 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <limits.h>
 #include "../include/push_swap.h"
 #include "../libft/libft.h"
+
+static void	check_if_in_arr(t_stack *a, long long n, char **splitarr);
 
 /* parse input and assigns the values into inarr
  *  returns 0   if error
@@ -46,7 +48,6 @@ long long	atoi_with_check(char *s, t_stack *a, char **splitarr)
 {
 	char		flag;
 	long long	n;
-	t_node		*curr;
 
 	flag = 0;
 	n = 0;

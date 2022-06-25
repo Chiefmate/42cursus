@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   utils_sort_1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 12:10:06 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/06/25 14:18:59 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/06/25 15:08:07 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
+
+static void	swap_int(int *a, int *b);
 
 /*  select left pivot and right pivot in stack a within r elements 
  *  assign selected pivots in array pivot: pivot[0] = lp, pivot[1] = rp

@@ -6,11 +6,14 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:54:06 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/06/25 14:51:06 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/06/25 15:13:24 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
+
+static void	new_sml_sort_a_exception(t_stack *a, int r);
+static void	sml_sort_btoa_exception(t_stack *a, t_stack *b, int r);
 
 /*
  *	r == 2 or 3 during sorting
@@ -61,7 +64,6 @@ static void	new_sml_sort_a_exception(t_stack *a, int r)
 void	sml_sort_btoa(t_stack *a, t_stack *b, int r)
 {
 	int	data[3];
-	int	i;
 
 	if (is_sorted_rev(b, r) || r <= 2)
 	{
@@ -88,6 +90,8 @@ void	sml_sort_btoa(t_stack *a, t_stack *b, int r)
 
 static void	sml_sort_btoa_exception(t_stack *a, t_stack *b, int r)
 {
+	int	i;
+	
 	if (r <= 1 || is_sorted_rev(b, r))
 	{
 		i = -1;
