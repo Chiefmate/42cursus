@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:54:06 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/06/25 15:13:24 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/06/25 15:28:28 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	sml_sort_btoa(t_stack *a, t_stack *b, int r)
 static void	sml_sort_btoa_exception(t_stack *a, t_stack *b, int r)
 {
 	int	i;
-	
+
 	if (r <= 1 || is_sorted_rev(b, r))
 	{
 		i = -1;
