@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 20:40:26 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/06/25 15:30:06 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/06/25 17:20:06 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	a_to_b(t_stack *a, t_stack *b, int r)
 	int		pivot[2];
 	int		num[3];
 
-	if (r <= 3)
+	if (r <= 3 || is_sorted(a, r))
 	{
 		new_sml_sort_a(a, b, r);
 		return ;
@@ -75,7 +75,7 @@ void	b_to_a(t_stack *a, t_stack *b, int r)
 	int		pivot[2];
 	int		num[3];
 
-	if (r <= 3)
+	if (r <= 3 || is_sorted_rev(b, r))
 	{
 		sml_sort_btoa(a, b, r);
 		return ;
