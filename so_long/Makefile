@@ -6,49 +6,46 @@
 #    By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/04 11:48:54 by hyunhole          #+#    #+#              #
-#    Updated: 2022/06/27 19:27:01 by hyunhole         ###   ########.fr        #
+#    Updated: 2022/06/27 19:23:37 by hyunhole         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	push_swap
+NAME		=	so_long
 
 CC			=	cc
 CFLAGS		=	-Wall -Wextra -Werror
+MLXFLAGS	=	-lmlx -framework OpenGL -framework AppKit
 AR			=	ar
 ARFLAGS		=	crs
 RM			=	rm -f
 
+INCS_DIR	=	./include/
 SRCS_DIR	=	./src/
-LIB_DIR 	=	./libft/
+LIBFT_DIR 	=	./libft/
+LIBMLX_DIR	=	./minilibx_opengl_20191021/
 
-SRCS_NODIR	=	push_swap.c \
-				utils_sort_1.c utils_sort_sml1.c utils_sort_sml2.c  utils_sort_sml3.c \
-				utils_sort_sml4.c utils_sort_sml5.c \
-				stack_ops_1.c stack_ops_2.c stack_ops_3.c \
-				rules1.c rules2.c rules3.c \
-				sort.c sort2.c sort3.c \
-				parser.c \
-				error.c
-SRCS 		=	$(addprefix $(SRCS_DIR), $(SRCS_NODIR))
-OBJS		=	$(SRCS:.c=.o)
+SRCS_NODIR	=	so_long.c \
+				check_map.c
+SRCS = $(addprefix $(SRCS_DIR), $(SRCS_NODIR))
+OBJS = $(SRCS:.c=.o)
 
 all: subsystem $(NAME)
 
 subsystem:
-	$(MAKE) -C $(LIB_DIR)
+	$(MAKE) -C $(LIBFT_DIR)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $^ $(LIB_DIR)libft.a -o $(NAME)
+	$(CC) $(CFLAGS) $^ $(LIBFT_DIR)libft.a -L $(LIBMLX_DIR) $(MLXFLAGS) -o $(NAME)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	make -C $(LIB_DIR) clean
+	make -C $(LIBFT_DIR) clean
 	rm -f $(OBJS)
 
 fclean: clean
-	make -C $(LIB_DIR) fclean
+	make -C $(LIBFT_DIR) fclean
 	rm -f $(NAME)
 
 re: 

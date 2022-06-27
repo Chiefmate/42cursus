@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 18:59:47 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/06/25 15:23:15 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/06/27 17:26:58 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ typedef struct s_stack {
 /* error.c */
 void		ft_error_with_clear(t_stack *a, char **splitarr);
 void		ft_error_stacks(t_stack *a, t_stack *b);
-void		ft_error(void);
 
 /* parser.c */
 int			parse_input(t_stack *a, int argc, char *argv[]);
