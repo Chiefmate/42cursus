@@ -6,7 +6,7 @@
 #    By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/04 11:48:54 by hyunhole          #+#    #+#              #
-#    Updated: 2022/06/27 19:23:37 by hyunhole         ###   ########.fr        #
+#    Updated: 2022/06/27 20:31:30 by hyunhole         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,10 +35,10 @@ subsystem:
 	$(MAKE) -C $(LIBFT_DIR)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $^ $(LIBFT_DIR)libft.a -L $(LIBMLX_DIR) $(MLXFLAGS) -o $(NAME)
+	$(CC) $(CFLAGS) -I $(INCS_DIR) $^ $(LIBFT_DIR)libft.a -L $(LIBMLX_DIR) $(MLXFLAGS) -o $(NAME)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -I $(INCS_DIR) -c $< -o $@
 
 clean:
 	make -C $(LIBFT_DIR) clean
