@@ -40,11 +40,11 @@ static char	*ft_strndup(char *src, int size)
 	return (ret);	
 }
 
-void	laod_map(char *filename, t_map *map)
+void	load_map(char *filename, t_map *map)
 {
 	int		fd;
-	char	*temp;
-	
+	char	*line;
+
 	fd = open(filename, O_RDONLY);
 	line = get_next_line(fd);
 	map->height = 0;

@@ -25,7 +25,8 @@ LIBFT_DIR 	=	./libft/
 LIBMLX_DIR	=	./minilibx_opengl_20191021/
 
 SRCS_NODIR	=	so_long.c \
-				check_map.c
+				get_map.c key_event.c \
+				get_next_line.c get_next_line_utils.c
 SRCS = $(addprefix $(SRCS_DIR), $(SRCS_NODIR))
 OBJS = $(SRCS:.c=.o)
 

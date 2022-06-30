@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "so_long.h"
+
 /*
  *	concatenate a and b, which is of length of c_size
  */

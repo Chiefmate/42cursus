@@ -21,8 +21,6 @@ void	init_coord(t_coord *param)
 
 int	get_pressed_key(int key, t_coord *param)
 {
-	static int	a = 0;
-
 	if (key == KEY_W)
 		param->y += 1;
 	else if (key == KEY_A)

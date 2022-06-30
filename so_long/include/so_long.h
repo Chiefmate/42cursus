@@ -13,7 +13,9 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 # include "../minilibx_opengl_20191021/mlx.h"
+# include "../libft/libft.h"
 # include <stdlib.h>
+# include <fcntl.h>
 
 # include <stdio.h>			/* must be deleted */
 
@@ -24,6 +26,12 @@
 # define KEY_A					0
 # define KEY_S					1
 # define KEY_D					2
+
+/* OPEN_MAX */
+#include <limits.h>
+/* 매크로 선언 여기서 해도 되는지 norm 확인 필요 */
+#define BUFFER_SIZE	10
+
 
 typedef	struct	s_coord
 {
@@ -41,5 +49,7 @@ typedef	struct	s_map
 void	init_coord(t_coord *param);
 int		get_pressed_key(int key, t_coord *param);
 void	load_map(char *filename, t_map *map);
+char	*get_next_line(int fd);
+size_t	ft_strnlen(char *str, size_t n);
 
 #endif
