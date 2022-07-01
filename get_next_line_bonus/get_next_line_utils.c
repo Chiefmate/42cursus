@@ -82,26 +82,3 @@ void	*ft_memset(void *b, int c, size_t n)
 	}
 	return (b);
 }
-
-//  ft_strlen used
-char	*ft_strdup(const char *s)
-{
-	char	*ret;
-	size_t	idx;
-	size_t	s_len;
-
-	s_len = 0;
-	while (s[s_len])
-		s_len++;
-	ret = (char *)malloc(sizeof(char) * (s_len + 1));
-	if (ret == (void *)0)
-		return (ret);
-	idx = 0;
-	while (idx < s_len)
-	{
-		ret[idx] = s[idx];
-		idx++;
-	}
-	ret[idx] = '\0';
-	return (ret);
-}

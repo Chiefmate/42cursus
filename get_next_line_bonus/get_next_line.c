@@ -63,7 +63,7 @@ int	empty_buf(int fd, char *buf, t_store *store)
 	temp = store;
 	while (temp && temp->fd != fd)
 		temp = temp->next;
-	store_buf_len = ft_strlen(store->buf);
+	store_buf_len = ft_strnlen(store->buf, BUFFER_SIZE);
 	if (!temp)
 	{
 		temp->next = (t_store *)malloc(sizeof(t_store));
@@ -121,7 +121,7 @@ char	*make_ret(char *ret, char *buf, char *keep_fd, ssize_t read_size)
 	if (offset)
 	{
 		ret = concat_ret_buf(ret, buf, offset - buf + 1);
-		if (ret == -1)
+		if (ret == NULL)
 			return (NULL);
 		ft_memset(keep_fd, 0, BUFFER_SIZE);
 		if (read_size - (offset - buf) >= 1)
@@ -142,7 +142,12 @@ char	*concat_ret_buf(char *a, char *b, ssize_t c_size)
 	size_t	len_a;
 
 	if (!a)
-		a = ft_strdup("");
+	{
+		a = (char *)malloc(sizeof(char));
+		if (!a)
+			return (NULL);
+		a[0] = '\0';
+	}
 	len_a = 0;
 	while (a[len_a])
 		len_a++;

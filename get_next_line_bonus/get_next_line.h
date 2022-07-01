@@ -36,6 +36,5 @@ void	*ft_memchr(const void *buf, int c, size_t count);
 size_t	ft_strnlen(char *str, size_t n);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 void	*ft_memset(void *b, int c, size_t n);
-char	*ft_strdup(const char *s);
 
 #endif
