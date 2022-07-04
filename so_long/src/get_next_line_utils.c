@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "so_long.h"
 
 //	ft_memchr used
 size_t	ft_strnlen(char *str, size_t n)

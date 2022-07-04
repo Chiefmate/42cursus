@@ -21,8 +21,8 @@ static char	*add_line_info(char *info, char *line)
 	ret = (char *)malloc(len);
 	if (!ret)
 		return (NULL);
-	ft_memcpy(ret, info, sizeof(info));
-	ft_memcpy(ret + sizeof(info), line, sizeof(line) - 1);
+	ft_memcpy(ret, info, ft_strlen(info));
+	ft_memcpy(ret + ft_strlen(info), line, ft_strlen(line) - 1);
 	ret[len - 1] = '\0';
 	free(info);
 	return (ret);
@@ -49,7 +49,7 @@ void	load_map(char *filename, t_map *map)
 	line = get_next_line(fd);
 	map->height = 0;
 	map->width = ft_strlen(line) - 1;
-	map->info = ft_strndup(line, sizeof(line) - 1);
+	map->info = ft_strndup(line, ft_strlen(line) - 1);
 	free(line);
 	while (line)
 	{

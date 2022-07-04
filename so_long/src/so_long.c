@@ -14,18 +14,19 @@
 
 int	main(int argc, char *argv[])
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
 	t_coord	param;
 	t_map	map;
+	t_game	*game;
 
 	if (argc <= 1 || argc > 2)
 		return (0);
 	load_map(argv[1], &map);
+	game = make_game(map);
+	map_to_img(map, *game);
+
 	init_coord(&param);
-	mlx_ptr = mlx_init();
-	win_ptr = mlx_new_window(mlx_ptr, 500, 500, "so_long");
-	mlx_hook(win_ptr, X_EVENT_KEY_RELEASE, 0, get_pressed_key, &param);
-	mlx_loop(mlx_ptr);
+
+	mlx_hook(game->wlx, X_EVENT_KEY_RELEASE, 0, get_pressed_key, &param);
+	mlx_loop(game->mlx);
 	return (0);
 }
