@@ -37,7 +37,7 @@ static char	*ft_strndup(char *src, int size)
 		return (NULL);
 	ft_memcpy(ret, src, size - 1);
 	ret[size - 1] = '\0';
-	return (ret);	
+	return (ret);
 }
 
 void	load_map(char *filename, t_map *map)
