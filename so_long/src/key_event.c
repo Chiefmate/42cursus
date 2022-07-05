@@ -19,18 +19,24 @@ void	init_coord(t_coord *param)
 	return ;
 }
 
-int	get_pressed_key(int key, t_coord *param)
+void	end_game(t_map *m, t_game *g)
+{
+
+	mlx_destroy_window(g->mlx, g->wlx);
+	exit(0);
+}
+
+int	press_key(int key, t_map *map, t_game *game)
 {
 	if (key == KEY_W)
-		param->y += 1;
+		move_w(map, game);
 	else if (key == KEY_A)
-		param->x -= 1;
+		move_a(map, game);
 	else if (key == KEY_S)
-		param->y -= 1;
+		move_s(map, game);
 	else if (key == KEY_D)
-		param->x += 1;
+		move_d(map, game);
 	else if (key == KEY_ESC)
-		exit(0);
-	printf("x: %d, y: %d\n", param->x, param->y);
+		end_game(map, game);
 	return (0);
 }

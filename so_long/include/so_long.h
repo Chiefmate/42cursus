@@ -45,6 +45,7 @@ typedef	struct	s_map
 {
 	int		width;
 	int		height;
+	int		num_collect;
 	char	*info;
 }				t_map;
 
@@ -62,7 +63,7 @@ typedef	struct	s_game
 	void		*mlx;
 	void		*wlx;
 	int			walk_cnt;
-	int			collect_cnt;
+	int			collected_cnt;
 	t_imgstore	img;
 }				t_game;
 
