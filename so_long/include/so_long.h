@@ -18,6 +18,10 @@
 # include <stdio.h>
 # include <fcntl.h>
 
+#ifndef OPEN_MAX
+	#define OPEN_MAX			16
+#endif
+
 # define X_EVENT_KEY_PRESS		2
 # define X_EVENT_KEY_RELEASE	3
 # define KEY_ESC				53
@@ -57,6 +61,8 @@ typedef	struct	s_game
 {
 	void		*mlx;
 	void		*wlx;
+	int			walk_cnt;
+	int			collect_cnt;
 	t_imgstore	img;
 }				t_game;
 

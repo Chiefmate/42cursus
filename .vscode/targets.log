@@ -1,125 +1,189 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-# GNU Make 3.81
-# Copyright (C) 2006  Free Software Foundation, Inc.
-# This is free software; see the source for copying conditions.
-# There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A
-# PARTICULAR PURPOSE.
+# GNU Make 4.2.1
+# Built for x86_64-pc-linux-gnu
+# Copyright (C) 1988-2016 Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
 
-# This program built for i386-apple-darwin11.3.0
- 
-make: *** No rule to make target `all'.  Stop.
-
-
-# Make data base, printed on Mon Jul  4 15:48:31 2022
+# Make data base, printed on Tue Jul  5 15:23:30 2022
 
 # Variables
 
+# 'override' directive
+GNUMAKEFLAGS := 
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
 ?F = $(notdir $?)
 # environment
+DESKTOP_SESSION = ubuntu
+# default
+.SHELLFLAGS := -c
+# environment
+XDG_SESSION_CLASS = user
+# environment
+XDG_SESSION_TYPE = x11
+# environment
 VSCODE_LOG_NATIVE = false
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
+# environment
+IM_CONFIG_PHASE = 1
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
-# automatic
-@F = $(notdir $@)
+# environment
+XAUTHORITY = /run/user/1001/gdm/Xauthority
+# environment
+GDMSESSION = ubuntu
+# environment
+XMODIFIERS = @im=fcitx
 # makefile
-CURDIR := /Users/hyunhole/42cursus
+CURDIR := /home/lee/42cursus
 # makefile
 SHELL = /bin/sh
 # environment
-VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"ko","availableLanguages":{"*":"ko"},"_languagePackId":"738ac08552cca045871a73764b8c446f.ko","_translationsConfigFile":"/home/lee/.config/Code/clp/738ac08552cca045871a73764b8c446f.ko/tcf.json","_cacheRoot":"/home/lee/.config/Code/clp/738ac08552cca045871a73764b8c446f.ko","_resolvedLanguagePackCoreLocation":"/home/lee/.config/Code/clp/738ac08552cca045871a73764b8c446f.ko/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5","_corruptedFile":"/home/lee/.config/Code/clp/738ac08552cca045871a73764b8c446f.ko/corrupted.info","_languagePackSupport":true}
 # environment
-_ = /usr/bin/make
+_ = /usr/share/code/code
+# environment
+JOURNAL_STREAM = 8:47970
+# environment
+XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # makefile
 MAKEFILE_LIST := 
+# automatic
+@F = $(notdir $@)
+# environment
+GIO_LAUNCHED_DESKTOP_FILE = /usr/share/applications/code.desktop
+# environment
+USERNAME = lee
+# environment
+XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
+# environment
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1001/bus
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cmxw00357g/T/vscode-ipc-bfabb75c-4d52-49c0-8305-12f2dc9f6622.sock
+MANAGERPID = 2191
 # environment
-VSCODE_CWD = /
+CLUTTER_IM_MODULE = fcitx
 # environment
-PATH = /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
+LESSOPEN = | /usr/bin/lesspipe %s
 # environment
-LaunchInstanceID = EB4046ED-57DB-4A67-BD04-0B7E4A55CFB4
+VSCODE_CWD = /home/lee
+# default
+MAKE_HOST := x86_64-pc-linux-gnu
+# environment
+PATH = /home/lee/gems/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+# environment
+GPG_AGENT_INFO = /run/user/1001/gnupg/S.gpg-agent:0:1
+# environment
+SESSION_MANAGER = local/lee-Inspiron-15-5510:@/tmp/.ICE-unix/2420,unix/lee-Inspiron-15-5510:/tmp/.ICE-unix/2420
+# environment
+XDG_RUNTIME_DIR = /run/user/1001
+# environment
+XDG_MENU_PREFIX = gnome-
 # environment
 VSCODE_LOG_STACK = false
 # environment
 ELECTRON_RUN_AS_NODE = 1
-# default
-.FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.07C33XCHOH/Listeners
+INVOCATION_ID = 8c8b73a1dffb4e338ef87701acc4d19c
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
+# environment
+LS_COLORS = 
+# environment
+XDG_SESSION_DESKTOP = ubuntu
+# environment
+SSH_AUTH_SOCK = /run/user/1001/keyring/ssh
+# environment
+GIO_LAUNCHED_DESKTOP_FILE_PID = 13943
 # automatic
 %F = $(notdir $%)
 # environment
+DISPLAY = :0
+# environment
+GTK_IM_MODULE = fcitx
+# environment
 VSCODE_PIPE_LOGGING = true
 # environment
-PWD = /Users/hyunhole/42cursus
+PWD = /home/lee/42cursus
+# default
+.LOADED := 
 # environment
-ORIGINAL_XDG_CURRENT_DESKTOP = undefined
+GEM_HOME = /home/lee/gems
+# environment
+SSH_AGENT_PID = 2374
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
+# environment
+GTK_MODULES = gail:atk-bridge
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
-HOME = /Users/hyunhole
-# default
-MAKEFILEPATH := /Applications/Xcode.app/Contents/Developer/Makefiles
+HOME = /home/lee
 # environment
-VSCODE_CODE_CACHE_PATH = /Users/hyunhole/Library/Application Support/Code/CachedData/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5
+LESSCLOSE = /usr/bin/lesspipe %s %s
 # environment
-LOGNAME = hyunhole
+VSCODE_CODE_CACHE_PATH = /home/lee/.config/Code/CachedData/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5
+# environment
+LOGNAME = lee
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# environment
+GNOME_DESKTOP_SESSION_ID = this-is-deprecated
 # automatic
 ^D = $(patsubst %/,%,$(dir $^))
 # environment
-XPC_FLAGS = 0x0
+MAKELEVEL := 0
 # default
 MAKE = $(MAKE_COMMAND)
 # default
 MAKECMDGOALS := all
 # environment
-SHLVL = 1
-# default
-MAKE_VERSION := 3.81
+QT_IM_MODULE = fcitx
 # environment
-USER = hyunhole
+SHLVL = 0
+# environment
+GNOME_SHELL_SESSION_MODE = ubuntu
+# environment
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1001/vscode-ipc-1f0c80cd-bb2d-452d-aca8-d4b42944554c.sock
+# default
+MAKE_VERSION := 4.2.1
+# environment
+USER = lee
 # makefile
 .DEFAULT_GOAL := 
+# environment
+XDG_CURRENT_DESKTOP = Unity
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # default
-MAKE_COMMAND := /Applications/Xcode.app/Contents/Developer/usr/bin/make
+MAKE_COMMAND := make
 # default
 .VARIABLES := 
-# environment
-TMPDIR = /var/folders/zz/zyxvpxvq6csfxvn_n000cmxw00357g/T/
 # automatic
 *F = $(notdir $*)
 # environment
-VSCODE_IPC_HOOK = /Users/hyunhole/Library/Application Support/Code/1.67.2-main.sock
+VSCODE_IPC_HOOK = /run/user/1001/vscode-c608a1b8-1.67.2-main.sock
 # makefile
-MAKEFLAGS = Rrqp
+MAKEFLAGS = pqrR
 # environment
-MFLAGS = -Rrqp
+MFLAGS = -pqrR
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
-# environment
-XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000009.Electron
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
+# environment
+GDK_BACKEND = x11
 # automatic
 +F = $(notdir $+)
 # environment
-__CF_USER_TEXT_ENCODING = 0x194EF:0x0:0x0
-# environment
-COMMAND_MODE = unix2003
+QT_ACCESSIBILITY = 1
 # default
 MAKEFILES := 
 # automatic
@@ -127,21 +191,29 @@ MAKEFILES :=
 # environment
 LC_ALL = C
 # environment
-SECURITYSESSIONID = 186cd
+QT4_IM_MODULE = fcitx
+# environment
+GJS_DEBUG_TOPICS = JS ERROR;JS LOG
 # automatic
 ^F = $(notdir $^)
 # default
 SUFFIXES := 
-# default
-.INCLUDE_DIRS = /usr/local/include
 # environment
-MAKELEVEL := 0
+CHROME_DESKTOP = code-url-handler.desktop
+# environment
+WINDOWPATH = 2
+# default
+.INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
+# environment
+GJS_DEBUG_OUTPUT = stderr
+# default
+.RECIPEPREFIX := 
 # environment
 LANG = C
 # environment
-VSCODE_PID = 86229
+VSCODE_PID = 13943
 # variable set hash-table stats:
-# Load=63/1024=6%, Rehash=0, Collisions=1/84=1%
+# Load=101/1024=10%, Rehash=0, Collisions=13/123=11%
 
 # Pattern-specific Variable Values
 
@@ -149,9 +221,9 @@ VSCODE_PID = 86229
 
 # Directories
 
-# . (device 16777225, inode 4102714): 18 files, no impossibilities.
+# . (device 66307, inode 4063714): 19 files, no impossibilities.
 
-# 18 files, no impossibilities in 1 directories.
+# 19 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -161,38 +233,24 @@ VSCODE_PID = 86229
 
 # Not a target:
 all:
-#  Command-line target.
+#  Command line target.
 #  Implicit rule search has been done.
 #  File does not exist.
-#  File has not been updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-# Not a target:
-.SUFFIXES:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
 Makefile:
-#  A default, MAKEFILES, or -include/sinclude makefile.
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has been updated.
 #  Failed to be updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 makefile:
-#  A default, MAKEFILES, or -include/sinclude makefile.
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has been updated.
 #  Failed to be updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 .DEFAULT:
@@ -202,27 +260,27 @@ makefile:
 
 # Not a target:
 GNUmakefile:
-#  A default, MAKEFILES, or -include/sinclude makefile.
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has been updated.
 #  Failed to be updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # files hash-table stats:
-# Load=6/1024=1%, Rehash=0, Collisions=0/17=0%
+# Load=6/1024=1%, Rehash=0, Collisions=0/15=0%
 # VPATH Search Paths
 
-# No `vpath' search paths.
+# No 'vpath' search paths.
 
-# No general (`VPATH' variable) search path.
+# No general ('VPATH' variable) search path.
 
-# # of strings in strcache: 0
-# # of strcache buffers: 0
-# strcache size: total = 0 / max = 0 / min = 4096 / avg = 0
-# strcache free: total = 0 / max = 0 / min = 4096 / avg = 0
+# strcache buffers: 1 (0) / strings = 27 / storage = 280 B / avg = 10 B
+# current buf: size = 8162 B / used = 280 B / count = 27 / avg = 10 B
 
-# Finished Make data base on Mon Jul  4 15:48:31 2022
+# strcache performance: lookups = 30 / hit rate = 10%
+# hash-table stats:
+# Load=27/8192=0%, Rehash=0, Collisions=1/30=3%
+# Finished Make data base on Tue Jul  5 15:23:30 2022
 
  
+make: *** No rule to make target 'all'.  Stop.
+
