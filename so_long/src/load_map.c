@@ -60,4 +60,5 @@ void	load_map(char *filename, t_map *map)
 	}
 	close(fd);
 	printf("%s\n", map->info);
+	return ;
 }

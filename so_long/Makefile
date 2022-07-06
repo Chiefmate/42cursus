@@ -14,8 +14,7 @@ NAME		=	so_long
 
 CC			=	cc
 CFLAGS		=	-Wall -Wextra -Werror
-# MLXFLAGS	=	-lmlx -framework OpenGL -framework AppKit
-MLXFLAGS	=	-lmlx -lXext -lX11
+MLXFLAGS	=	-lmlx -framework OpenGL -framework AppKit
 AR			=	ar
 ARFLAGS		=	crs
 RM			=	rm -f
