@@ -63,19 +63,38 @@ typedef	struct	s_game
 {
 	void		*mlx;
 	void		*wlx;
+	t_map		*l_map;
 	int			walk_cnt;
 	int			collected_cnt;
 	t_imgstore	img;
 }				t_game;
 
-void	init_coord(t_coord *param);
-int		get_pressed_key(int key, t_coord *param);
+/* so_long.c */
+int		ft_exit_error(char *m);
+int		exit_game(t_game *game);
+
+/* map_to_img */
+t_game	*make_game(t_map *map);
+void	map_to_img(t_game game);
+
+/* key_event */
+void	end_game(t_game *g);
+void	clear_game(t_game *g);
+int		press_key(int key, t_game *game);
+
+void	move_w(t_game *g);
+void	move_a(t_game *g);
+void	move_s(t_game *g);
+void	move_d(t_game *g);
+
+/* load_map */
 void	load_map(char *filename, t_map *map);
 
-t_game	*make_game(t_map map);
-void	map_to_img(t_map map, t_game game);
-
+/* get_next_line */
 char	*get_next_line(int fd);
 size_t	ft_strnlen(char *str, size_t n);
+
+/* check_map */
+void	check_map(t_map *map);
 
 #endif

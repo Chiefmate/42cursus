@@ -33,10 +33,10 @@ int	main(int argc, char *argv[])
 	if (argc <= 1 || argc > 2)
 		return (0);
 	load_map(argv[1], &map);
-	check_map(map);
-	game = make_game(map);
-	map_to_img(map, *game);
-	mlx_hook(game->wlx, X_EVENT_KEY_RELEASE, 0, &get_pressed_key, game);
+	check_map(&map);
+	game = make_game(&map);
+	map_to_img(*game);
+	mlx_hook(game->wlx, X_EVENT_KEY_RELEASE, 0, &press_key, game);
 	mlx_hook(game->wlx, X_EVENT_KEY_EXIT, 0, &exit_game, game);
 	mlx_loop(game->mlx);
 	return (0);
