@@ -18,9 +18,15 @@
 # include <stdio.h>
 # include <fcntl.h>
 
-#ifndef OPEN_MAX
-	#define OPEN_MAX			16
-#endif
+/* get_next_line */
+# include <limits.h>
+# ifndef OPEN_MAX
+	#define OPEN_MAX			32
+# endif
+# define BUFFER_SIZE	10
+
+/* img_size */
+# define IMG_SIZE				32
 
 # define X_EVENT_KEY_PRESS		2
 # define X_EVENT_KEY_RELEASE	3
@@ -30,11 +36,6 @@
 # define KEY_A					0
 # define KEY_S					1
 # define KEY_D					2
-
-/* OPEN_MAX */
-#include <limits.h>
-/* 매크로 선언 여기서 해도 되는지 norm 확인 필요  - 한글 주석 안되므로 이 주석 지워야함*/
-#define BUFFER_SIZE	10
 
 typedef	struct	s_coord
 {

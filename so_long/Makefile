@@ -26,8 +26,9 @@ LIBMLX_DIR	=	./minilibx_opengl_20191021/
 
 SRCS_NODIR	=	so_long.c \
 				load_map.c \
+				check_map.c \
 				map_to_img.c \
-				key_event.c \
+				key_event.c key_event2.c\
 				get_next_line.c get_next_line_utils.c
 SRCS = $(addprefix $(SRCS_DIR), $(SRCS_NODIR))
 OBJS = $(SRCS:.c=.o)

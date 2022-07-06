@@ -12,11 +12,20 @@
 
 #include "so_long.h"
 
+static char	*ft_strndup(char *src, int size);
+static char	*add_line_info(char *info, char *line);
+
 static char	*add_line_info(char *info, char *line)
 {
 	char			*ret;
 	unsigned int	len;
 
+	if (!info && !line)
+		return (NULL);
+	else if (!info)
+		return (ft_strndup(line, ft_strlen(line)));
+	else if (!line)
+		return (info);
 	len = ft_strlen(info) + ft_strlen(line);
 	ret = (char *)malloc(len);
 	if (!ret)
@@ -25,9 +34,11 @@ static char	*add_line_info(char *info, char *line)
 	ft_memcpy(ret + ft_strlen(info), line, ft_strlen(line) - 1);
 	ret[len - 1] = '\0';
 	free(info);
+	free(line);
 	return (ret);
 }
 
+/* duplicate the src string with at most 'size - 1' chars */
 static char	*ft_strndup(char *src, int size)
 {
 	char	*ret;
@@ -49,7 +60,7 @@ void	load_map(char *filename, t_map *map)
 	line = get_next_line(fd);
 	map->height = 0;
 	map->width = ft_strlen(line) - 1;
-	map->info = ft_strndup(line, ft_strlen(line) - 1);
+	map->info = ft_strndup(line, ft_strlen(line));
 	free(line);
 	while (line)
 	{
