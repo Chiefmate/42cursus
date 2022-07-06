@@ -21,12 +21,12 @@
 /* get_next_line */
 # include <limits.h>
 # ifndef OPEN_MAX
-	#define OPEN_MAX			32
+#  define OPEN_MAX			32
 # endif
 # define BUFFER_SIZE	10
 
 /* img_size */
-# define IMG_SIZE				32
+# define IS						32
 
 # define X_EVENT_KEY_PRESS		2
 # define X_EVENT_KEY_RELEASE	3
@@ -37,36 +37,36 @@
 # define KEY_S					1
 # define KEY_D					2
 
-typedef	struct	s_coord
+typedef struct s_coord
 {
 	int	x;
 	int	y;
 }				t_coord;
 
-typedef	struct	s_map
+typedef struct s_map
 {
 	int		width;
 	int		height;
-	int		num_collect;
+	int		num_col;
 	char	*info;
 }				t_map;
 
-typedef	struct	s_imgstore
+typedef struct s_imgstore
 {
-	void	*empty;
+	void	*empt;
 	void	*wall;
-	void	*player;
-	void	*collectible;
+	void	*play;
+	void	*c;
 	void	*exit;
 }				t_imgstore;
 
-typedef	struct	s_game
+typedef struct s_game
 {
 	void		*mlx;
 	void		*wlx;
 	t_map		*l_map;
 	int			walk_cnt;
-	int			collected_cnt;
+	int			col_cnt;
 	t_imgstore	img;
 }				t_game;
 
@@ -76,7 +76,7 @@ int		exit_game(t_game *game);
 
 /* map_to_img */
 t_game	*make_game(t_map *map);
-void	map_to_img(t_game game);
+void	map_to_img(t_game g);
 
 /* key_event */
 void	end_game(t_game *g);

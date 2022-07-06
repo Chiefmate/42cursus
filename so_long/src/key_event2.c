@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 19:35:21 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/07/06 10:58:56 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/07/06 11:24:00 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	move_w(t_game *g)
 {
 	int		i;
-	t_map	*m = g->l_map;
+	t_map	*m;
 
 	m = g->l_map;
 	i = -1;
@@ -24,10 +24,10 @@ void	move_w(t_game *g)
 		if (m->info[i] == 'P')
 			break ;
 	}
-	if (m->info[i - m->width] == 'E' && m->num_collect == g->collected_cnt)
+	if (m->info[i - m->width] == 'E' && m->num_col == g->col_cnt)
 		clear_game(g);
 	if (m->info[i - m->width] == 'C')
-		g->collected_cnt += 1;
+		g->col_cnt += 1;
 	if (m->info[i - m->width] != '1' && m->info[i - m->width] != 'E')
 	{
 		m->info[i] = '0';
@@ -40,8 +40,8 @@ void	move_w(t_game *g)
 
 void	move_a(t_game *g)
 {
-	int	i;
-	t_map	*m = g->l_map;
+	int		i;
+	t_map	*m;
 
 	m = g->l_map;
 	i = -1;
@@ -50,10 +50,10 @@ void	move_a(t_game *g)
 		if (m->info[i] == 'P')
 			break ;
 	}
-	if (m->info[i - 1] == 'E' && m->num_collect == g->collected_cnt)
+	if (m->info[i - 1] == 'E' && m->num_col == g->col_cnt)
 		clear_game(g);
 	if (m->info[i - 1] == 'C')
-		g->collected_cnt += 1;
+		g->col_cnt += 1;
 	if (m->info[i - 1] != '1' && m->info[i - 1] != 'E')
 	{
 		m->info[i] = '0';
@@ -66,8 +66,8 @@ void	move_a(t_game *g)
 
 void	move_s(t_game *g)
 {
-	int	i;
-	t_map	*m = g->l_map;
+	int		i;
+	t_map	*m;
 
 	m = g->l_map;
 	i = -1;
@@ -76,10 +76,10 @@ void	move_s(t_game *g)
 		if (m->info[i] == 'P')
 			break ;
 	}
-	if (m->info[i + m->width] == 'E' && m->num_collect == g->collected_cnt)
+	if (m->info[i + m->width] == 'E' && m->num_col == g->col_cnt)
 		clear_game(g);
 	if (m->info[i + m->width] == 'C')
-		g->collected_cnt += 1;
+		g->col_cnt += 1;
 	if (m->info[i + m->width] != '1' && m->info[i + m->width] != 'E')
 	{
 		m->info[i] = '0';
@@ -92,8 +92,8 @@ void	move_s(t_game *g)
 
 void	move_d(t_game *g)
 {
-	int	i;
-	t_map	*m = g->l_map;
+	int		i;
+	t_map	*m;
 
 	m = g->l_map;
 	i = -1;
@@ -102,10 +102,10 @@ void	move_d(t_game *g)
 		if (m->info[i] == 'P')
 			break ;
 	}
-	if (m->info[i + 1] == 'E' && m->num_collect == g->collected_cnt)
+	if (m->info[i + 1] == 'E' && m->num_col == g->col_cnt)
 		clear_game(g);
 	if (m->info[i + 1] == 'C')
-		g->collected_cnt += 1;
+		g->col_cnt += 1;
 	if (m->info[i + 1] != '1' && m->info[i + 1] != 'E')
 	{
 		m->info[i] = '0';

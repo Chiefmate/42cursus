@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 09:38:23 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/07/06 10:12:04 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/07/06 11:23:12 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void	valid_check_map(t_map *map)
 	i = -1;
 	exit_num = 0;
 	play_num = 0;
-	map->num_collect = 0;
+	map->num_col = 0;
 	while (++i < (int)ft_strlen(map->info))
 	{
 		if (map->info[i] == 'E')
@@ -61,11 +61,11 @@ static void	valid_check_map(t_map *map)
 		else if (map->info[i] == 'P')
 			play_num++;
 		else if (map->info[i] == 'C')
-			map->num_collect += 1;
+			map->num_col += 1;
 	}
 	if (!exit_num)
 		ft_exit_error("No exit on the map\n");
-	if (map->num_collect == 0)
+	if (map->num_col == 0)
 		ft_exit_error("No collectible on the map\n");
 	if (play_num != 1)
 		ft_exit_error("Player must exist and be only one\n");
