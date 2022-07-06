@@ -70,6 +70,5 @@ void	load_map(char *filename, t_map *map)
 			map->info = add_line_info(map->info, line);
 	}
 	close(fd);
-	printf("%s\n", map->info);
 	return ;
 }

@@ -22,6 +22,7 @@ int	ft_exit_error(char *m)
 int	exit_game(t_game *game)
 {
 	mlx_destroy_window(game->mlx, game->wlx);
+	free(game);
 	exit(0);
 }
 
