@@ -4,6 +4,8 @@
         "ft_printf.h": "c",
         "push_swap.h": "c",
         "map": "c",
-        "fcntl.h": "c"
+        "fcntl.h": "c",
+        "unistd.h": "c",
+        "pipex.h": "c"
     }
 }
