@@ -62,16 +62,16 @@ int	parse_input(t_input *in, char *av[], char *envp[])
 	ret = 1;
 	in->infd = open(av[1], O_RDONLY);
 	if (in->infd == -1)
-		ft_error(1, "infile error");
+		perror("infile error");
 	in->outfd = open(av[4], O_RDWR | O_CREAT | O_TRUNC, 0644);
 	if (in->outfd == -1)
 		ft_error(1, "outfile error");
 	in->path = get_path(envp);
-	in->cmd_arg[0] = ft_split(av[2], ' ');
-	in->cmd_arg[1] = ft_split(av[3], ' ');
-	in->cmd[0] = get_cmd_argv(in->path, in->cmd_arg[0][0]);
-	in->cmd[1] = get_cmd_argv(in->path, in->cmd_arg[1][0]);
-	if (!in->cmd[0] || !in->cmd[1])
+	in->cmd_arg0 = ft_split(av[2], ' ');
+	in->cmd_arg1 = ft_split(av[3], ' ');
+	in->cmd0 = get_cmd_argv(in->path, in->cmd_arg0[0]);
+	in->cmd1 = get_cmd_argv(in->path, in->cmd_arg1[0]);
+	if (in->cmd0 == NULL || in->cmd1 == NULL)
 	{
 		ret = 127;
 		perror("command not found");
@@ -79,7 +79,7 @@ int	parse_input(t_input *in, char *av[], char *envp[])
 	return (ret);
 }
 
-void	fd_part(int fd_close, int std_in, int std_out)
+void	handle_fd(int fd_close, int std_in, int std_out)
 {
 	close(fd_close);
 	if (dup2(std_in, STDIN_FILENO) == -1)
@@ -106,15 +106,16 @@ int	main(int ac, char *av[], char *envp[])
 		ft_error(1, "fork error");
 	else if (in.pid == 0)
 	{
-		fd_part(in.pipe_fd[0], in.infd, in.pipe_fd[1]);
-		if (execve(in.cmd[0], in.cmd_arg[0], envp) == -1)
-			ft_error(ret, "execve error");
+		handle_fd(in.pipe_fd[0], in.infd, in.pipe_fd[1]);
+		if (execve(in.cmd0, in.cmd_arg0, envp) == -1)
+			ft_error_free_in(&in, ret, "execve error");
 	}
 	else
 	{
-		fd_part(in.pipe_fd[1], in.pipe_fd[0], in.outfd);
-		if (execve(in.cmd[1], in.cmd_arg[1], envp) == -1)
-			ft_error(ret, "execve error");
+		handle_fd(in.pipe_fd[1], in.pipe_fd[0], in.outfd);
+		waitpid(in.pid, NULL, WNOHANG);
+		if (execve(in.cmd1, in.cmd_arg1, envp) == -1)
+			ft_error_free_in(&in, ret, "execve error");
 	}
 	return (0);
 }
