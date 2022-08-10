@@ -32,7 +32,6 @@ typedef struct s_input {
 	pid_t	pid;
 }				t_input;
 
-
 char	**get_path(char *envp[]);
 char	*get_cmd_argv(char **path, char *cmd);
 int		parse_input(t_input *in, char *av[], char *envp[]);
