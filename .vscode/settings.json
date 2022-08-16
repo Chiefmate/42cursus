@@ -6,6 +6,7 @@
         "map": "c",
         "fcntl.h": "c",
         "unistd.h": "c",
-        "pipex.h": "c"
+        "pipex.h": "c",
+        "limits.h": "c"
     }
 }
