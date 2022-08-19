@@ -28,6 +28,8 @@ typedef struct s_arg {
 	long long		start_time;
 	pthread_mutex_t	*forkarr;
 	pthread_mutex_t	print;
+	int				num_finished_philo;
+	int				is_finished;
 }	t_arg;
 
 typedef struct s_philo {

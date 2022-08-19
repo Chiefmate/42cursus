@@ -20,7 +20,10 @@ int	ft_init_arg(t_arg *arg, int argc, char *argv[])
 	arg->time_to_die = ft_atoi(argv[2]);
 	arg->time_to_eat = ft_atoi(argv[3]);
 	arg->time_to_sleep = ft_atoi(argv[4]);
+	arg->num_each_must_eat = 0;
 	arg->start_time = ft_get_time();
+	arg->num_finished_philo = 0;
+	arg->is_finished = 0;
 	if (arg->num_philo <= 0 || arg->time_to_die < 0 || arg->time_to_eat < 0 \
 	 || arg->time_to_sleep < 0)
 		return (1);
