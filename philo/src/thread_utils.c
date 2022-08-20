@@ -28,7 +28,7 @@ void	ft_wait_for_time(long long duration, t_arg *arg)
 	return ;
 }
 
-int		ft_philo_printf(t_arg *arg, int id, char *s)
+int	ft_philo_printf(t_arg *arg, int id, char *s)
 {
 	long long	curr;
 
@@ -49,7 +49,7 @@ int	ft_thread_check_if_dead(t_arg *arg, t_philo *philo)
 {
 	long long	curr;
 
-	if(!(arg->is_finished))
+	if (!(arg->is_finished))
 	{
 		curr = ft_get_time();
 		if (curr == -1)
@@ -58,7 +58,8 @@ int	ft_thread_check_if_dead(t_arg *arg, t_philo *philo)
 		{
 			pthread_mutex_lock(&(arg->print));
 			if (!(arg->is_finished))
-				printf("%lld %d %s\n", curr - arg->start_time, philo->id + 1, "died");
+				printf("%lld %d %s\n", curr - arg->start_time, \
+						philo->id + 1, "died");
 			arg->is_finished = 1;
 			pthread_mutex_unlock(&(arg->print));
 		}

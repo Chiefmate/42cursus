@@ -38,7 +38,8 @@ static void	*ft_thread_even_id(t_arg *arg, t_philo *philo)
 	{
 		if (ft_philo_eat_even_id(arg, philo))
 		{
-			if (arg->num_each_must_eat != 0 && arg->num_each_must_eat <= philo->count_eat)
+			if (arg->num_each_must_eat != 0 && \
+					arg->num_each_must_eat <= philo->count_eat)
 			{
 				arg->num_finished_philo += 1;
 				break ;
@@ -61,7 +62,8 @@ static void	*ft_thread_odd_id(t_arg *arg, t_philo *philo)
 	{		
 		if (ft_philo_eat_odd_id(arg, philo))
 		{
-			if (arg->num_each_must_eat != 0 && arg->num_each_must_eat <= philo->count_eat)
+			if (arg->num_each_must_eat != 0 && \
+					arg->num_each_must_eat <= philo->count_eat)
 			{
 				arg->num_finished_philo += 1;
 				break ;

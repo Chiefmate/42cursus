@@ -25,7 +25,7 @@ int	ft_init_arg(t_arg *arg, int argc, char *argv[])
 	arg->num_finished_philo = 0;
 	arg->is_finished = 0;
 	if (arg->num_philo <= 0 || arg->time_to_die < 0 || arg->time_to_eat < 0 \
-	 || arg->time_to_sleep < 0)
+			|| arg->time_to_sleep < 0)
 		return (1);
 	if (argc == 6)
 	{
@@ -77,4 +77,3 @@ int	ft_init_philoarr(t_philo **philo_arr, t_arg *arg)
 	}
 	return (0);
 }
-

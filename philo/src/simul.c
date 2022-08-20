@@ -24,7 +24,8 @@ int	ft_simul_philo(t_arg *arg, t_philo *philo_arr)
 	while (i < arg->num_philo)
 	{
 		philo_arr[i].last_eat_time = ft_get_time();
-		if (pthread_create(&(philo_arr[i].tid), NULL, ft_thread, &(philo_arr[i])))
+		if (pthread_create(&(philo_arr[i].tid), NULL, \
+					ft_thread, &(philo_arr[i])))
 			return (1);
 		i++;
 	}
@@ -36,11 +37,12 @@ int	ft_simul_philo(t_arg *arg, t_philo *philo_arr)
 	return (0);
 }
 
-static void	ft_simul_check_finish(t_arg *arg , t_philo *philo_arr )
+static void	ft_simul_check_finish(t_arg *arg, t_philo *philo_arr)
 {
 	while (!(arg->is_finished))
 	{
-		if ((arg->num_each_must_eat != 0) && (arg->num_philo <= arg->num_finished_philo))
+		if ((arg->num_each_must_eat != 0) && \
+				(arg->num_philo <= arg->num_finished_philo))
 		{
 			arg->is_finished = 1;
 			break ;
@@ -69,7 +71,8 @@ static int	ft_simul_check_if_dead(t_arg *arg, t_philo *philo_arr)
 		{
 			pthread_mutex_lock(&(arg->print));
 			if (!(arg->is_finished))
-				printf("%lld %d %s\n", curr - arg->start_time, philo_arr[i].id + 1, "died");
+				printf("%lld %d %s\n", curr - arg->start_time, \
+						philo_arr[i].id + 1, "died");
 			arg->is_finished = 1;
 			pthread_mutex_unlock(&(arg->print));
 			break ;
