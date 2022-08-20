@@ -46,10 +46,15 @@ typedef struct s_philo {
 int			ft_init_arg(t_arg *arg, int argc, char *argv[]);
 int			ft_init_philoarr(t_philo **philo_arr, t_arg *arg);
 
-/* thread.c */
-
-
 /* simul.c */
+int			ft_simul_philo(t_arg *arg, t_philo *philo_arr);
+
+/* thread.c */
+void		*ft_thread(void *argv);
+
+/* thread_utils.c */
+void		ft_wait_for_time(long long duration, t_arg *arg);
+int			ft_philo_printf(t_arg *arg, int id, char *s);
 
 /* utils.c */
 int			ft_perror(int errno, char *s);
