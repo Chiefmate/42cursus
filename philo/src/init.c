@@ -44,13 +44,13 @@ static int	ft_init_arg_mutex(t_arg *arg)
 
 	if (pthread_mutex_init(&(arg->print), NULL))
 		return (1);
-	arg->forkarr = malloc(sizeof(pthread_mutex_t) * arg->num_philo);
-	if (!(arg->forkarr))
+	arg->forks = malloc(sizeof(pthread_mutex_t) * arg->num_philo);
+	if (!(arg->forks))
 		return (1);
 	i = 0;
 	while (i < arg->num_philo)
 	{
-		if (pthread_mutex_init(&(arg->forkarr[i]), NULL))
+		if (pthread_mutex_init(&(arg->forks[i]), NULL))
 			return (1);
 		i++;
 	}

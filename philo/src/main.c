@@ -18,7 +18,7 @@ int	main(int argc, char *argv[])
 	t_philo	*philo_arr;
 	int		ret;
 
-	if (argc != 5 || argc != 6)
+	if (argc != 5 && argc != 6)
 		return (ft_perror(1, "argc error"));
 	memset(&arg, 0, sizeof(t_arg));
 	ret = ft_init_arg(&arg, argc, argv);

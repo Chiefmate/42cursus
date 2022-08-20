@@ -60,7 +60,7 @@ int	ft_atoi(const char *s)
 		ret = ret * 10 + (*s - '0');
 		num_digit++;
 		if (ret < 0 || num_digit > 19)
-			sreturn (-1);
+			return (-1);
 		s++;
 	}
 	return (ret * sign);
