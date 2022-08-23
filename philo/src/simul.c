@@ -20,6 +20,7 @@ int	ft_simul_philo(t_arg *arg, t_philo *philo_arr)
 {
 	int	i;
 
+	pthread_mutex_lock(&(arg->start_flag));
 	i = 0;
 	while (i < arg->num_philo)
 	{
@@ -29,6 +30,7 @@ int	ft_simul_philo(t_arg *arg, t_philo *philo_arr)
 			return (1);
 		i++;
 	}
+	pthread_mutex_unlock(&(arg->start_flag));
 	ft_simul_check_finish(arg, philo_arr);
 	i = 0;
 	while (i < arg->num_philo)
@@ -90,6 +92,8 @@ static void	ft_free_main_thread(t_arg *arg, t_philo *philo_arr)
 		pthread_mutex_destroy(&(arg->forks[i]));
 	free(philo_arr);
 	free(arg->forks);
+	free(arg->fork_avail_times);
 	pthread_mutex_destroy(&(arg->print));
+	pthread_mutex_destroy(&(arg->start_flag));
 	return ;
 }

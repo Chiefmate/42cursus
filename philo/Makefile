@@ -13,7 +13,7 @@
 NAME		=	philo
 
 CC			=	cc
-CFLAGS		=	-Wall -Wextra -Werror
+CFLAGS		=	-Wall -Wextra -Werror -g
 AR			=	ar
 ARFLAGS		=	crs
 RM			=	rm -f

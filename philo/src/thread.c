@@ -24,6 +24,8 @@ void	*ft_thread(void *argv)
 
 	philo = argv;
 	arg = philo->argptr;
+	pthread_mutex_lock(&(arg->start_flag));
+	pthread_mutex_unlock(&(arg->start_flag));
 	if (philo->id % 2)
 		ft_thread_odd_id(arg, philo);
 	else
@@ -45,8 +47,15 @@ static void	*ft_thread_even_id(t_arg *arg, t_philo *philo)
 				break ;
 			}
 			ft_philo_printf(arg, philo->id, "is sleeping");
-			ft_wait_for_time((long long)arg->time_to_sleep, arg);
-			ft_philo_printf(arg, philo->id, "is thinking");
+
+
+			/** 일단 여기만 수정함 */
+			ft_wait_until_time(arg->fork_avail_times[philo->id] + arg->time_to_sleep, arg);
+			// ft_wait_for_time((long long)arg->time_to_sleep, arg);
+
+			ft_philo_printf_time(arg, philo->id, "is thinking", \
+				arg->fork_avail_times[philo->id] + arg->time_to_sleep);
+			// ft_philo_printf(arg, philo->id, "is thinking");
 			usleep(50);
 		}
 		ft_thread_check_if_dead(arg, philo);

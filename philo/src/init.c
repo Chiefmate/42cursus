@@ -40,16 +40,24 @@ int	ft_init_arg(t_arg *arg, int argc, char *argv[])
 
 static int	ft_init_arg_mutex(t_arg *arg)
 {
-	int	i;
+	int			i;
+	long long	curr_time;
 
 	if (pthread_mutex_init(&(arg->print), NULL))
+		return (1);
+	if (pthread_mutex_init(&(arg->start_flag), NULL))
 		return (1);
 	arg->forks = malloc(sizeof(pthread_mutex_t) * arg->num_philo);
 	if (!(arg->forks))
 		return (1);
+	arg->fork_avail_times = malloc(sizeof(long long) * arg->num_philo);
+	if (!(arg->fork_avail_times))
+		return (1);
+	curr_time = ft_get_time();
 	i = 0;
 	while (i < arg->num_philo)
 	{
+		arg->fork_avail_times[i] = curr_time;
 		if (pthread_mutex_init(&(arg->forks[i]), NULL))
 			return (1);
 		i++;
