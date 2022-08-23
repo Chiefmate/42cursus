@@ -42,6 +42,15 @@ void	ft_wait_until_time(long long target, t_arg *arg)
 	return ;
 }
 
+int	ft_philo_printf_time(t_arg *arg, int id, *s, long long time)
+{
+	pthread_mutex_lock(&(arg->print));
+	if (!arg->is_finished)
+		printf("%lld %d %s\n", time, id + 1, s);
+	pthread_mutex_unlock(&(arg->print));
+	return (0);
+}
+
 int	ft_philo_printf(t_arg *arg, int id, char *s)
 {
 	long long	curr;
