@@ -27,7 +27,6 @@ typedef struct s_arg {
 	int				num_each_must_eat;
 	long long		start_time;
 	pthread_mutex_t	*forks;
-	long long		*fork_avail_times;
 	pthread_mutex_t	print;
 	pthread_mutex_t	start_flag;
 	int				num_finished_philo;
@@ -57,7 +56,6 @@ void		*ft_thread(void *argv);
 /* thread_utils.c */
 void		ft_wait_for_time(long long duration, t_arg *arg);
 int			ft_philo_printf(t_arg *arg, int id, char *s);
-int			ft_thread_check_if_dead(t_arg *arg, t_philo *philo_arr);
 
 /* utils.c */
 int			ft_perror(int errno, char *s);
