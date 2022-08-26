@@ -27,6 +27,7 @@ typedef struct s_arg {
 	int				num_each_must_eat;
 	long long		start_time;
 	pthread_mutex_t	*forks;
+	pthread_mutex_t	*philo_time_flags;
 	pthread_mutex_t	print;
 	pthread_mutex_t	start_flag;
 	pthread_mutex_t	finish_flag;

@@ -6,14 +6,14 @@
 #    By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/20 11:47:40 by hyunhole          #+#    #+#              #
-#    Updated: 2022/08/26 16:35:03 by hyunhole         ###   ########.fr        #
+#    Updated: 2022/08/26 16:47:25 by hyunhole         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	philo
 
 CC			=	cc
-CFLAGS		=	-Wall -Wextra -Werror 
+CFLAGS		=	-Wall -Wextra -Werror
 AR			=	ar
 ARFLAGS		=	crs
 RM			=	rm -f

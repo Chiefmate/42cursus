@@ -88,8 +88,10 @@ static int	ft_simul_check_if_dead(t_arg *arg, t_philo *philo_arr)
 		curr = ft_get_time();
 		if (curr == -1)
 			return (-1);
+		pthread_mutex_lock(&(arg->philo_time_flags[i]));
 		if (curr - philo_arr[i].last_eat_time >= arg->time_to_die)
 		{
+			pthread_mutex_unlock(&(arg->philo_time_flags[i]));
 			pthread_mutex_lock(&(arg->finish_flag));
 			if (!(arg->is_finished))
 				arg->is_finished = 1;
@@ -101,6 +103,7 @@ static int	ft_simul_check_if_dead(t_arg *arg, t_philo *philo_arr)
 			pthread_mutex_unlock(&(arg->print));
 			break ;
 		}
+		pthread_mutex_unlock(&(arg->philo_time_flags[i]));
 	}
 	return (0);
 }
@@ -111,9 +114,13 @@ static void	ft_free_main_thread(t_arg *arg, t_philo *philo_arr)
 
 	i = -1;
 	while (++i < arg->num_philo)
+	{
 		pthread_mutex_destroy(&(arg->forks[i]));
+		pthread_mutex_destroy(&(arg->philo_time_flags[i]));
+	}
 	free(philo_arr);
 	free(arg->forks);
+	free(arg->philo_time_flags);
 	pthread_mutex_destroy(&(arg->print));
 	pthread_mutex_destroy(&(arg->start_flag));
 	pthread_mutex_destroy(&(arg->finish_flag));

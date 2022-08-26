@@ -51,10 +51,15 @@ static int	ft_init_arg_mutex(t_arg *arg)
 	arg->forks = malloc(sizeof(pthread_mutex_t) * arg->num_philo);
 	if (!(arg->forks))
 		return (1);
+	arg->philo_time_flags = malloc(sizeof(pthread_mutex_t) * arg->num_philo);
+	if (!(arg->philo_time_flags))
+		return (1);
 	i = 0;
 	while (i < arg->num_philo)
 	{
 		if (pthread_mutex_init(&(arg->forks[i]), NULL))
+			return (1);
+		if (pthread_mutex_init(&(arg->philo_time_flags[i]), NULL))
 			return (1);
 		i++;
 	}
