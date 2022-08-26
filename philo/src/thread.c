@@ -37,8 +37,10 @@ void	*ft_thread(void *argv)
 static void	*ft_thread_even_id(t_arg *arg, t_philo *philo)
 {
 	usleep(500);
-	while (!(arg->is_finished))
+	while (1)
 	{
+		if (check_if_finished(arg))
+			break ;
 		if (ft_philo_eat_even_id(arg, philo))
 		{
 			if (arg->num_each_must_eat != 0 && \
@@ -62,8 +64,10 @@ static void	*ft_thread_even_id(t_arg *arg, t_philo *philo)
 static void	*ft_thread_odd_id(t_arg *arg, t_philo *philo)
 {
 	usleep(1000);
-	while (!(arg->is_finished))
+	while (1)
 	{
+		if (check_if_finished(arg))
+			break ;
 		if (ft_philo_eat_odd_id(arg, philo))
 		{
 			if (arg->num_each_must_eat != 0 && \
@@ -96,10 +100,13 @@ static int	ft_philo_eat_even_id(t_arg *arg, t_philo *philo)
 	{
 		pthread_mutex_lock(&(arg->forks[philo->lfork]));
 		ft_philo_printf(arg, philo->id, "has taken a fork");
+		usleep(5);
 		pthread_mutex_lock(&(arg->forks[philo->rfork]));
 		ft_philo_printf(arg, philo->id, "has taken a fork");
 		ft_philo_printf(arg, philo->id, "is eating");
+		pthread_mutex_lock(&(arg->philo_time_flags[philo->id]));
 		philo->last_eat_time = ft_get_time();
+		pthread_mutex_unlock(&(arg->philo_time_flags[philo->id]));
 		ft_wait_for_time((long long)arg->time_to_eat, arg);
 		pthread_mutex_unlock(&(arg->forks[philo->rfork]));
 		pthread_mutex_unlock(&(arg->forks[philo->lfork]));
@@ -113,10 +120,13 @@ static int	ft_philo_eat_odd_id(t_arg *arg, t_philo *philo)
 {
 	pthread_mutex_lock(&(arg->forks[philo->rfork]));
 	ft_philo_printf(arg, philo->id, "has taken a fork");
+	usleep(5);
 	pthread_mutex_lock(&(arg->forks[philo->lfork]));
 	ft_philo_printf(arg, philo->id, "has taken a fork");
 	ft_philo_printf(arg, philo->id, "is eating");
+	pthread_mutex_lock(&(arg->philo_time_flags[philo->id]));
 	philo->last_eat_time = ft_get_time();
+	pthread_mutex_unlock(&(arg->philo_time_flags[philo->id]));
 	ft_wait_for_time((long long)arg->time_to_eat, arg);
 	pthread_mutex_unlock(&(arg->forks[philo->lfork]));
 	philo->count_eat += 1;

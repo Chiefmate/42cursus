@@ -6,7 +6,7 @@
 #    By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/20 11:47:40 by hyunhole          #+#    #+#              #
-#    Updated: 2022/08/24 15:49:25 by hyunhole         ###   ########.fr        #
+#    Updated: 2022/08/26 16:54:30 by hyunhole         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRCS_DIR	=	./src/
 SRCS_NODIR	=	main.c \
 				init.c \
 				simul.c \
+				simul_utils.c \
 				thread.c \
 				thread_utils.c \
 				utils.c

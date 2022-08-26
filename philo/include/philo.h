@@ -27,8 +27,10 @@ typedef struct s_arg {
 	int				num_each_must_eat;
 	long long		start_time;
 	pthread_mutex_t	*forks;
+	pthread_mutex_t	*philo_time_flags;
 	pthread_mutex_t	print;
 	pthread_mutex_t	start_flag;
+	pthread_mutex_t	finish_flag;
 	int				num_finished_philo;
 	int				is_finished;
 }	t_arg;
@@ -49,6 +51,11 @@ int			ft_init_philoarr(t_philo **philo_arr, t_arg *arg);
 
 /* simul.c */
 int			ft_simul_philo(t_arg *arg, t_philo *philo_arr);
+
+/* simul_utils.c */
+int			check_if_finished(t_arg *arg);
+void		flag_is_finished_true(t_arg *arg);
+int			ft_simul_printf_died(t_arg *arg, int id);
 
 /* thread.c */
 void		*ft_thread(void *argv);
