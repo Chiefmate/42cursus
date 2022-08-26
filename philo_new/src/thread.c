@@ -39,13 +39,8 @@ static void	*ft_thread_even_id(t_arg *arg, t_philo *philo)
 	usleep(500);
 	while (1)
 	{
-		pthread_mutex_lock(&(arg->finish_flag));
-		if (arg->is_finished)
-		{
-			pthread_mutex_unlock(&(arg->finish_flag));
+		if (check_if_finished(arg))
 			break ;
-		}
-		pthread_mutex_unlock(&(arg->finish_flag));
 		if (ft_philo_eat_even_id(arg, philo))
 		{
 			if (arg->num_each_must_eat != 0 && \
@@ -71,13 +66,8 @@ static void	*ft_thread_odd_id(t_arg *arg, t_philo *philo)
 	usleep(1000);
 	while (1)
 	{
-		pthread_mutex_lock(&(arg->finish_flag));
-		if (arg->is_finished)
-		{
-			pthread_mutex_unlock(&(arg->finish_flag));
+		if (check_if_finished(arg))
 			break ;
-		}
-		pthread_mutex_unlock(&(arg->finish_flag));
 		if (ft_philo_eat_odd_id(arg, philo))
 		{
 			if (arg->num_each_must_eat != 0 && \

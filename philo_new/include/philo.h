@@ -52,6 +52,11 @@ int			ft_init_philoarr(t_philo **philo_arr, t_arg *arg);
 /* simul.c */
 int			ft_simul_philo(t_arg *arg, t_philo *philo_arr);
 
+/* simul_utils.c */
+int			check_if_finished(t_arg *arg);
+void		flag_is_finished_true(t_arg *arg);
+int			ft_simul_printf_died(t_arg *arg, int id);
+
 /* thread.c */
 void		*ft_thread(void *argv);
 

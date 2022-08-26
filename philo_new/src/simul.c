@@ -43,13 +43,8 @@ static void	ft_simul_check_finish(t_arg *arg, t_philo *philo_arr)
 {
 	while (1)
 	{
-		pthread_mutex_lock(&(arg->finish_flag));
-		if (arg->is_finished)
-		{
-			pthread_mutex_unlock(&(arg->finish_flag));
+		if (check_if_finished(arg))
 			break ;
-		}
-		pthread_mutex_unlock(&(arg->finish_flag));
 		if ((arg->num_each_must_eat != 0) && \
 				(arg->num_philo <= arg->num_finished_philo))
 		{
@@ -78,13 +73,8 @@ static int	ft_simul_check_if_dead(t_arg *arg, t_philo *philo_arr)
 	i = -1;
 	while (++i < arg->num_philo)
 	{
-		pthread_mutex_lock(&(arg->finish_flag));
-		if (arg->is_finished)
-		{
-			pthread_mutex_unlock(&(arg->finish_flag));
-			break;
-		}
-		pthread_mutex_unlock(&(arg->finish_flag));
+		if (check_if_finished(arg))
+			break ;
 		curr = ft_get_time();
 		if (curr == -1)
 			return (-1);
@@ -92,15 +82,8 @@ static int	ft_simul_check_if_dead(t_arg *arg, t_philo *philo_arr)
 		if (curr - philo_arr[i].last_eat_time >= arg->time_to_die)
 		{
 			pthread_mutex_unlock(&(arg->philo_time_flags[i]));
-			pthread_mutex_lock(&(arg->finish_flag));
-			if (!(arg->is_finished))
-				arg->is_finished = 1;
-			pthread_mutex_unlock(&(arg->finish_flag));
-			pthread_mutex_lock(&(arg->print));
-			usleep(1000);
-			printf("%lld %d %s\n", curr - arg->start_time, \
-				philo_arr[i].id + 1, "died");
-			pthread_mutex_unlock(&(arg->print));
+			flag_is_finished_true(arg);
+			ft_simul_printf_died(arg, philo_arr[i].id);
 			break ;
 		}
 		pthread_mutex_unlock(&(arg->philo_time_flags[i]));
