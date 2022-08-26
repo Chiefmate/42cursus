@@ -6,7 +6,7 @@
 /*   By: hyunhole <hyunhole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 10:50:44 by hyunhole          #+#    #+#             */
-/*   Updated: 2022/08/26 16:47:21 by hyunhole         ###   ########.fr       */
+/*   Updated: 2022/08/26 18:12:05 by hyunhole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,23 @@ int	ft_philo_printf(t_arg *arg, int id, char *s)
 {
 	long long	curr;
 
+
+	pthread_mutex_lock(&(arg->finish_flag));
+	if (arg->is_finished)
+	{
+		pthread_mutex_unlock(&(arg->finish_flag));
+		return (0);
+	}
+	pthread_mutex_unlock(&(arg->finish_flag));
+	
+	pthread_mutex_lock(&(arg->print));
+
 	curr = ft_get_time();
 	if (curr == -1)
 		return (-1);
-	pthread_mutex_lock(&(arg->print));
-	pthread_mutex_lock(&(arg->finish_flag));
-	if (!arg->is_finished)
-		printf("%lld %d %s\n", curr - arg->start_time, id + 1, s);
-	pthread_mutex_unlock(&(arg->finish_flag));
+
+	printf("%lld %d %s\n", curr - arg->start_time, id + 1, s);
+	
 	pthread_mutex_unlock(&(arg->print));
 	return (0);
 }

@@ -100,6 +100,7 @@ static int	ft_philo_eat_even_id(t_arg *arg, t_philo *philo)
 	{
 		pthread_mutex_lock(&(arg->forks[philo->lfork]));
 		ft_philo_printf(arg, philo->id, "has taken a fork");
+		usleep(5);
 		pthread_mutex_lock(&(arg->forks[philo->rfork]));
 		ft_philo_printf(arg, philo->id, "has taken a fork");
 		ft_philo_printf(arg, philo->id, "is eating");
@@ -119,6 +120,7 @@ static int	ft_philo_eat_odd_id(t_arg *arg, t_philo *philo)
 {
 	pthread_mutex_lock(&(arg->forks[philo->rfork]));
 	ft_philo_printf(arg, philo->id, "has taken a fork");
+	usleep(5);
 	pthread_mutex_lock(&(arg->forks[philo->lfork]));
 	ft_philo_printf(arg, philo->id, "has taken a fork");
 	ft_philo_printf(arg, philo->id, "is eating");
