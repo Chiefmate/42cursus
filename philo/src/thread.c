@@ -89,7 +89,7 @@ static int	ft_philo_eat_even_id(t_arg *arg, t_philo *philo)
 		pthread_mutex_lock(&(arg->forks[philo->lfork]));
 		ft_philo_printf(arg, philo->id, "has taken a fork");
 		ft_wait_for_time((long long)arg->time_to_die, arg);
-ㅎ		pthread_mutex_unlock(&(arg->forks[philo->lfork]));
+		pthread_mutex_unlock(&(arg->forks[philo->lfork]));
 		return (0);
 	}
 	else
